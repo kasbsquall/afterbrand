@@ -1,0 +1,20 @@
+{
+  "source": "https://www.builder.io/blog/builder-product-name-change",
+  "sourcePublishedAt": "2026-09-10T16:00:00.000Z",
+  "sourceQuote": "Fusion is now Builder Code and Publish is Builder Content.",
+  "rules": [
+    {
+      "oldName": "Fusion",
+      "newName": "Builder Code",
+      "effectiveDate": "2026-09-10",
+      "exceptions": "Keep the old name where it is historical (describes something that happened before the rename), in dated changelogs or release notes, in URLs, slugs, code and quoted UI strings, and in contract, pricing or invoice language: the source says anything referencing the old name is still valid. Keep the common word fusion when it does not name the product."
+    },
+    {
+      "oldName": "Publish",
+      "newName": "Builder Content",
+      "effectiveDate": "2026-09-10",
+      "exceptions": "Only the product name changes. Keep the verb and noun publish or publishing (publish a page, the publish button, publishing workflow) unless it clearly names the Builder product. Same historical, changelog, URL, code and contract exceptions as Fusion."
+    }
+  ],
+  "exceptionsNote": "The rename itself and the contract exception come from the source post. The other exceptions are our own reading of it, written by Kevin Soto for Afterbrand; edit them in the app."
+}
