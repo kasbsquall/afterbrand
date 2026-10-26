@@ -74,7 +74,8 @@ export function navigationStateForPath(pathname: string): NavigationState {
 
 function viewForPath(pathname: string): string {
   if (isChatPathname(pathname)) return "chat";
-  if (pathname === HOME_PATH) return "home";
+  if (pathname === HOME_PATH) return "findings";
+  if (pathname.startsWith("/pages/")) return "page";
   if (pathname.startsWith("/database")) return "database";
   if (pathname.startsWith("/extensions")) return "extensions";
   if (pathname.startsWith("/observability")) return "observability";
@@ -92,6 +93,7 @@ function pathForView(view?: string): string {
     case "ask":
       return NEW_CHAT_PATH;
     case "home":
+    case "findings":
       return HOME_PATH;
     case "database":
       return "/database";

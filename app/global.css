@@ -1,4 +1,4 @@
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/hanken-grotesk";
 
 @import "tailwindcss";
 @import "@agent-native/toolkit/styles.css";
@@ -6,38 +6,97 @@
 @source "./**/*.{ts,tsx}";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 10%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 10%;
-  --primary: 0 0% 15%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 95%;
-  --secondary-foreground: 0 0% 15%;
-  --muted: 0 0% 95%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 0 0% 95%;
-  --accent-foreground: 0 0% 15%;
-  --destructive: 0 91% 71%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 40%;
+  --background: 183 88% 7%;
+  --foreground: 182 26% 91%;
+  --card: 183 63% 11%;
+  --card-foreground: 182 26% 91%;
+  --popover: 183 63% 11%;
+  --popover-foreground: 182 26% 91%;
+  --primary: 36 77% 61%;
+  --primary-foreground: 36 98% 9%;
+  --secondary: 183 48% 15%;
+  --secondary-foreground: 182 26% 91%;
+  --muted: 183 63% 11%;
+  --muted-foreground: 183 10% 63%;
+  --accent: 183 48% 15%;
+  --accent-foreground: 182 26% 91%;
+  --destructive: 3 86% 71%;
+  --destructive-foreground: 36 98% 9%;
+  --border: 183 29% 17%;
+  --input: 183 29% 17%;
+  --ring: 41 77% 73%;
   --radius: 0.5rem;
-  --sidebar-background: 0 0% 97%;
-  --sidebar-foreground: 0 0% 45%;
-  --sidebar-primary: 0 0% 15%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 95%;
-  --sidebar-accent-foreground: 0 0% 15%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 40%;
+  --sidebar-background: 184 100% 5%;
+  --sidebar-foreground: 183 10% 63%;
+  --sidebar-primary: 36 77% 61%;
+  --sidebar-primary-foreground: 36 98% 9%;
+  --sidebar-accent: 183 63% 11%;
+  --sidebar-accent-foreground: 182 26% 91%;
+  --sidebar-border: 183 29% 17%;
+  --sidebar-ring: 41 77% 73%;
   --chat-sidebar-width: 17.25rem;
   --chat-sidebar-content-inset: 0.5rem;
   --chat-sidebar-row-padding: 0.75rem;
   --chat-sidebar-title-fade: 1.25rem;
+}
+
+
+/* Afterbrand tokens (DESIGN.md). Dark only: :root and .dark share the teal
+   shell so the framework chrome matches the queue. */
+:root {
+  --ab-font: "Hanken Grotesk Variable", "Hanken Grotesk", sans-serif;
+  --ab-ground: oklch(22% .035 200);
+  --ab-rail: oklch(19% .034 200);
+  --ab-layer: oklch(27% .038 200);
+  --ab-layer-2: oklch(31% .04 200);
+  --ab-well: oklch(20% .03 200);
+  --ab-ink: oklch(94% .012 200);
+  --ab-ink-soft: oklch(72% .02 200);
+  --ab-ink-faint: oklch(58% .022 200);
+  --ab-line: oklch(94% .012 200 / .09);
+  --ab-line-strong: oklch(94% .012 200 / .16);
+  --ab-change: oklch(78% .13 75);
+  --ab-change-hover: oklch(82% .13 78);
+  --ab-change-ink: oklch(24% .05 75);
+  --ab-keep: oklch(70% .07 180);
+  --ab-keep-text: oklch(80% .07 180);
+  --ab-needs: oklch(72% .15 25);
+  --ab-needs-text: oklch(80% .11 28);
+  --ab-undecided: oklch(42% .02 200);
+  --ab-undecided-2: oklch(37% .02 200);
+  --ab-focus: oklch(86% .1 85);
+  --ab-shadow-panel: 0 1px 0 oklch(94% .012 200 / .04) inset, 0 18px 40px -24px oklch(12% .04 200 / .9);
+  --ab-ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ab-ease-settle: cubic-bezier(.34, 1.56, .64, 1);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ab-ground: var(--ab-ground);
+  --color-ab-rail: var(--ab-rail);
+  --color-ab-layer: var(--ab-layer);
+  --color-ab-layer-2: var(--ab-layer-2);
+  --color-ab-well: var(--ab-well);
+  --color-ab-ink: var(--ab-ink);
+  --color-ab-ink-soft: var(--ab-ink-soft);
+  --color-ab-ink-faint: var(--ab-ink-faint);
+  --color-ab-line: var(--ab-line);
+  --color-ab-line-strong: var(--ab-line-strong);
+  --color-ab-change: var(--ab-change);
+  --color-ab-change-hover: var(--ab-change-hover);
+  --color-ab-change-ink: var(--ab-change-ink);
+  --color-ab-keep: var(--ab-keep);
+  --color-ab-keep-text: var(--ab-keep-text);
+  --color-ab-needs: var(--ab-needs);
+  --color-ab-needs-text: var(--ab-needs-text);
+  --color-ab-undecided: var(--ab-undecided);
+  --color-ab-undecided-2: var(--ab-undecided-2);
+  --color-ab-focus: var(--ab-focus);
+  --radius-key: 4px;
+  --radius-control: 8px;
+  --radius-well: 10px;
+  --radius-panel: 12px;
+  --font-sans: var(--ab-font);
 }
 
 .chat-layout-shell {
@@ -201,41 +260,41 @@
 }
 
 .dark {
-  --background: 0 0% 13%;
-  --foreground: 0 0% 90%;
-  --card: 0 0% 16.47%;
-  --card-foreground: 0 0% 90%;
-  --popover: 0 0% 15%;
-  --popover-foreground: 0 0% 90%;
-  --primary: 0 0% 75%;
-  --primary-foreground: 0 0% 10%;
-  --secondary: 0 0% 18%;
-  --secondary-foreground: 0 0% 90%;
-  --muted: 0 0% 16%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 0 0% 18%;
-  --accent-foreground: 0 0% 90%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 24%;
-  --input: 0 0% 24%;
-  --ring: 0 0% 60%;
+  --background: 183 88% 7%;
+  --foreground: 182 26% 91%;
+  --card: 183 63% 11%;
+  --card-foreground: 182 26% 91%;
+  --popover: 183 63% 11%;
+  --popover-foreground: 182 26% 91%;
+  --primary: 36 77% 61%;
+  --primary-foreground: 36 98% 9%;
+  --secondary: 183 48% 15%;
+  --secondary-foreground: 182 26% 91%;
+  --muted: 183 63% 11%;
+  --muted-foreground: 183 10% 63%;
+  --accent: 183 48% 15%;
+  --accent-foreground: 182 26% 91%;
+  --destructive: 3 86% 71%;
+  --destructive-foreground: 36 98% 9%;
+  --border: 183 29% 17%;
+  --input: 183 29% 17%;
+  --ring: 41 77% 73%;
   --radius: 0.5rem;
-  --sidebar-background: 0 0% 10%;
-  --sidebar-foreground: 0 0% 60%;
-  --sidebar-primary: 0 0% 75%;
-  --sidebar-primary-foreground: 0 0% 10%;
-  --sidebar-accent: 0 0% 16%;
-  --sidebar-accent-foreground: 0 0% 90%;
-  --sidebar-border: 0 0% 20%;
-  --sidebar-ring: 0 0% 60%;
+  --sidebar-background: 184 100% 5%;
+  --sidebar-foreground: 183 10% 63%;
+  --sidebar-primary: 36 77% 61%;
+  --sidebar-primary-foreground: 36 98% 9%;
+  --sidebar-accent: 183 63% 11%;
+  --sidebar-accent-foreground: 182 26% 91%;
+  --sidebar-border: 183 29% 17%;
+  --sidebar-ring: 41 77% 73%;
 }
 
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter Variable", "Inter", sans-serif;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: var(--ab-font);
+    font-variant-numeric: tabular-nums lining-nums;
   }
 }
 

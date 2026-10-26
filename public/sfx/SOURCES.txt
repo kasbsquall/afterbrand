@@ -1,0 +1,5 @@
+accept.mp3  Kenney Interface Sounds, confirmation_003
+keep.mp3    Kenney Interface Sounds, glass_001
+undo.mp3    Kenney Interface Sounds, back_002
+select.mp3  Kenney Interface Sounds, back_004
+All CC0-1.0 (see License.txt), https://kenney.nl/assets/interface-sounds

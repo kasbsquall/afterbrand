@@ -63,8 +63,14 @@ export default defineAction({
         decidedBy: schema.findings.decidedBy,
       })
       .from(schema.findings)
-      .innerJoin(schema.pages, eq(schema.findings.pageId, schema.pages.id))
-      .innerJoin(schema.rules, eq(schema.findings.ruleId, schema.rules.id))
+      .innerJoin(
+        schema.pages,
+        and(eq(schema.findings.pageId, schema.pages.id), eq(schema.pages.ownerEmail, ownerEmail)),
+      )
+      .innerJoin(
+        schema.rules,
+        and(eq(schema.findings.ruleId, schema.rules.id), eq(schema.rules.ownerEmail, ownerEmail)),
+      )
       .where(where)
       .orderBy(asc(schema.pages.title), asc(schema.findings.sentenceStart))
       .limit(limit)

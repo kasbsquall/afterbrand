@@ -1,5 +1,5 @@
 import { defineAction } from "@agent-native/core/action";
-import { readAppState } from "@agent-native/core/application-state";
+import { readAppState, readAppStateForCurrentTab } from "@agent-native/core/application-state";
 import { z } from "zod";
 
 import { loadFindings } from "../server/lib/findings-read.js";
@@ -15,7 +15,7 @@ export default defineAction({
   readOnly: true,
   run: async (_args, ctx) => {
     const navigation = await readAppState("navigation");
-    const selection = await readAppState("selection");
+    const selection = await readAppStateForCurrentTab("selection");
     const screen: Record<string, unknown> = {};
     if (navigation) screen.navigation = navigation;
 

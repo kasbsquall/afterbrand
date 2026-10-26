@@ -50,7 +50,8 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-const THEME_INIT_SCRIPT = getThemeInitScript();
+// Afterbrand ships one dark theme (DESIGN.md), so the system preference is ignored.
+const THEME_INIT_SCRIPT = getThemeInitScript("dark", false);
 const LOCALE_INIT_SCRIPT = getLocaleInitScript();
 
 export function Layout({ children }: { children: React.ReactNode }) {

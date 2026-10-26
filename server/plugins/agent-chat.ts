@@ -8,6 +8,7 @@ import actionsRegistry from "../../.generated/actions-registry.js";
 
 const INITIAL_TOOL_NAMES = [
   "view-screen",
+  "get-library-overview",
   "navigate",
   "list-rules",
   "upsert-rule",

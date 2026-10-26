@@ -19,7 +19,6 @@ import {
   IconApps,
   IconClock,
   IconEdit,
-  IconHome,
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
   IconLoader2,
@@ -27,6 +26,7 @@ import {
   IconPin,
   IconSearch,
 } from "@tabler/icons-react";
+import { Stack } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -234,14 +234,13 @@ function persistActiveThreadId(threadId: string) {
 }
 
 function HomeNavLink({ collapsed }: { collapsed: boolean }) {
-  const t = useT();
   const location = useLocation();
   const active = location.pathname === HOME_PATH;
   const link = (
     <Link
       to={HOME_PATH}
       aria-current={active ? "page" : undefined}
-      aria-label={collapsed ? t("navigation.home") : undefined}
+      aria-label={collapsed ? "Findings" : undefined}
       className={cn(
         "flex items-center text-sidebar-accent-foreground transition-colors hover:bg-sidebar-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
         active && "bg-sidebar-accent",
@@ -250,10 +249,8 @@ function HomeNavLink({ collapsed }: { collapsed: boolean }) {
           : "h-10 w-full gap-3 rounded-lg px-3 text-sm font-medium",
       )}
     >
-      <IconHome className="size-4 shrink-0" strokeWidth={1.8} />
-      <span className={collapsed ? "sr-only" : "truncate"}>
-        {t("navigation.home")}
-      </span>
+      <Stack className="size-4 shrink-0" weight="light" />
+      <span className={collapsed ? "sr-only" : "truncate"}>Findings</span>
     </Link>
   );
 
@@ -261,7 +258,7 @@ function HomeNavLink({ collapsed }: { collapsed: boolean }) {
     return (
       <Tooltip>
         <TooltipTrigger asChild>{link}</TooltipTrigger>
-        <TooltipContent side="right">{t("navigation.home")}</TooltipContent>
+        <TooltipContent side="right">Findings</TooltipContent>
       </Tooltip>
     );
   }
