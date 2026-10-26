@@ -1,0 +1,1005 @@
+{
+ "system": "regex-any-date",
+ "records": [
+  {
+   "key": "https://www.builder.io/blog/the-real-reason-coding-agents-get-more-done#5600#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/drag-drop-react#5755#Publish",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#0#Publish",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4101#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#10406#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#170#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#4529#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#5032#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#8954#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/fusion#5180#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-fastest-way-to-build-and-grow-on-headless-salesforce-commerce-cloud#7577#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/using-builder-within-your-headless-environment#3335#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#5690#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#8326#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-fastest-way-to-build-and-grow-on-headless-salesforce-commerce-cloud#7398#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-content-teams-ship-fast-with-builder#4109#Publish",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#3209#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#1864#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-ship-code-with-ai#979#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/death-of-cms#8849#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#6320#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#6846#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#3354#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-website#4407#Publish",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3333#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#9411#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-vs-code-extensions-2026#5468#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#3194#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3831#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-tools-for-product-managers#4165#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#2108#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#170#Publish",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#1733#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/git-branching-for-designers#6243#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/fast-teams-stay-fast-at-scale#1356#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#695#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#5771#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-figma#9210#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#5873#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/stop-installing-skills#1491#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/large-language-model-llm#10086#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1278#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#5374#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4598#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#7106#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#10245#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-react-calendar-component-ai#7480#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/visual-ide#10131#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-best-a-clone-can-do-is-tie#6596#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#6503#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-ai-tips-react-nextjs#17896#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-ship-code-with-ai#4763#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#6168#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#5621#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1779#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1815#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/agent-experience#11690#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#492#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#8725#Publish",
+   "split": "dev",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#3345#Fusion",
+   "split": "dev",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#1637#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#0#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-vs-windsurf-vs-github-copilot#6161#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#2345#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#10376#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/fusion#305#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#8871#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#6680#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#13543#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#12964#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5089#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#9777#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-mcp-servers-2026#6094#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#27518#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#3126#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#6398#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#3647#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#7734#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/evaluating-ai-tips#8664#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-tools-for-product-managers#5519#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/turn-a-figma-landing-page-into-a-live-website#6079#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#4485#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#13070#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#3092#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1460#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1779#Publish",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9636#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-real-reason-coding-agents-get-more-done#7643#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6584#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-fullstory-alternatives#14295#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/visual-next-js#3886#Publish",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#1915#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#7922#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#4778#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#15087#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#12343#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#2210#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#6456#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#4174#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#7250#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#3000#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-ux-design#1038#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-headless-cms-contenful-prismic-sanity-builder#10324#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5574#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-design-system-component-mapping#2395#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#7047#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-alternatives#21378#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/daisyui-best-practices-ai#6514#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#14656#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-vs-cursor#9125#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#9401#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/death-of-cms#391#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/fast-personalization-nextjs-edge-middleware-builder#6237#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/native-mobile-sdks#1767#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#18336#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#8024#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#5197#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/agentic-ide#6897#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#6699#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#1450#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8902#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3260#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/lovable-alternatives#8153#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#2475#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#4551#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Publish",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3544#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#10700#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#1502#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping#2291#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3472#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#5052#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#13943#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#6341#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#10169#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/stop-installing-skills#6109#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#437#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-plugins#7550#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8213#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/parallax-scrolling-effect#12425#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-product-teams-built-with-builder#3141#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#2207#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#15720#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-figma-mcp-server#5104#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#6162#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#6376#Fusion",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#1422#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#862#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#5798#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#926#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-agent-vs-chatbot#6573#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-superpowers-plugin#12906#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-coding-tools-2025#14133#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#7445#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#6812#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4867#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#9563#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-data#2855#Publish",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4688#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-content-teams-ship-fast-with-builder#1816#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#2095#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#6447#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#3717#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#8659#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1278#Publish",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6871#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9578#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#7639#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#8038#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/personalization-wins-from-conscia-and-builderio#6291#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#9652#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/test-driven-development-ai#8304#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#6195#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/headless-commerce-summit-2021#6977#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#6555#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#7303#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1572#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5766#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#2813#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#6792#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#9324#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#13861#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2851#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#17435#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2074#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#8133#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4513#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3957#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#5730#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#9802#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-website#6815#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#9906#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#16135#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-visual-editor-v3#4008#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5943#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/ab-testing-and-personalization-with-nextjs-edge-middleware#6347#Publish",
+   "split": "test",
+   "decision": "keep"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#2111#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#17745#Fusion",
+   "split": "test",
+   "decision": "change"
+  },
+  {
+   "key": "https://www.builder.io/blog/react-ai-stack#5798#Fusion",
+   "split": "test",
+   "decision": "change"
+  }
+ ]
+}

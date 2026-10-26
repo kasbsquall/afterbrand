@@ -119,11 +119,20 @@ async function main() {
       const stable = [...byKey.values()].filter((v) => v.size === 1).length;
       lines.push(`- Stability: the same decision in all ${agentRuns.length} runs for ${stable} of ${byKey.size} mentions (${pct(stable, byKey.size)}).`);
     }
-    lines.push("", "## Failure catalog (last run)", "", "Each wrong edit and miss, by URL and sentence offset, with the agent's reason. The sentences stay in the snapshot, not in this repo.", "");
+    lines.push("", "## Failure catalog (last run)", "", "Each wrong edit, miss and disagreement about what needs a person, by URL and sentence offset, with the agent's reason. The sentences stay in the snapshot, not in this repo.", "");
     const last = agentRuns[agentRuns.length - 1];
     for (const r of last.records) {
       const g = truth.get(r.key)!.label;
-      const kind = r.decision === "change" && g === "keep" ? "wrong edit" : r.decision === "keep" && g === "change" ? "miss" : null;
+      const kind =
+        r.decision === "change" && g === "keep"
+          ? "wrong edit"
+          : r.decision === "keep" && g === "change"
+            ? "miss"
+            : r.decision === "unsure" && g !== "unsure"
+              ? `sent to a person, labels say ${g}`
+              : r.decision !== "unsure" && g === "unsure"
+                ? `decided ${r.decision}, labels say unsure`
+                : null;
       if (kind) lines.push(`- ${kind}: ${r.key}. Agent: ${r.reason ?? "(no reason)"}`);
     }
   }

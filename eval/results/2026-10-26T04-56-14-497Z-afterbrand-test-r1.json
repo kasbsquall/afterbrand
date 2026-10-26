@@ -1,0 +1,858 @@
+{
+ "system": "afterbrand",
+ "split": "test",
+ "repeat": 1,
+ "testHash": "1676b998893beda6595d54936474bac45edb69a863b536045aeb8643efb139da",
+ "usage": {
+  "inputTokens": 503191,
+  "outputTokens": 20631,
+  "cacheReadTokens": 429255,
+  "llmCalls": 9,
+  "ms": 172560,
+  "model": "claude-sonnet-5-5"
+ },
+ "attemptedChanges": 100,
+ "refused": [],
+ "records": [
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#1637#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how-to instruction"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#0#Fusion",
+   "stratum": "Fusion|after",
+   "decision": "keep",
+   "reason": "Historical: rename announcement names the old products"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-vs-windsurf-vs-github-copilot#6161#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "unsure",
+   "reason": "Describes Fusion as a VS Code extension in a Jan 2025 post; unclear if still true, so a person should check the claim"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#2345#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: describes product purpose, not a dated event"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#10376#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/fusion#305#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "keep",
+   "reason": "Historical: 2025 launch announcement of Fusion 1.0"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#8871#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#6680#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product behavior"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#13543#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#12964#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: call to action for the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5089#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how the product works"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#9777#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-mcp-servers-2026#6094#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product recommendation; prefer 'Builder Code' over 'Builder Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#27518#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description; prefer 'Builder Code' over 'Builder Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#3126#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#6398#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product benefit"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#3647#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#7734#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: heading recommending the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/evaluating-ai-tips#8664#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product recommendation"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-tools-for-product-managers#5519#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product usage description"
+  },
+  {
+   "key": "https://www.builder.io/blog/turn-a-figma-landing-page-into-a-live-website#6079#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb 'publish this project', not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#4485#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product goal for designers"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#13070#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how the product works (two mentions)"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#3092#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1460#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1779#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Historical: rename announcement says what Fusion and Publish offered"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9636#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description (two mentions)"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-real-reason-coding-agents-get-more-done#7643#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Verb 'permission to publish', not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6584#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product named with description in list heading"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-fullstory-alternatives#14295#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb 'publish pricing' about Fullstory, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/visual-next-js#3886#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Button label / verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#1915#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product heading with a verb"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#7922#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#4778#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#15087#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how the product works"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#12343#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#2210#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#6456#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how-to step naming the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Fusion",
+   "stratum": "Fusion|after",
+   "decision": "keep",
+   "reason": "Historical: rename announcement maps old name to new"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#4174#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#7250#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: heading about present product usage"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#3000#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-ux-design#1038#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "unsure",
+   "reason": "Bare heading with no verb or context; a person should decide"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-headless-cms-contenful-prismic-sanity-builder#10324#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb 'preview and publish', not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5574#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: present-tense product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-design-system-component-mapping#2395#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb in a how-to step, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#7047#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-alternatives#21378#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current CTA; use Builder Code instead of 'Builder Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/daisyui-best-practices-ai#6514#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#14656#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description (two mentions)"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-vs-cursor#9125#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#9401#Publish",
+   "stratum": "Publish|after",
+   "decision": "unsure",
+   "reason": "Sentence starts with capitalized 'Publish:' as a list label; could be the Builder product or a verb/section name, page context not enough"
+  },
+  {
+   "key": "https://www.builder.io/blog/death-of-cms#391#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/fast-personalization-nextjs-edge-middleware-builder#6237#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/native-mobile-sdks#1767#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#18336#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product reference; prefer 'Builder Code' over 'Builder.io Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#8024#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: how-to heading naming the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#5197#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/agentic-ide#6897#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#6699#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: call to action for the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#1450#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8902#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3260#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/lovable-alternatives#8153#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb in build, preview, and publish workflow"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#2475#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: heading describing product benefits"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#4551#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability description"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Rename announcement: old name is stated deliberately as what users knew before"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3544#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#10700#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#1502#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping#2291#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3472#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#5052#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how it works"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#13943#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#6341#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product adoption claim in present tense"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#10169#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/stop-installing-skills#6109#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#437#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description; dropped \"Builder’s\" prefix to avoid 'Builder’s Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-plugins#7550#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8213#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/parallax-scrolling-effect#12425#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability; prefer 'Builder Code' over 'Builder.io Builder Code'"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-product-teams-built-with-builder#3141#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product feature description"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#2207#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#15720#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: call to action for the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-figma-mcp-server#5104#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#6162#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#6376#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#1422#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: describes how the product works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#862#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#5798#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability heading"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#926#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-agent-vs-chatbot#6573#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb in list of actions, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-superpowers-plugin#12906#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: ongoing product work"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-coding-tools-2025#14133#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#7445#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#6812#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4867#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product capability label"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#9563#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product FAQ (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-data#2855#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Names a UI button, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4688#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-content-teams-ship-fast-with-builder#1816#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#2095#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#6447#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#3717#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to naming the product twice"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#8659#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1278#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Rename announcement names the old name \"Publish\" on purpose"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6871#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "unsure",
+   "reason": "Sentence fragment \"Fusion vs.\" with no context; likely a comparison heading but cannot tell from the sentence"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9578#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product FAQ question"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#7639#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#8038#Publish",
+   "stratum": "Publish|after",
+   "decision": "keep",
+   "reason": "Quoted action name \"publish page\", common verb"
+  },
+  {
+   "key": "https://www.builder.io/blog/personalization-wins-from-conscia-and-builderio#6291#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish the page\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#9652#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product FAQ"
+  },
+  {
+   "key": "https://www.builder.io/blog/test-driven-development-ai#8304#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#6195#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description (Spanish)"
+  },
+  {
+   "key": "https://www.builder.io/blog/headless-commerce-summit-2021#6977#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#6555#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#7303#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: describes using the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1572#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5766#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to step"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#2813#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: names the product as an install target"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#6792#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#9324#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#13861#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product FAQ"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2851#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"ready to publish\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#17435#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product FAQ"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2074#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"bulk publish\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#8133#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to step"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4513#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product behavior"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3957#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish your site updates\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#5730#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product description; \"Builder.io’s Fusion\" becomes \"Builder Code\""
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#9802#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product recommendation"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-website#6815#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb in a description of Figma Sites, another company's product"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#9906#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Quoted Vertex AI UI label, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#16135#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to question"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-visual-editor-v3#4008#Publish",
+   "stratum": "Publish|before",
+   "decision": "unsure",
+   "reason": "Heading \"Publish workflow\" with no verb; could be the product or the common noun, need page context"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5943#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product how-to; present-tense onboarding"
+  },
+  {
+   "key": "https://www.builder.io/blog/ab-testing-and-personalization-with-nextjs-edge-middleware#6347#Publish",
+   "stratum": "Publish|before",
+   "decision": "keep",
+   "reason": "Verb \"publish live\", not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#2111#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Product name label; prefer \"Builder Code\" over \"Builder.io Builder Code\""
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#17745#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: product recommendation"
+  },
+  {
+   "key": "https://www.builder.io/blog/react-ai-stack#5798#Fusion",
+   "stratum": "Fusion|before",
+   "decision": "change",
+   "reason": "Current: names the product as the tool to use"
+  }
+ ]
+}
