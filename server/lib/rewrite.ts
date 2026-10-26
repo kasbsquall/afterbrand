@@ -9,6 +9,8 @@ export interface RewriteCheck {
 
 // Spans a rewrite must leave untouched: URLs, inline code, quoted strings.
 const PROTECTED = /https?:\/\/\S+|`[^`]+`|"[^"]*"|“[^”]*”/g;
+// URLs, HTML tags and Markdown links.
+const LINK_OR_MARKUP = /https?:\/\/|www\.|<\/?[a-z][^>]*>|\]\(/gi;
 // How far beyond the mentions an edit may reach (articles, verb agreement).
 const SLACK_CHARS = 40;
 
@@ -43,6 +45,10 @@ export function verifyRewrite(input: {
     if (span.match(mentionPattern(oldName))) continue; // a quoted product name may change
     if (!proposal.includes(span)) problems.push(`A protected span changed: ${span}`);
   }
+
+  // The blog text is untrusted, so a rewrite may not smuggle in links or markup.
+  const count = (text: string) => (text.match(LINK_OR_MARKUP) ?? []).length;
+  if (count(proposal) > count(sentence)) problems.push("The rewrite adds a link or markup.");
 
   if (mentionOffsets.length > 0 && proposal !== sentence) {
     const first = Math.min(...mentionOffsets.map((m) => m.start));

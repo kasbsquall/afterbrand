@@ -22,7 +22,7 @@ type Props = {
 
 const COL_W = 4;
 const GAP = 1;
-const LAYER = 3;
+const LAYER = 5;
 const TOP = 6;
 const MAX_LAYERS = 60;
 
@@ -150,7 +150,7 @@ export function CoreSample({ pages, pagesInLibrary, findings, leftToReview, acti
       <div className="ab-core-top">
         <div className="ab-big">{leftToReview}</div>
         <div className="ab-big-lbl">
-          <b>left to review</b>of {plural(findings.all, "finding")}
+          <b>left for you to review</b>of {plural(findings.all, "finding")}
         </div>
         <div className="ab-legend" aria-label="The agent's decisions on the findings left to review">
           <span>
@@ -201,7 +201,7 @@ export function CoreSample({ pages, pagesInLibrary, findings, leftToReview, acti
       <div className="ab-strip-foot">
         <span>
           <ArrowDown size={14} weight="light" />
-          One layer per finding{cut ? `, columns cut at ${MAX_LAYERS}` : ""}
+          Each column is a page, each layer a finding{cut ? `, tall pages cut at ${MAX_LAYERS}` : ""}
         </span>
         <span>
           {active

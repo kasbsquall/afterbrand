@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
 import { requireOwner } from "../server/lib/owner.js";
+import { unlockNeedsApproval } from "../server/lib/policy.js";
 
 export default defineAction({
   description:
@@ -12,6 +13,7 @@ export default defineAction({
     pageId: z.string(),
     readOnly: z.boolean(),
   }),
+  needsApproval: (args, ctx) => unlockNeedsApproval(args, ctx?.caller),
   run: async ({ pageId, readOnly }, ctx) => {
     const ownerEmail = requireOwner(ctx);
     const where = and(eq(schema.pages.ownerEmail, ownerEmail), eq(schema.pages.id, pageId));

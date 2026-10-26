@@ -4,6 +4,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { getDb, schema } from "../db/index.js";
 import { loadEnabledRules, syncPageFindings } from "./findings-sync.js";
 import { nowIso } from "./owner.js";
+import { assertPagesWritable } from "./policy.js";
 
 // Restores each original sentence and puts its finding back to pending.
 // Shared by revert-change and the undo mode of accept-findings, whose chat
@@ -21,6 +22,7 @@ export async function revertChanges(ownerEmail: string, changeIds: string[]) {
   // Check every page first so a batch never half-reverts.
   for (const change of rows) {
     const [page] = await db.select().from(schema.pages).where(eq(schema.pages.id, change.pageId));
+    assertPagesWritable([page]);
     if (!page.body.includes(change.after)) fail(`The page "${page.title}" changed again; undo the later change first.`);
   }
 

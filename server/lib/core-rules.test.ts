@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 
 import { findSentenceCandidates } from "./mentions.js";
-import { assertCanApply, assertCanPublish, isAgentCaller } from "./policy.js";
+import {
+  assertCanApply,
+  assertCanPublish,
+  assertPagesWritable,
+  isAgentCaller,
+  ruleEditNeedsApproval,
+  unlockNeedsApproval,
+} from "./policy.js";
 import { replaceSentence, verifyRewrite } from "./rewrite.js";
 
 const body = [
@@ -69,6 +76,15 @@ describe("verifyRewrite", () => {
     });
     expect(check.ok).toBe(false);
   });
+
+  it("rejects a rewrite that adds a link or markup", () => {
+    const withUrl = verifyRewrite({ ...base, proposal: "Builder Code (https://evil.example) lets designers ship to production." });
+    expect(withUrl.problems).toContain("The rewrite adds a link or markup.");
+    const withTag = verifyRewrite({ ...base, proposal: "<a href=x>Builder Code</a> lets designers ship to production." });
+    expect(withTag.problems).toContain("The rewrite adds a link or markup.");
+    const withMd = verifyRewrite({ ...base, proposal: "[Builder Code](x) lets designers ship to production." });
+    expect(withMd.problems).toContain("The rewrite adds a link or markup.");
+  });
 });
 
 describe("replaceSentence", () => {
@@ -113,6 +129,28 @@ describe("policy", () => {
     expect(() => assertCanPublish([])).toThrow();
     expect(() => assertCanPublish(["accepted", "pending"])).toThrow(/Only accepted/);
     expect(() => assertCanPublish(["accepted"])).not.toThrow();
+  });
+
+  it("refuses to publish or undo on a read-only page", () => {
+    expect(() => assertPagesWritable([{ title: "Changelog", readOnly: true }])).toThrow(/Changelog.*read-only/);
+    expect(() => assertPagesWritable([{ title: "Post", readOnly: false }])).not.toThrow();
+  });
+
+  it("asks a person before the agent unlocks a page, never before it locks one", () => {
+    expect(unlockNeedsApproval({ readOnly: false }, "tool")).toBe(true);
+    expect(unlockNeedsApproval({ readOnly: true }, "tool")).toBe(false);
+    expect(unlockNeedsApproval({ readOnly: false }, "frontend")).toBe(false);
+  });
+
+  it("lets the agent append an exception, and asks a person for any other rule edit", () => {
+    const current = { oldName: "Fusion", newName: "Builder Code", effectiveDate: "2026-09-10", exceptions: "Keep history.", sourceUrl: null, enabled: true };
+    expect(ruleEditNeedsApproval(current, { exceptions: "Keep history.\nKeep launch posts." }, "tool")).toBe(false);
+    expect(ruleEditNeedsApproval(current, { exceptions: "Keep launch posts." }, "tool")).toBe(true);
+    expect(ruleEditNeedsApproval(current, { enabled: false }, "tool")).toBe(true);
+    expect(ruleEditNeedsApproval(current, { newName: "Builder" }, "tool")).toBe(true);
+    expect(ruleEditNeedsApproval(current, { newName: "Builder Code", exceptions: "Keep history." }, "tool")).toBe(false);
+    expect(ruleEditNeedsApproval(null, { oldName: "Publish", newName: "Builder Content" }, "tool")).toBe(true);
+    expect(ruleEditNeedsApproval(current, { enabled: false }, "frontend")).toBe(false);
   });
 
   it("treats tool, MCP, A2A and automation callers as agents", () => {

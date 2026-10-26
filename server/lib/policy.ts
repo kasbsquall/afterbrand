@@ -30,7 +30,44 @@ export function assertCanPublish(statuses: Status[]): void {
   }
 }
 
+// Publish and undo write page bodies too, so they respect read-only like accept.
+export function assertPagesWritable(pages: { title: string; readOnly: boolean }[]): void {
+  const locked = pages.find((p) => p.readOnly);
+  if (locked) fail(`The page "${locked.title}" is read-only. Make it editable first.`);
+}
+
 // Agent callers arrive as tool calls; MCP and A2A are other agents too.
 export function isAgentCaller(caller: string | undefined): boolean {
   return caller === "tool" || caller === "mcp" || caller === "a2a" || caller === "automation";
+}
+
+// Locking a page is always safe; an agent unlocking one asks a person first.
+export function unlockNeedsApproval(args: { readOnly: boolean }, caller: string | undefined): boolean {
+  return isAgentCaller(caller) && !args.readOnly;
+}
+
+export interface RuleFields {
+  oldName: string;
+  newName: string;
+  effectiveDate: string | null;
+  exceptions: string;
+  sourceUrl: string | null;
+  enabled: boolean;
+}
+
+// The agent may append exceptions on its own (the person asked in plain words).
+// Creating a rule, renaming, moving the date, disabling it or rewriting the
+// exceptions it already has goes to a person.
+export function ruleEditNeedsApproval(
+  current: RuleFields | null,
+  patch: Partial<RuleFields>,
+  caller: string | undefined,
+): boolean {
+  if (!isAgentCaller(caller)) return false;
+  if (!current) return true;
+  const changes = (key: keyof RuleFields) => patch[key] !== undefined && patch[key] !== current[key];
+  if (changes("oldName") || changes("newName") || changes("effectiveDate") || changes("sourceUrl") || changes("enabled")) {
+    return true;
+  }
+  return patch.exceptions !== undefined && !patch.exceptions.startsWith(current.exceptions);
 }

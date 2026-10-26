@@ -1,6 +1,6 @@
 # Evaluation
 
-How Afterbrand's decisions compare with find-and-replace and with a regex, on the same mentions of Builder.io's public blog, labeled by people who never saw the agent's output.
+How Afterbrand's decisions compare with find-and-replace and with a regex, on the same mentions of Builder.io's public blog, labeled by two independent language-model labelers (Claude Opus and Claude Fable) who never saw the agent's output.
 
 ## What is in this folder
 
@@ -10,7 +10,7 @@ How Afterbrand's decisions compare with find-and-replace and with a regex, on th
 | `sample.ts` | Draws the stratified sample from a fresh eval database and freezes the test set hash. |
 | `sample.json` | The sample: URL, sentence offset, page hash, stratum and split per mention. No blog text. |
 | `labels/labeler-a.json`, `labels/labeler-b.json` | Two independent label sets, by URL and offset. |
-| `labels/adjudication.json` | The mentions the labelers disagreed on. Until Kevin adjudicates them they count as unsure. |
+| `labels/adjudication.json` | The mentions the labelers disagreed on. Until a person adjudicates them they count as unsure. |
 | `baselines.ts` | find-and-replace, the regex as specified (skips posts before the rename), and the same regex on every date. |
 | `run-agent.ts` | Runs the app's own agent headless on a split, k times, through the same actions and skill as the chat. |
 | `score.ts` | Scores every run in `results/` and writes `results/report-<split>.md`. |

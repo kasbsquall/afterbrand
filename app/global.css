@@ -67,7 +67,7 @@
   --ab-focus: oklch(86% .1 85);
   --ab-shadow-panel: 0 1px 0 oklch(94% .012 200 / .04) inset, 0 18px 40px -24px oklch(12% .04 200 / .9);
   --ab-ease-out: cubic-bezier(.23, 1, .32, 1);
-  --ab-ease-settle: cubic-bezier(.34, 1.56, .64, 1);
+  --ab-ease-settle: cubic-bezier(.23, 1, .32, 1);
   color-scheme: dark;
 }
 

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { getDb, schema } from "../server/db/index.js";
 import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
 import { RULE_CHANGED_EVENT, type RuleChangedPayload } from "../server/lib/events.js";
-import { isAgentCaller } from "../server/lib/policy.js";
+import { isAgentCaller, ruleEditNeedsApproval } from "../server/lib/policy.js";
 
 // Tell automations a rule changed; a failed emit never fails the save.
 function announce(ownerEmail: string, payload: RuleChangedPayload) {
@@ -33,6 +33,15 @@ export default defineAction({
       .optional()
       .describe("updatedAt the caller last read; the update is refused if the rule changed since"),
   }),
+  needsApproval: async (args, ctx) => {
+    if (!isAgentCaller(ctx?.caller)) return false;
+    if (!args.id) return true;
+    const [current] = await getDb()
+      .select()
+      .from(schema.rules)
+      .where(and(eq(schema.rules.ownerEmail, requireOwner(ctx)), eq(schema.rules.id, args.id)));
+    return ruleEditNeedsApproval(current ?? null, args, ctx?.caller);
+  },
   run: async (args, ctx) => {
     const ownerEmail = requireOwner(ctx);
     const db = getDb();

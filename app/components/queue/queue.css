@@ -31,7 +31,7 @@
 .ab-rule svg { color: var(--ab-ink-faint); }
 .ab-progress { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--ab-ink-soft); white-space: nowrap; }
 .ab-progress strong { color: var(--ab-ink); font-weight: 600; }
-.ab-bar { width: 96px; height: 4px; border-radius: 2px; background: var(--ab-undecided); overflow: hidden; }
+.ab-bar { width: 96px; height: 4px; border-radius: var(--radius-key); background: var(--ab-undecided); overflow: hidden; }
 .ab-bar i { display: block; height: 100%; width: 100%; background: var(--ab-change); transform-origin: left; transition: transform .28s var(--ab-ease-out); }
 .ab-demo { display: flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border-radius: 4px; background: var(--ab-well); border: 1px solid var(--ab-line-strong); color: var(--ab-ink-soft); font-size: 11.5px; font-weight: 600; letter-spacing: .01em; white-space: nowrap; }
 .ab-icon-btn { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; color: var(--ab-ink-soft); }
@@ -44,7 +44,7 @@
 .ab-qhead { display: flex; align-items: center; gap: 16px; min-width: 0; flex-wrap: wrap; }
 .ab-qhead h1 { font-size: 20px; font-weight: 600; letter-spacing: -.018em; }
 .ab-tabs { display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--ab-well); overflow-x: auto; min-width: 0; }
-.ab-tab { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 7px; color: var(--ab-ink-soft); font-weight: 500; font-size: 13px; white-space: nowrap; }
+.ab-tab { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: var(--radius-control); color: var(--ab-ink-soft); font-weight: 500; font-size: 13px; white-space: nowrap; }
 .ab-tab:hover { color: var(--ab-ink); background: oklch(94% .012 200 / .05); }
 .ab-tab[aria-pressed="true"] { background: var(--ab-layer-2); color: var(--ab-ink); }
 .ab-tab .ab-c { color: var(--ab-ink-faint); font-size: 12px; }
@@ -68,12 +68,12 @@
 .ab-meta > span { display: inline-flex; gap: 5px; align-items: center; }
 .ab-meta .ab-pos { margin-left: auto; color: var(--ab-ink-faint); }
 .ab-sentence { margin-top: 26px; font-size: 28px; line-height: 1.32; letter-spacing: -.016em; font-weight: 500; max-width: 40ch; text-wrap: pretty; }
-.ab mark { background: oklch(78% .13 75 / .16); color: var(--ab-change); border-radius: 3px; padding: 0 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.ab mark { background: oklch(78% .13 75 / .16); color: var(--ab-change); border-radius: var(--radius-key); padding: 0 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .ab-sentence mark.ab-strike, .ab-doc mark.ab-old { text-decoration: line-through; text-decoration-color: oklch(78% .13 75 / .55); text-decoration-thickness: 1.5px; }
 .ab-proposal { margin-top: 16px; display: grid; grid-template-columns: 68px 1fr; gap: 12px; align-items: baseline; }
 .ab-lbl { font-size: 12px; color: var(--ab-ink-faint); font-weight: 500; }
 .ab-proposal p { font-size: 19px; line-height: 1.4; color: var(--ab-ink-soft); max-width: 46ch; text-wrap: pretty; }
-.ab ins { text-decoration: none; color: var(--ab-ink); font-weight: 600; background: oklch(78% .13 75 / .1); border-radius: 3px; padding: 0 3px; box-shadow: 0 -1.5px 0 var(--ab-change) inset; }
+.ab ins { text-decoration: none; color: var(--ab-ink); font-weight: 600; background: oklch(78% .13 75 / .1); border-radius: var(--radius-key); padding: 0 3px; box-shadow: 0 -1.5px 0 var(--ab-change) inset; }
 .ab-noproposal { color: var(--ab-ink-faint); font-size: 15px; }
 .ab-edit { display: flex; flex-direction: column; gap: 8px; }
 .ab-edit textarea { width: 100%; min-height: 96px; resize: vertical; padding: 10px 12px; border-radius: 10px; background: var(--ab-well); border: 1px solid var(--ab-line-strong); font-size: 17px; line-height: 1.4; color: var(--ab-ink); }
@@ -148,7 +148,7 @@
 .ab-strip-cap .ab-act { color: var(--ab-ink); }
 .ab-strip-cap .ab-act span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ab-strip-foot { margin-top: 8px; }
-.ab-strip { display: block; width: 100%; height: auto; border-radius: 6px; background: var(--ab-well); }
+.ab-strip { display: block; width: 100%; height: auto; border-radius: var(--radius-control); background: var(--ab-well); }
 .ab-strip .ab-col { cursor: pointer; outline: none; }
 .ab-strip .ab-col:hover .ab-base { fill: oklch(50% .02 200); }
 .ab-strip .ab-col:focus-visible .ab-ring { stroke: var(--ab-focus); stroke-width: 1; }
@@ -171,7 +171,7 @@
 .ab-ask:focus-within { border-color: var(--ab-focus); }
 .ab-ask input { flex: 1; background: none; border: 0; outline: 0; min-width: 0; }
 .ab-ask input::placeholder { color: var(--ab-ink-faint); }
-.ab-send { width: 30px; height: 30px; border-radius: 7px; background: var(--ab-change); color: var(--ab-change-ink); display: grid; place-items: center; flex: none; }
+.ab-send { width: 30px; height: 30px; border-radius: var(--radius-control); background: var(--ab-change); color: var(--ab-change-ink); display: grid; place-items: center; flex: none; }
 
 /* rules */
 .ab-rule-list { list-style: none; margin: 0; padding: 4px 16px 14px; display: flex; flex-direction: column; }
@@ -185,7 +185,7 @@
 .ab-rule-meta span, .ab-rule-meta a, .ab-rule-foot > span { display: inline-flex; align-items: center; gap: 5px; }
 .ab-rule-meta a { color: var(--ab-ink-soft); }
 .ab-rule-foot { justify-content: space-between; }
-.ab-exc-h { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ab-ink-faint); margin: 2px 0 0; }
+.ab-exc-h { font-size: 12.5px; font-weight: 600; color: var(--ab-ink-soft); margin: 2px 0 0; }
 .ab-exc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .ab-exc li { font-size: 13px; line-height: 1.45; color: var(--ab-ink-soft); padding-left: 12px; position: relative; }
 .ab-exc li::before { content: ""; position: absolute; left: 0; top: .6em; width: 4px; height: 4px; border-radius: 1px; background: var(--ab-ink-faint); }
@@ -206,7 +206,7 @@
 .ab-state p { color: var(--ab-ink-soft); max-width: 60ch; }
 .ab-state svg.ab-state-icon { color: var(--ab-ink-faint); }
 .ab-state-error svg.ab-state-icon { color: var(--ab-needs); }
-.ab-skel { border-radius: 6px; background: oklch(94% .012 200 / .06); }
+.ab-skel { border-radius: var(--radius-key); background: oklch(94% .012 200 / .06); }
 .ab-skel-line { height: 14px; }
 
 /* page detail */

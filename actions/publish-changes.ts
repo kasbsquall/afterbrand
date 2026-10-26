@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
 import { nowIso, requireOwner } from "../server/lib/owner.js";
-import { assertCanPublish } from "../server/lib/policy.js";
+import { assertCanPublish, assertPagesWritable } from "../server/lib/policy.js";
 
 const EXPORT_ROOT = resolve("data", "exports");
 
@@ -37,6 +37,7 @@ export default defineAction({
       .from(schema.pages)
       .where(and(eq(schema.pages.ownerEmail, ownerEmail), inArray(schema.pages.id, pageIds)));
     if (pages.length !== pageIds.length) fail("A page with accepted changes is missing.");
+    assertPagesWritable(pages);
 
     const now = nowIso();
     const dir = join(EXPORT_ROOT, now.replace(/[:.]/g, "-"));
@@ -61,7 +62,7 @@ export default defineAction({
       .where(inArray(schema.changes.id, pending.map((p) => p.change.id)));
 
     return {
-      message: `Published ${pending.length} changes across ${pages.length} pages.`,
+      message: `Published ${pending.length} change${pending.length === 1 ? "" : "s"} across ${pages.length} page${pages.length === 1 ? "" : "s"}.`,
       published: pending.length,
       pages: pages.length,
       exportFolder: dir,
