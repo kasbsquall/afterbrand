@@ -11,14 +11,14 @@ Built for the Builder.io Agent-Native Hackathon (Oct 2026) on Agent-Native 0.220
 ![The findings queue: one finding in focus with its decision and reason, the list below, the library as a strip of page columns on the right, and the rules with their exceptions](docs/screenshots/queue.png)
 
 1. **Rules.** You write the retired name, its replacement, the date it took effect and the exceptions in plain language ("keep it in dated changelogs"). The agent edits the same rules through the same action.
-2. **Decisions.** Code finds every sentence that mentions a retired name. The agent reads each one in context and decides Change, Keep or Needs you, with a one-line reason and a rewrite. Code checks every rewrite before it can be accepted: the new name is there, nothing outside the mention moved, no URL, code span or quote was touched.
+2. **Decisions.** Code finds every sentence that mentions a retired name. The agent reads each one in context and decides Change, Keep or Needs you, with a one-line reason and a rewrite. Code checks every rewrite before it can be accepted: the new name is there, nothing outside the mention moved, no URL, code span or quote was touched, and no link or markup was added.
 3. **Review.** You accept, keep or edit each finding, alone or in bulk. Select a few and tell the agent "these are launch posts, never change launch posts": it adds the exception to the rule, finds every other launch post, and re-decides them while you watch. Nothing is published until a person approves it.
 
 ## Why not find-and-replace
 
 Every mention needs a decision. On Builder's blog, "Fusion" is the current product in one sentence and a 2024 launch in the next; "Publish" is the old product name and also the verb on every other page.
 
-We measured it on 140 mentions from 70 posts (the frozen test split), labeled by two labelers who never saw the agent's output.
+We measured it on 140 mentions from 70 posts (the frozen test split), labeled by two language models (Claude Opus and Claude Fable) working separately, following a written guideline, without seeing the agent's output.
 
 | System | Wrong edits (should stay, was changed) | Misses (should change, was kept) | Sent to a person |
 |---|---|---|---|
@@ -30,6 +30,12 @@ We measured it on 140 mentions from 70 posts (the frozen test split), labeled by
 Find-and-replace would change 35 of 35 mentions that should stay. Afterbrand changed 0 of 35 in each of three runs, and sent 5 to 7 of 140 to a person.
 
 The known failure: it sends headings and bare labels ("Fusion vs.", "Prompt to build: Fusion") to a person when the labels say they should change. Of the 5 to 7 it sent per run, 2 were mentions the labelers also found ambiguous.
+
+What this shows and what it does not:
+
+- Against the strongest regex the difference is 9 sentences: the regex edits the 5 sentences of the rename announcement that must name the old product, a 2025 launch post and 2 quoted UI labels, and keeps 1 sentence that describes the current product.
+- 32 of the 35 mentions that should stay are "Publish", mostly the verb; only 3 are "Fusion". All 102 that should change are "Fusion". So the hard historical-versus-current call on Fusion is tested by few items, and the Publish rule is never tested on a mention that should change.
+- Zero errors in 35 still leaves room: the 95% upper bound (Wilson) on the wrong-edit rate is about 10%, and about 56% on the 3 Fusion mentions alone. For misses, 0 of 102 puts the bound at about 4%.
 
 - Gold labels: 102 change, 35 keep, 3 unsure. The two labelers agreed on 196 of 200 mentions (Cohen's kappa 0.951). The 4 they disagreed on count as unsure until adjudicated.
 - The regex is what a competent engineer writes in an afternoon: exact capitalized name as a whole word, never inside a URL, code span or quoted string, and "Publish" never as the first word of a sentence. With the date filter (skip posts from before the rename) it misses every mention, because all but 18 of 976 mentions are in older posts that still describe the current product. Without the filter it is the strongest baseline, and we report both.
@@ -44,19 +50,19 @@ Every operation is one `defineAction`. The screen, the agent, Claude Code over M
 
 | Action | Screen | Agent | MCP | What it guards |
 |---|---|---|---|---|
-| `list-rules`, `upsert-rule` | Rules panel | Turns a plain-language instruction into an exception | `list-rules` | Refuses to save over a rule that changed while you edited it |
+| `list-rules`, `upsert-rule` | Rules panel | Turns a plain-language instruction into an exception | `list-rules` | The agent may append an exception on its own; creating, renaming, redating, disabling a rule or rewriting its exceptions needs approval. Refuses to save over a rule that changed while you edited it |
 | `find-candidates` | | After a rule changes | | Deterministic: finds sentences, decides nothing |
 | `record-decisions` | | Decides in batches of 50 | | Rejects a rewrite that fails the verifier |
 | `list-findings`, `get-library-overview`, `get-page`, `list-pages` | Queue, page view | Reads the queue | Yes | Read only |
 | `accept-findings` | Accept, bulk accept | Only after approval (`needsApproval`) | | Keep and Needs you cannot be applied; read-only pages reject every write |
 | `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes | | Every applied change can be undone until publish |
-| `publish-changes` | Publish card | Only after approval (`needsApproval`) | | Publishes accepted changes only, as Markdown per page plus a manifest |
-| `set-page-read-only` | Page view | Yes | | Locks a page against every caller |
+| `publish-changes` | Publish card | Only after approval (`needsApproval`) | | Publishes accepted changes only, never on a read-only page, as Markdown per page plus a manifest |
+| `set-page-read-only` | Page view | Locks freely; unlocking needs approval | | Accept, undo and publish all refuse a read-only page, whoever calls |
 | `view-screen` | Writes the selection to app state | Reads what you selected | | |
 
 - **Selection as context.** The rows you select are written to application state. When you say "these", the agent reads them with `view-screen`.
 - **Change cards with undo.** When the agent accepts or keeps findings, the chat shows a change card. Its Undo calls the same action in undo mode, and the queue updates live (`useDbSync` with realtime on the queue and page routes).
-- **Approval before anything irreversible.** Accepting and publishing need a person's approval when the agent asks for them. Undo does not.
+- **Approval before anything irreversible.** When the agent asks, accepting, publishing, unlocking a page and any rule edit beyond appending an exception need a person's approval. Undo does not.
 - **Automation.** `upsert-rule` emits `afterbrand.rule.changed`. The agent created an automation from a chat request that listens for it and decides the findings the change left pending.
 - **MCP.** `/mcp` exposes the five read actions to clients such as Claude Code ("How many Fusion mentions are still pending?"). Writes stay in the app, where the approvals and undo cards are.
 - **Agent skill.** The decision rules are a runtime skill (`.agents/skills/afterbrand-decide/SKILL.md`) that the chat agent and the headless eval read alike.
@@ -90,6 +96,9 @@ The fetch reads today's sitemap, so your library can differ from the Oct 25, 202
 - The agent can be wrong. That is why every change waits in the queue for a person, and why the eval reports its errors instead of a single score.
 - Two strata are small because the blog is: only 5 Fusion and 13 Publish mentions are in posts published after the rename. All 18 are in the sample.
 - Both labelers are language models (Claude Opus and Claude Fable), different from the model under test (Claude Sonnet 5.5), and they followed the same guideline the agent's skill encodes. A rule both of them read the same wrong way would not show up as an error.
+- The sample comes from the sentences the mention finder found, so mentions it misses (a name split across a line break, for example) are invisible to every system in the eval.
+- The 4 mentions the labelers disagreed on are still waiting for a person to adjudicate them; they count as unsure.
+- The approval card for a batch accept does not show a before and after diff of each finding.
 - Afterbrand only knows the names in its rules and the pages in its library. Publishing writes a patch; it does not write to a CMS yet.
 - Undo restores the first identical sentence on a page if the same sentence appears twice, and a multi-change undo is validated up front but not wrapped in a transaction.
 - One agent decides in batches. Splitting a sweep across agent teams is not built.
