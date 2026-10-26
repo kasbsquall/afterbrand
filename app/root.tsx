@@ -53,6 +53,9 @@ export const links: LinksFunction = () => [
 // Afterbrand ships one dark theme (DESIGN.md), so the system preference is ignored.
 const THEME_INIT_SCRIPT = getThemeInitScript("dark", false);
 const LOCALE_INIT_SCRIPT = getLocaleInitScript();
+// Without a saved choice the chat picker falls back to the first Anthropic model
+// (Haiku). Start on the model the eval measured; a person can still switch.
+const MODEL_INIT_SCRIPT = `try{var k="agent-native:chat-models:selection:chat";if(!localStorage.getItem(k))localStorage.setItem(k,'{"model":"claude-sonnet-5-5","engine":"anthropic","effort":"high"}')}catch(e){}`;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -71,6 +74,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
           data-agent-native-locale-init
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: LOCALE_INIT_SCRIPT }}
+        />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: MODEL_INIT_SCRIPT }}
         />
         <meta name="theme-color" content="#18181B" />
         <meta name="mobile-web-app-capable" content="yes" />

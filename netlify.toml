@@ -4,15 +4,19 @@ publish = "dist"
 functions = ".netlify/functions-internal"
 
 [build.environment]
-GA_MEASUREMENT_ID = "G-ESF7FYXGN9"
-GTM_CONTAINER_ID = "GTM-N3WSTXZ"
 NITRO_PRESET = "netlify"
 NPM_CONFIG_PRODUCTION = "false"
 
 [context.production.environment]
-AGENT_NATIVE_HOSTED_HARNESS = "true"
 AGENT_NATIVE_DISABLE_KEEP_WARM_BACKGROUND = "1"
-BETTER_AUTH_TRUSTED_ORIGINS = "https://starter.agent-native.com,https://chat.agent-native.com"
 # Production release migrations own schema setup; request functions must skip
 # migration probes on every serverless invocation.
 AGENT_NATIVE_RELEASE_MIGRATIONS = "1"
+# A public demo pays for every agent run: accounts by invitation only, and
+# hard ceilings per run. The spend cap itself lives on the Anthropic key.
+AUTH_SIGNUP = "invited"
+ORG_CREATION = "closed"
+AGENT_PROD_CODE_EXECUTION = "off"
+AGENT_MAX_ITERATIONS = "60"
+AGENT_MAX_RUN_INPUT_TOKENS = "3000000"
+AGENT_MAIN_CHAT_MAX_OUTPUT_TOKENS = "16000"
