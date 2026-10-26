@@ -1,33 +1,99 @@
-# Chat
+# Afterbrand
 
-The minimal agent-native starter app — a clean, ChatGPT-style shell with chat at
-the center, durable threads, standard app navigation, auth, live sync, and
-actions. Start here when you want a real browser app to build on without
-committing to a domain template.
+Afterbrand finds every page that still uses your old product name, decides in context which mentions should change, and drafts the fix. Your team approves every change before it ships.
 
-**Live app: [chat.agent-native.com](https://chat.agent-native.com?utm_source=github&utm_medium=referral&utm_content=chat-readme)**
+Demo video (Clips): CLIPS_LINK. Plays without login.
 
-Chat is the basic agent-native app starting point. It gives you the app-agent
-loop wired end to end and one example action, so you can add your own UI, data,
-and actions on top.
+Built for the Builder.io Agent-Native Hackathon (Oct 2026) on Agent-Native 0.220.0. The demo library is Builder.io's own public blog, after the Sept 10, 2026 rename: Fusion became Builder Code and Publish became Builder Content ([announcement](https://www.builder.io/blog/builder-product-name-change)).
 
-## Features
+## What it does
 
-- ChatGPT-style shell with a threads list and durable chat history.
-- Auth, live sync, and application state wired out of the box.
-- The action surface the agent and UI share, plus one example action to copy.
-- A minimal, brandable base for any domain app.
+![The findings queue: one finding in focus with its decision and reason, the list below, the library as a strip of page columns on the right, and the rules with their exceptions](docs/screenshots/queue.png)
 
-## Develop locally
+1. **Rules.** You write the retired name, its replacement, the date it took effect and the exceptions in plain language ("keep it in dated changelogs"). The agent edits the same rules through the same action.
+2. **Decisions.** Code finds every sentence that mentions a retired name. The agent reads each one in context and decides Change, Keep or Needs you, with a one-line reason and a rewrite. Code checks every rewrite before it can be accepted: the new name is there, nothing outside the mention moved, no URL, code span or quote was touched.
+3. **Review.** You accept, keep or edit each finding, alone or in bulk. Select a few and tell the agent "these are launch posts, never change launch posts": it adds the exception to the rule, finds every other launch post, and re-decides them while you watch. Nothing is published until a person approves it.
 
-Scaffold your own copy and run it:
+## Why not find-and-replace
+
+Every mention needs a decision. On Builder's blog, "Fusion" is the current product in one sentence and a 2024 launch in the next; "Publish" is the old product name and also the verb on every other page.
+
+We measured it on 140 mentions from 70 posts (the frozen test split), labeled by two labelers who never saw the agent's output.
+
+| System | Wrong edits (should stay, was changed) | Misses (should change, was kept) | Sent to a person |
+|---|---|---|---|
+| Find-and-replace | 35 of 35 | 0 of 102 | 0 of 140 |
+| Regex, skipping posts from before the rename | 5 of 35 | 102 of 102 | 0 of 140 |
+| Regex on every post | 8 of 35 | 1 of 102 | 0 of 140 |
+| Afterbrand, 3 runs | 0 of 35 in each run | 0 of 102 in each run | 5, 6 and 7 of 140 |
+
+Find-and-replace would change 35 of 35 mentions that should stay. Afterbrand changed 0 of 35 in each of three runs, and sent 5 to 7 of 140 to a person.
+
+The known failure: it sends headings and bare labels ("Fusion vs.", "Prompt to build: Fusion") to a person when the labels say they should change. Of the 5 to 7 it sent per run, 2 were mentions the labelers also found ambiguous.
+
+- Gold labels: 102 change, 35 keep, 3 unsure. The two labelers agreed on 196 of 200 mentions (Cohen's kappa 0.951). The 4 they disagreed on count as unsure until adjudicated.
+- The regex is what a competent engineer writes in an afternoon: exact capitalized name as a whole word, never inside a URL, code span or quoted string, and "Publish" never as the first word of a sentence. With the date filter (skip posts from before the rename) it misses every mention, because all but 18 of 976 mentions are in older posts that still describe the current product. Without the filter it is the strongest baseline, and we report both.
+- Stability: the same decision in all 3 runs for 136 of 140 mentions. Every rewrite the agent proposed passed the code verifier (100 of 100, 99 of 99, 98 of 98).
+- Cost: Claude Sonnet 5.5, 160 to 178 seconds per run of 140 mentions, 503,000 to 650,000 input tokens per run (85% to 87% read from the prompt cache) and about 20,500 output tokens.
+- On the dev split (60 mentions, used to check the runner before freezing the test set) one run made 0 wrong edits of 17 and 0 misses of 41.
+- Everything here comes from `eval/results/report-test.md` and `report-dev.md` (commit 3ae2f8c). How it was built and how to reproduce it: [eval/README.md](eval/README.md).
+
+## How it uses Agent-Native
+
+Every operation is one `defineAction`. The screen, the agent, Claude Code over MCP and the CLI call the same code, and the business rules live inside the action, so no caller can skip them.
+
+| Action | Screen | Agent | MCP | What it guards |
+|---|---|---|---|---|
+| `list-rules`, `upsert-rule` | Rules panel | Turns a plain-language instruction into an exception | `list-rules` | Refuses to save over a rule that changed while you edited it |
+| `find-candidates` | | After a rule changes | | Deterministic: finds sentences, decides nothing |
+| `record-decisions` | | Decides in batches of 50 | | Rejects a rewrite that fails the verifier |
+| `list-findings`, `get-library-overview`, `get-page`, `list-pages` | Queue, page view | Reads the queue | Yes | Read only |
+| `accept-findings` | Accept, bulk accept | Only after approval (`needsApproval`) | | Keep and Needs you cannot be applied; read-only pages reject every write |
+| `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes | | Every applied change can be undone until publish |
+| `publish-changes` | Publish card | Only after approval (`needsApproval`) | | Publishes accepted changes only, as Markdown per page plus a manifest |
+| `set-page-read-only` | Page view | Yes | | Locks a page against every caller |
+| `view-screen` | Writes the selection to app state | Reads what you selected | | |
+
+- **Selection as context.** The rows you select are written to application state. When you say "these", the agent reads them with `view-screen`.
+- **Change cards with undo.** When the agent accepts or keeps findings, the chat shows a change card. Its Undo calls the same action in undo mode, and the queue updates live (`useDbSync` with realtime on the queue and page routes).
+- **Approval before anything irreversible.** Accepting and publishing need a person's approval when the agent asks for them. Undo does not.
+- **Automation.** `upsert-rule` emits `afterbrand.rule.changed`. The agent created an automation from a chat request that listens for it and decides the findings the change left pending.
+- **MCP.** `/mcp` exposes the five read actions to clients such as Claude Code ("How many Fusion mentions are still pending?"). Writes stay in the app, where the approvals and undo cards are.
+- **Agent skill.** The decision rules are a runtime skill (`.agents/skills/afterbrand-decide/SKILL.md`) that the chat agent and the headless eval read alike.
+
+## Data
+
+- Source: Builder.io's public blog, fetched once from `sitemap.blog.xml` on Oct 25, 2026. 542 posts, 537 with article text, 976 mentions of the two retired names in 132 posts.
+- The blog text is Builder's, so it is not in this repo. The repo carries the fetch script, the URL list with a content hash per page (`seed/builder-blog-2026-10-25.manifest.json`), and the rules with their source (`seed/rules.seed.json`). The rename and the contract exception come from Builder's post; the other exceptions are our reading of it.
+- Eval labels are ours, made for this evaluation. They are not Builder's.
+- The queue shows a "Demo data" label because the library is a snapshot, not a live CMS.
+
+## Run it locally
+
+Needs Node 22 and an Anthropic API key in `.env` (`ANTHROPIC_API_KEY`, see `.env.example`).
 
 ```bash
-npx --yes @agent-native/core@latest create my-app --standalone --template chat
-cd my-app
-corepack enable
-pnpm install
-pnpm dev
+corepack pnpm install
+node node_modules/tsx/dist/cli.mjs scripts/fetch-snapshot.ts
+AGENT_USER_EMAIL=dev@local.test node node_modules/tsx/dist/cli.mjs actions/run.ts import-pages '{}'
+AGENT_USER_EMAIL=dev@local.test node node_modules/tsx/dist/cli.mjs actions/run.ts seed-rules '{}'
+AGENT_USER_EMAIL=dev@local.test node node_modules/tsx/dist/cli.mjs actions/run.ts find-candidates '{}'
+corepack pnpm exec agent-native dev
 ```
 
-Full docs: [agent-native.com/docs/template-chat](https://agent-native.com/docs/template-chat?utm_source=github&utm_medium=referral&utm_content=chat-readme).
+Open http://localhost:8080. In local development the framework signs you in as `dev@local.test`, the same owner the commands above import for. Press "Decide the next 50 of N undecided" on the agent card, or ask the agent in the chat.
+
+The fetch reads today's sitemap, so your library can differ from the Oct 25, 2026 snapshot the eval used (the eval checks this with page hashes).
+
+## Limits
+
+- The agent can be wrong. That is why every change waits in the queue for a person, and why the eval reports its errors instead of a single score.
+- Two strata are small because the blog is: only 5 Fusion and 13 Publish mentions are in posts published after the rename. All 18 are in the sample.
+- Both labelers are language models (Claude Opus and Claude Fable), different from the model under test (Claude Sonnet 5.5), and they followed the same guideline the agent's skill encodes. A rule both of them read the same wrong way would not show up as an error.
+- Afterbrand only knows the names in its rules and the pages in its library. Publishing writes a patch; it does not write to a CMS yet.
+- Undo restores the first identical sentence on a page if the same sentence appears twice, and a multi-change undo is validated up front but not wrapped in a transaction.
+- One agent decides in batches. Splitting a sweep across agent teams is not built.
+
+## Built during the event
+
+Started from the Agent-Native `chat` template (`npx @agent-native/core create --template chat`) with the framework packages pinned at 0.220.0. Everything else was written from Oct 25, 2026 on: the schema, the snapshot importer, the mention finder and rewrite verifier, the actions and their rules, the agent skill, the queue and page screens, the rule automation, the MCP catalog and the eval. Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0). The commit history shows the order.

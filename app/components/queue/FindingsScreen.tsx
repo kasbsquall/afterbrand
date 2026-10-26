@@ -357,7 +357,7 @@ export function FindingsScreen() {
           <CoreSample
             pages={stats.pages}
             pagesInLibrary={stats.pagesInLibrary}
-            findings={stats.findings}
+            findings={{ ...stats.pending, all: stats.findings.all }}
             leftToReview={stats.statuses.pending}
             activePageId={activePage?.id ?? null}
             onSelectPage={(pageId) => changeScope({ pageId })}

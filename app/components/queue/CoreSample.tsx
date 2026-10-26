@@ -152,7 +152,7 @@ export function CoreSample({ pages, pagesInLibrary, findings, leftToReview, acti
         <div className="ab-big-lbl">
           <b>left to review</b>of {plural(findings.all, "finding")}
         </div>
-        <div className="ab-legend" aria-label="The agent's decisions on all findings">
+        <div className="ab-legend" aria-label="The agent's decisions on the findings left to review">
           <span>
             <span className="ab-dot ab-d-change" />
             Change<b>{findings.change}</b>
