@@ -41,3 +41,6 @@ learnings.md
 .vercel/
 .agent-native/
 data/*.lock
+
+# design exploration, not shipped
+.ui-direcciones/

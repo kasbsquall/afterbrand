@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T22:00:00-05:00",
+  "title": "Design System: Afterbrand",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Deep Teal Ground", "canonical": "oklch(22% .035 200)", "tonalRamp": ["oklch(15% .03 200)", "oklch(19% .034 200)", "oklch(22% .035 200)", "oklch(27% .038 200)", "oklch(31% .04 200)", "oklch(42% .02 200)", "oklch(72% .02 200)", "oklch(94% .012 200)"] },
+      "rail": { "role": "neutral", "displayName": "Rail", "canonical": "oklch(19% .034 200)" },
+      "layer": { "role": "neutral", "displayName": "Layer", "canonical": "oklch(27% .038 200)" },
+      "layer-2": { "role": "neutral", "displayName": "Raised Layer", "canonical": "oklch(31% .04 200)" },
+      "well": { "role": "neutral", "displayName": "Well", "canonical": "oklch(20% .03 200)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(94% .012 200)" },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "oklch(72% .02 200)" },
+      "ink-faint": { "role": "neutral", "displayName": "Faint Ink", "canonical": "oklch(58% .022 200)" },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "oklch(94% .012 200 / .09)" },
+      "line-strong": { "role": "neutral", "displayName": "Strong Line", "canonical": "oklch(94% .012 200 / .16)" },
+      "change": { "role": "primary", "displayName": "Amber Ore", "canonical": "oklch(78% .13 75)", "tonalRamp": ["oklch(24% .05 75)", "oklch(36% .08 75)", "oklch(48% .1 75)", "oklch(60% .12 75)", "oklch(72% .12 70)", "oklch(78% .13 75)", "oklch(82% .13 78)", "oklch(92% .06 80)"] },
+      "change-hover": { "role": "primary", "displayName": "Amber Ore Bright", "canonical": "oklch(82% .13 78)" },
+      "change-ink": { "role": "primary", "displayName": "Amber Ink", "canonical": "oklch(24% .05 75)" },
+      "keep": { "role": "secondary", "displayName": "Mineral Green", "canonical": "oklch(70% .07 180)", "tonalRamp": ["oklch(20% .03 180)", "oklch(32% .045 180)", "oklch(44% .055 180)", "oklch(56% .06 180)", "oklch(64% .065 182)", "oklch(70% .07 180)", "oklch(80% .07 180)", "oklch(92% .035 180)"] },
+      "keep-text": { "role": "secondary", "displayName": "Mineral Green Text", "canonical": "oklch(80% .07 180)" },
+      "needs": { "role": "tertiary", "displayName": "Coral", "canonical": "oklch(72% .15 25)", "tonalRamp": ["oklch(22% .05 25)", "oklch(34% .09 25)", "oklch(46% .12 25)", "oklch(58% .14 25)", "oklch(66% .15 25)", "oklch(72% .15 25)", "oklch(80% .11 28)", "oklch(92% .05 30)"] },
+      "needs-text": { "role": "tertiary", "displayName": "Coral Text", "canonical": "oklch(80% .11 28)" },
+      "undecided": { "role": "neutral", "displayName": "Undecided Grey", "canonical": "oklch(42% .02 200)" },
+      "undecided-2": { "role": "neutral", "displayName": "Unswept Grey", "canonical": "oklch(37% .02 200)" },
+      "focus": { "role": "neutral", "displayName": "Focus Gold", "canonical": "oklch(86% .1 85)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The remaining count in the core-sample panel, 76 px (64 px under 640 px)." },
+      "reading": { "displayName": "Reading", "purpose": "The focused finding's sentence only, max 40ch." },
+      "headline": { "displayName": "Headline", "purpose": "Screen title." },
+      "proposal": { "displayName": "Proposal", "purpose": "Proposed rewrite under the focused sentence, max 46ch." },
+      "title": { "displayName": "Title", "purpose": "Product name and panel titles." },
+      "body": { "displayName": "Body", "purpose": "Rows, buttons, agent messages." },
+      "control": { "displayName": "Control", "purpose": "Tabs, meta line, decision chips, bulk buttons." },
+      "label": { "displayName": "Label", "purpose": "Column heads, captions, rule chips, legend, counts." },
+      "key": { "displayName": "Key", "purpose": "Keyboard keys and the Demo data label." }
+    },
+    "shadows": [
+      { "name": "panel", "value": "0 1px 0 oklch(94% .012 200 / .04) inset, 0 18px 40px -24px oklch(12% .04 200 / .9)", "purpose": "Every panel: top highlight plus a soft drop in the ground hue." },
+      { "name": "key", "value": "0 -1px 0 oklch(12% .03 200 / .5) inset", "purpose": "Keyboard keys." }
+    ],
+    "motion": [
+      { "name": "ease-enter", "value": "cubic-bezier(.23,1,.32,1)", "purpose": "Entrances, presses and state changes." },
+      { "name": "ease-settle", "value": "cubic-bezier(.34,1.56,.64,1)", "purpose": "The small overshoot when a stratum settles after a manual decision." },
+      { "name": "rise", "value": "260ms; opacity 0 to 1, translateY(6px) to 0; 60ms per block", "purpose": "Block entrance." },
+      { "name": "row-rise", "value": "240ms; 240ms base + 30ms per row, index capped at 7", "purpose": "List row entrance." },
+      { "name": "grow", "value": "280ms scaleX from 0, 200ms delay, transform-origin left", "purpose": "Progress bar fill." },
+      { "name": "sweep", "value": "220ms; opacity plus translateY(-3px); 200ms base + 3.6ms per column", "purpose": "Strata colouring in, column by column." },
+      { "name": "settle", "value": "180ms translateY(-4px) to 0", "purpose": "A stratum after a manual decision." },
+      { "name": "press", "value": "120ms scale(.97)", "purpose": "Button and chip press, also fired by A, K, E." },
+      { "name": "breathe", "value": "3.2s ease-in-out infinite, opacity to .45", "purpose": "Ambient loop on the live agent icon only, never on text." },
+      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: no-preference) wraps every animation", "purpose": "The default state is the final state." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1023px" },
+      { "name": "xl", "value": "1180px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Accept and the main action of any group; amber with its shortcut key.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><polyline points=\"40 144 96 200 224 72\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"12\"/></svg>Accept <kbd class=\"ds-kbd\">A</kbd></button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:8px;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .12s cubic-bezier(.23,1,.32,1)}.ds-btn-primary{background:oklch(78% .13 75);color:oklch(24% .05 75);border:1px solid transparent}.ds-btn-primary:hover{background:oklch(82% .13 78)}.ds-btn:focus-visible{outline:2px solid oklch(86% .1 85);outline-offset:2px}.ds-btn:active{transform:scale(.97)}.ds-kbd{font:inherit;font-size:11.5px;font-weight:600;min-width:20px;height:20px;display:inline-grid;place-items:center;padding:0 5px;border-radius:4px;background:oklch(24% .05 75 / .14);color:oklch(24% .05 75)}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Keep, Edit and other non-primary actions.",
+      "html": "<button class=\"ds-btn2\">Keep <kbd class=\"ds-kbd2\">K</kbd></button>",
+      "css": ".ds-btn2{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:8px;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:14px;color:oklch(94% .012 200);background:oklch(94% .012 200 / .03);border:1px solid oklch(94% .012 200 / .16);cursor:pointer;transition:transform .12s cubic-bezier(.23,1,.32,1)}.ds-btn2:hover{background:oklch(94% .012 200 / .08)}.ds-btn2:focus-visible{outline:2px solid oklch(86% .1 85);outline-offset:2px}.ds-btn2:active{transform:scale(.97)}.ds-kbd2{font:inherit;font-size:11.5px;font-weight:600;min-width:20px;height:20px;display:inline-grid;place-items:center;padding:0 5px;border-radius:4px;background:oklch(94% .012 200 / .07);color:oklch(72% .02 200);box-shadow:0 -1px 0 oklch(12% .03 200 / .5) inset}"
+    },
+    {
+      "name": "Rule Chip",
+      "kind": "chip",
+      "refersTo": "rule-chip",
+      "description": "Read-only rename rule in the top bar.",
+      "html": "<span class=\"ds-rule\">Fusion <span aria-hidden=\"true\">to</span> <b>Builder Code</b></span>",
+      "css": ".ds-rule{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid oklch(94% .012 200 / .16);border-radius:8px;color:oklch(72% .02 200);font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;white-space:nowrap;background:oklch(19% .034 200)}.ds-rule b{color:oklch(94% .012 200);font-weight:500}"
+    },
+    {
+      "name": "Filter Tabs",
+      "kind": "nav",
+      "refersTo": "filter-tabs",
+      "description": "Decision filter with counts in a well track.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">All <span class=\"ds-c\">996</span></button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-dot\" style=\"background:oklch(72% .15 25)\"></span>Needs you <span class=\"ds-c\">3</span></button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-dot\" style=\"background:oklch(78% .13 75)\"></span>Change <span class=\"ds-c\">488</span></button></div>",
+      "css": ".ds-tabs{display:inline-flex;gap:2px;padding:3px;border-radius:10px;background:oklch(20% .03 200)}.ds-tab{display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:7px;border:0;background:none;color:oklch(72% .02 200);font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:13px;font-variant-numeric:tabular-nums lining-nums;cursor:pointer}.ds-tab:hover{color:oklch(94% .012 200);background:oklch(94% .012 200 / .05)}.ds-tab:focus-visible{outline:2px solid oklch(86% .1 85);outline-offset:2px}.ds-tab[aria-selected=true]{background:oklch(31% .04 200);color:oklch(94% .012 200)}.ds-c{color:oklch(58% .022 200);font-size:12px}.ds-tab[aria-selected=true] .ds-c{color:oklch(72% .02 200)}.ds-dot{width:7px;height:7px;border-radius:50%}"
+    },
+    {
+      "name": "Decision Chips",
+      "kind": "chip",
+      "refersTo": "decision-chip",
+      "description": "The decision as a word, one recipe per state.",
+      "html": "<span class=\"ds-dec ds-dec-change\">Change</span> <span class=\"ds-dec ds-dec-keep\">Keep</span> <span class=\"ds-dec ds-dec-needs\">Needs you</span> <span class=\"ds-dec ds-dec-und\">Undecided</span>",
+      "css": ".ds-dec{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:4px;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:13px}.ds-dec-change{background:oklch(78% .13 75 / .15);color:oklch(78% .13 75)}.ds-dec-keep{background:oklch(70% .07 180 / .16);color:oklch(80% .07 180)}.ds-dec-needs{background:oklch(72% .15 25 / .16);color:oklch(80% .11 28)}.ds-dec-und{background:oklch(42% .02 200 / .35);color:oklch(72% .02 200)}"
+    },
+    {
+      "name": "List Row",
+      "kind": "custom",
+      "refersTo": "list-row",
+      "description": "One finding per row: checkbox, decision, sentence, page and date.",
+      "html": "<div class=\"ds-row ds-row-sel\"><span class=\"ds-cb\"></span><span class=\"ds-dec2\">Change</span><span class=\"ds-s\">Can you visually edit Tailwind classes in <mark class=\"ds-mark\">Fusion</mark> instead of writing them by hand?</span><span class=\"ds-pg\">Convert Figma to Tailwind CSS using AI<small>Jul 9, 2025</small></span></div>",
+      "css": ".ds-row{display:grid;grid-template-columns:28px 104px minmax(0,1fr) 200px;gap:12px;align-items:center;padding:0 16px;height:50px;background:oklch(27% .038 200);border-bottom:1px solid oklch(94% .012 200 / .09);font-family:'Hanken Grotesk',sans-serif;font-size:14px;color:oklch(94% .012 200)}.ds-row:hover{background:oklch(29% .038 200)}.ds-row-sel{background:color-mix(in oklch,oklch(27% .038 200),oklch(78% .13 75) 6%)}.ds-cb{width:16px;height:16px;border-radius:4px;background:oklch(78% .13 75)}.ds-dec2{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;font-weight:600;font-size:12.5px;background:oklch(78% .13 75 / .15);color:oklch(78% .13 75);justify-self:start}.ds-s{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-mark{background:oklch(78% .13 75 / .16);color:oklch(78% .13 75);border-radius:3px;padding:0 2px}.ds-pg{font-size:12.5px;color:oklch(72% .02 200);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-pg small{display:block;color:oklch(58% .022 200);font-size:12px}"
+    },
+    {
+      "name": "Bulk Bar",
+      "kind": "custom",
+      "refersTo": "bulk-bar",
+      "description": "Selection count and actions whose counts follow the selection.",
+      "html": "<div class=\"ds-bulk\"><span class=\"ds-sel\">3 of 5 selected</span><button class=\"ds-bb ds-bb-p\">Accept 3</button><button class=\"ds-bb\">Keep 3</button><button class=\"ds-clear\">Clear</button></div>",
+      "css": ".ds-bulk{display:flex;align-items:center;gap:8px;padding:10px 12px 10px 16px;background:oklch(31% .04 200);border-bottom:1px solid oklch(94% .012 200 / .09);font-family:'Hanken Grotesk',sans-serif;color:oklch(94% .012 200);font-variant-numeric:tabular-nums lining-nums}.ds-sel{font-weight:600;margin-right:6px}.ds-bb{height:32px;padding:0 11px;border-radius:8px;font:inherit;font-weight:600;font-size:13px;color:inherit;background:oklch(94% .012 200 / .03);border:1px solid oklch(94% .012 200 / .16);cursor:pointer;transition:transform .12s cubic-bezier(.23,1,.32,1)}.ds-bb:hover{background:oklch(94% .012 200 / .08)}.ds-bb:active{transform:scale(.97)}.ds-bb:focus-visible,.ds-clear:focus-visible{outline:2px solid oklch(86% .1 85);outline-offset:2px}.ds-bb-p{background:oklch(78% .13 75);color:oklch(24% .05 75);border-color:transparent}.ds-bb-p:hover{background:oklch(82% .13 78)}.ds-clear{margin-left:auto;height:32px;padding:0 8px;border:0;border-radius:8px;background:none;font:inherit;font-size:13px;color:oklch(72% .02 200);cursor:pointer}.ds-clear:hover{color:oklch(94% .012 200)}"
+    },
+    {
+      "name": "Core Sample Panel",
+      "kind": "card",
+      "refersTo": "core-sample",
+      "description": "Remaining count at display scale above the generated strata strip.",
+      "html": "<section class=\"ds-core\"><div class=\"ds-top\"><span class=\"ds-big\">455</span><span class=\"ds-lbl\"><b>left</b>of 996 findings</span></div><svg class=\"ds-strip\" viewBox=\"0 0 40 30\" aria-hidden=\"true\"><rect x=\"0.5\" y=\"2\" width=\"3\" height=\"9\" fill=\"oklch(78% .13 75)\"/><rect x=\"4.5\" y=\"2\" width=\"3\" height=\"6\" fill=\"oklch(70% .07 180)\"/><rect x=\"8.5\" y=\"2\" width=\"3\" height=\"15\" fill=\"oklch(78% .13 75)\"/><rect x=\"8.5\" y=\"17\" width=\"3\" height=\"3\" fill=\"oklch(72% .15 25)\"/><rect x=\"12.5\" y=\"2\" width=\"3\" height=\"12\" fill=\"oklch(42% .02 200)\"/><rect x=\"16.5\" y=\"2\" width=\"3\" height=\"21\" fill=\"oklch(36% .018 200)\"/><rect x=\"20.5\" y=\"2\" width=\"3\" height=\"6\" fill=\"oklch(36% .018 200)\"/></svg></section>",
+      "css": ".ds-core{background:oklch(27% .038 200);border-radius:12px;box-shadow:0 1px 0 oklch(94% .012 200 / .04) inset,0 18px 40px -24px oklch(12% .04 200 / .9);padding:20px 20px 16px;font-family:'Hanken Grotesk',sans-serif;color:oklch(94% .012 200)}.ds-top{display:flex;align-items:flex-end;gap:14px}.ds-big{font-size:76px;line-height:.84;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums lining-nums}.ds-lbl{font-size:12px;color:oklch(72% .02 200);line-height:1.35;padding-bottom:4px}.ds-lbl b{display:block;color:oklch(94% .012 200);font-weight:600;font-size:13px}.ds-strip{display:block;width:100%;height:auto;margin-top:18px;border-radius:6px;background:oklch(20% .03 200)}"
+    },
+    {
+      "name": "Agent Composer",
+      "kind": "input",
+      "refersTo": "agent-panel",
+      "description": "Ask field at the foot of the agent panel, scoped to the selection.",
+      "html": "<label class=\"ds-ask\"><input placeholder=\"Ask about the 3 selected findings\"><button class=\"ds-send\" aria-label=\"Send\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><line x1=\"128\" y1=\"216\" x2=\"128\" y2=\"40\" stroke=\"currentColor\" stroke-width=\"12\" stroke-linecap=\"round\"/><polyline points=\"56 112 128 40 200 112\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"12\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></label>",
+      "css": ".ds-ask{display:flex;align-items:center;gap:8px;padding:6px 6px 6px 12px;border-radius:10px;background:oklch(20% .03 200);border:1px solid oklch(94% .012 200 / .16);font-family:'Hanken Grotesk',sans-serif}.ds-ask:focus-within{border-color:oklch(86% .1 85)}.ds-ask input{flex:1;min-width:0;background:none;border:0;outline:0;font:inherit;font-size:14px;color:oklch(94% .012 200)}.ds-ask input::placeholder{color:oklch(58% .022 200)}.ds-send{width:30px;height:30px;border-radius:7px;border:0;background:oklch(78% .13 75);color:oklch(24% .05 75);display:grid;place-items:center;cursor:pointer}.ds-send:hover{background:oklch(82% .13 78)}.ds-send:focus-visible{outline:2px solid oklch(86% .1 85);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Core Sample",
+    "overview": "Afterbrand reads a content library the way a geologist reads drill cores laid out in a tray: one column per page, one layer per finding, each layer coloured by the decision made about it. The whole remaining job is visible as a shape, and next to it one sentence at a time is read and decided at reading scale. The system exists so a content lead can tell at a glance how much of a rename is left and trust each decision on its own.\n\nThe shell is flooded with a deep mineral teal. Every raised surface is the same hue a few steps lighter, and depth comes from those tinted layers and a shadow cast in the ground colour itself. Colour is reserved for state: four minerals mark the four decisions, and nothing decorative competes with them. Type is one family, Hanken Grotesk, at two scales that matter: the focused sentence at 28 px and the remaining count at 76 px. Everything else stays small, quiet and tabular.\n\nThe mode is dark only, chosen for long review sessions in low light. A light theme has not been built and is not defined here.",
+    "keyCharacteristics": [
+      "One hue (200) for ground, layers, ink and lines; four mineral state colours on top.",
+      "One sentence in focus at 28 px, the rest of the queue as 50 px rows.",
+      "A generated core-sample strip computed from real findings, never an illustration.",
+      "Every number tabular and carrying its unit or denominator.",
+      "Keyboard first: A, K, E, arrows and X are always labelled with visible keys."
+    ],
+    "rules": [
+      { "name": "The Mineral Ledger Rule", "body": "Green, coral and grey mean Keep, Needs you and undecided, and nothing else. Amber means Change and doubles as the action colour (Accept, send, checked, current nav), because accepting is choosing Change. A new surface never borrows a state colour for decoration.", "section": "colors" },
+      { "name": "The One Hue Rule", "body": "Ground, layers, ink, lines and shadows all sit on hue 200. No pure black, no pure white, no neutral grey from another family.", "section": "colors" },
+      { "name": "The Denominator Rule", "body": "Every number is set with font-variant-numeric: tabular-nums lining-nums and travels with its unit or its total: \"541 of 996 findings decided\", \"455 left of 996 findings\", \"132 of 537 pages\", \"Accept 3\". A bare number is a defect.", "section": "typography" },
+      { "name": "The Reading Scale Rule", "body": "Only the focused sentence is set at 28 px. The old name is marked in amber with a strike-through; the new name is underlined from below in amber. Lists stay at 14 px.", "section": "typography" },
+      { "name": "The Tinted Depth Rule", "body": "A shadow is always a darker step of hue 200. If a surface needs more lift, move it one layer up in tone before adding shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do load Hanken Grotesk from @fontsource-variable/hanken-grotesk (OFL) and use it for every role.",
+      "Do use Phosphor Light icons only, at 16 px (13 px inside chips, 12 px inside keys), one weight across the product.",
+      "Do set tabular-nums lining-nums on every number and give each one its unit or denominator.",
+      "Do keep motion under 300 ms and on transform, opacity or stroke-dashoffset: block entrance rise 260 ms (opacity plus translateY(6px), 60 ms between blocks), row entrance 240 ms (30 ms per row, capped at 8), progress scaleX 280 ms, strata sweep 220 ms (3.6 ms per column), settle 180 ms on a manual decision, press 120 ms. Entrance easing cubic-bezier(.23,1,.32,1); settle cubic-bezier(.34,1.56,.64,1).",
+      "Do put all of it inside @media (prefers-reduced-motion: no-preference) so the default state is the final state.",
+      "Do keep slow ambient loops (the 3.2 s breathe on the live agent icon) on icons and strata only, never on text.",
+      "Do play micro-sounds on key events (accept, keep, bulk apply, sweep finished) and show a mute toggle in the top bar.",
+      "Do show the Demo data label wherever seeded content appears.",
+      "Do expose tokens as CSS custom properties and map them for Tailwind v4, for example --ab-ground: oklch(22% .035 200) on :root and @theme inline { --color-ab-ground: var(--ab-ground); --radius-panel: 12px; --font-sans: \"Hanken Grotesk Variable\", sans-serif; }, so utilities like bg-ab-layer and rounded-panel resolve to the system."
+    ],
+    "donts": [
+      "Don't use Inter, Roboto, Arial, Helvetica or system fonts, or any font without an OFL licence.",
+      "Don't use emojis anywhere, in UI, copy, data, commits or captures.",
+      "Don't use pure black or pure white; ink and shadows stay on hue 200.",
+      "Don't use a state colour without its word, or for anything other than its decision.",
+      "Don't cast shadows in neutral black; use the panel shadow.",
+      "Don't animate width, height, top, left, margin, padding or colour, and don't exceed 300 ms outside the ambient loop.",
+      "Don't show a bare number, or a default 0 while data loads; use a skeleton.",
+      "Don't remove the AgentSidebar or replace framework chrome; restyle it through the tokens."
+    ]
+  }
+}
