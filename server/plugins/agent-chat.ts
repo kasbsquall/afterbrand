@@ -1,3 +1,4 @@
+import { registerEvent } from "@agent-native/core/event-bus";
 import { getOrgContext } from "@agent-native/core/org";
 import {
   createAgentChatPlugin,
@@ -5,8 +6,33 @@ import {
 } from "@agent-native/core/server";
 
 import actionsRegistry from "../../.generated/actions-registry.js";
+import { RULE_CHANGED_EVENT, ruleChangedPayload } from "../lib/events.js";
 
+// Automations can re-scan the library when a rule is added or edited.
+registerEvent({
+  name: RULE_CHANGED_EVENT,
+  description:
+    "A rebrand rule was created or changed (names, date, exceptions or enabled). Pages may have new or different mentions to review.",
+  payloadSchema: ruleChangedPayload,
+  example: {
+    ruleId: "rule_123",
+    oldName: "Fusion",
+    newName: "Builder Code",
+    change: "updated",
+    fields: ["exceptions"],
+    changedBy: "person",
+  },
+});
+
+// Everything the agent needs for its usual jobs is loaded up front. When a
+// tool is loaded mid-turn through tool-search, the tool list changes and the
+// Anthropic API rejects the earlier thinking blocks of that turn (400, "The
+// tools list differs from the one this block was created with").
 const INITIAL_TOOL_NAMES = [
+  "docs-search",
+  "manage-automations",
+  "get-page",
+  "reopen-findings",
   "view-screen",
   "get-library-overview",
   "navigate",
@@ -26,7 +52,11 @@ const INITIAL_TOOL_NAMES = [
 export default createAgentChatPlugin({
   appId: "afterbrand",
   actions: loadActionsFromStaticRegistry(actionsRegistry),
-  mcp: { connectorCatalog: [] },
+  // What MCP clients such as Claude Code can call: the queue read-outs.
+  // Writes stay inside the app, where approvals and undo cards live.
+  mcp: {
+    connectorCatalog: ["get-library-overview", "list-findings", "list-rules", "list-pages", "get-page"],
+  },
   initialToolNames: INITIAL_TOOL_NAMES,
   resolveOrgId: async (event) => (await getOrgContext(event)).orgId,
   systemPrompt: `You are the Afterbrand agent. A company renamed products; you help its content team find every sentence in their library that still uses a retired name, decide in context what to do with each one, and draft the fix. People review and approve every change.

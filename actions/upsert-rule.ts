@@ -1,10 +1,21 @@
 import { defineAction, fail } from "@agent-native/core/action";
+import { emit } from "@agent-native/core/event-bus";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
 import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
+import { RULE_CHANGED_EVENT, type RuleChangedPayload } from "../server/lib/events.js";
 import { isAgentCaller } from "../server/lib/policy.js";
+
+// Tell automations a rule changed; a failed emit never fails the save.
+function announce(ownerEmail: string, payload: RuleChangedPayload) {
+  try {
+    emit(RULE_CHANGED_EVENT, payload, { owner: ownerEmail });
+  } catch (error) {
+    console.warn(`[upsert-rule] ${RULE_CHANGED_EVENT} emit failed:`, error instanceof Error ? error.message : error);
+  }
+}
 
 export default defineAction({
   description:
@@ -42,6 +53,14 @@ export default defineAction({
         .update(schema.rules)
         .set({ ...patch, updatedAt: now })
         .where(eq(schema.rules.id, id));
+      announce(ownerEmail, {
+        ruleId: id,
+        oldName: patch.oldName ?? current.oldName,
+        newName: patch.newName ?? current.newName,
+        change: "updated",
+        fields: Object.keys(patch).filter((key) => patch[key as keyof typeof patch] !== undefined),
+        changedBy: createdBy,
+      });
       return { id, message: `Updated the rule for ${current.oldName}.`, nextRequiredAction: "find-candidates" };
     }
 
@@ -61,6 +80,14 @@ export default defineAction({
       createdBy,
       createdAt: now,
       updatedAt: now,
+    });
+    announce(ownerEmail, {
+      ruleId: id,
+      oldName: args.oldName,
+      newName: args.newName,
+      change: "created",
+      fields: ["oldName", "newName"],
+      changedBy: createdBy,
     });
     return { id, message: `Added ${args.oldName} -> ${args.newName}.`, nextRequiredAction: "find-candidates" };
   },
