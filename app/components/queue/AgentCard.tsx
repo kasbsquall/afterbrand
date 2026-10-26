@@ -43,7 +43,7 @@ export function AgentCard({ selected, undecided, decided, pending }: Props) {
     : "Ask about the queue";
 
   return (
-    <section className="ab-panel ab-agent ab-rise" style={{ ["--b" as string]: 2 }} aria-labelledby="ab-agent-h">
+    <section className="ab-panel ab-agent ab-rise" style={{ ["--b" as string]: 4 }} aria-labelledby="ab-agent-h">
       <div className="ab-ahead">
         <h2 id="ab-agent-h">Agent</h2>
         <span className="ab-status ab-live">

@@ -17,6 +17,10 @@ export default defineAction({
     exceptions: z.string().optional().describe("Full plain-language exceptions text; replaces the current text"),
     sourceUrl: z.string().url().optional().describe("Where the rename was announced"),
     enabled: z.boolean().optional().describe("Whether the rule is active"),
+    expectedUpdatedAt: z
+      .string()
+      .optional()
+      .describe("updatedAt the caller last read; the update is refused if the rule changed since"),
   }),
   run: async (args, ctx) => {
     const ownerEmail = requireOwner(ctx);
@@ -30,7 +34,10 @@ export default defineAction({
         .from(schema.rules)
         .where(and(eq(schema.rules.ownerEmail, ownerEmail), eq(schema.rules.id, args.id)));
       if (!current) fail("Rule not found.");
-      const { id, ...patch } = args;
+      if (args.expectedUpdatedAt && args.expectedUpdatedAt !== current.updatedAt) {
+        fail("The rule changed while you were editing it. Reload it and apply your edit again.");
+      }
+      const { id, expectedUpdatedAt: _seen, ...patch } = args;
       await db
         .update(schema.rules)
         .set({ ...patch, updatedAt: now })

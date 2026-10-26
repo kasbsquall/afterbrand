@@ -8,18 +8,29 @@ import { loadFindings } from "../server/lib/findings-read.js";
 import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
 import { assertCanApply, isAgentCaller } from "../server/lib/policy.js";
 import { replaceSentence } from "../server/lib/rewrite.js";
+import { revertChanges } from "../server/lib/undo.js";
 
 export default defineAction({
   description:
-    "Apply the proposed rewrite of up to 50 findings decided as change. Each applied change can be undone with revert-change until it is published. Keep and unsure findings are refused; a person overrides them by editing the rewrite. When the agent calls this, a person approves the call first.",
+    "Apply the proposed rewrite of up to 50 findings decided as change. Each applied change can be undone with revert-change until it is published. Keep and unsure findings are refused; a person overrides them by editing the rewrite. When the agent calls this, a person approves the call first. Pass undoChangeIds instead of ids to undo changes this action applied (the chat card's Undo).",
   schema: z.object({
-    ids: z.array(z.string()).min(1).max(50).describe("Finding ids to apply"),
+    ids: z.array(z.string()).min(1).max(50).optional().describe("Finding ids to apply"),
+    undoChangeIds: z
+      .array(z.string())
+      .min(1)
+      .max(50)
+      .optional()
+      .describe("Undo mode: change ids returned by an earlier call"),
   }),
   // The agent may prepare and apply changes, but never without a person
   // approving the specific call. Buttons in the UI are that person.
-  needsApproval: true,
-  run: async ({ ids }, ctx) => {
+  // Undo mode only restores sentences, so it runs without a prompt.
+  needsApproval: (args) => !args.undoChangeIds,
+  run: async ({ ids, undoChangeIds }, ctx) => {
     const ownerEmail = requireOwner(ctx);
+    if (ids && undoChangeIds) fail("Pass ids to apply or undoChangeIds to undo, not both.");
+    if (undoChangeIds) return revertChanges(ownerEmail, undoChangeIds);
+    if (!ids) fail("Pass ids to apply, or undoChangeIds to undo.");
     const callerIsAgent = isAgentCaller(ctx?.caller);
     const rows = await loadFindings(ownerEmail, ids);
     if (rows.length !== ids.length) fail("Some findings were not found. Refresh the queue and try again.");
@@ -86,9 +97,10 @@ export default defineAction({
         title:
           rows.length === 1
             ? `Changed "${first.rule.oldName}" on ${first.page.title}`
-            : `Applied ${rows.length} changes on ${touchedPages.size} pages`,
+            : `Applied ${rows.length} changes on ${touchedPages.size} page${touchedPages.size === 1 ? "" : "s"}`,
         detail: rows.length === 1 ? (first.finding.proposal ?? undefined) : undefined,
-        undo: { action: "revert-change", args: { changeIds } },
+        // The chat card undoes through this same action (undo mode).
+        undo: { action: "accept-findings", args: { undoChangeIds: changeIds } },
       },
     };
   },

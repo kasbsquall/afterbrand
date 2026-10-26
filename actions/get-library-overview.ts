@@ -1,5 +1,5 @@
 import { defineAction } from "@agent-native/core/action";
-import { and, asc, count, eq, isNull } from "drizzle-orm";
+import { and, asc, count, countDistinct, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
@@ -11,7 +11,7 @@ const emptyCounts = (): DecisionCounts => ({ change: 0, keep: 0, unsure: 0, unde
 
 export default defineAction({
   description:
-    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
+    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published and the pages they touch, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
   schema: z.object({}),
   http: { method: "GET" },
   readOnly: true,
@@ -75,8 +75,8 @@ export default defineAction({
       pages.set(row.pageId, page);
     }
 
-    const [{ unpublished }] = await db
-      .select({ unpublished: count() })
+    const [{ unpublished, unpublishedPages }] = await db
+      .select({ unpublished: count(), unpublishedPages: countDistinct(schema.changes.pageId) })
       .from(schema.changes)
       .where(
         and(
@@ -94,6 +94,7 @@ export default defineAction({
       statuses,
       pending,
       unpublishedChanges: unpublished,
+      unpublishedPages,
       pages: [...pages.values()],
     };
   },

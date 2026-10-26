@@ -90,10 +90,15 @@ export function ProposalText({ text, newName }: { text: string; newName: string 
 
 const DATE_FORMAT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" });
 
+const DAY_FORMAT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+
 export function formatDate(iso: string | null | undefined): string {
   if (!iso) return "No date";
   const date = new Date(iso);
-  return Number.isNaN(date.getTime()) ? "No date" : DATE_FORMAT.format(date);
+  if (Number.isNaN(date.getTime())) return "No date";
+  // A bare day ("2026-09-10") parses as UTC midnight; show that same day
+  // instead of the previous one in time zones west of UTC.
+  return /^\d{4}-\d{2}-\d{2}$/.test(iso) ? DAY_FORMAT.format(date) : DATE_FORMAT.format(date);
 }
 
 // Framework errors read "Action <name> failed: <reason>"; a reviewer needs the reason.

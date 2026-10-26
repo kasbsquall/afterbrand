@@ -63,7 +63,11 @@ export function FindingList({
 
   const skipped = picked.length - acceptable.length;
   const acceptTitle =
-    skipped > 0 ? `${skipped} of the ${picked.length} selected are not marked Change and will be left out` : undefined;
+    picked.length > 0 && acceptable.length === 0
+      ? "None of the selected findings is marked Change with a valid rewrite"
+      : skipped > 0
+        ? `${skipped} of the ${picked.length} selected are not marked Change and will be left out`
+        : undefined;
 
   return (
     <div className="ab-panel ab-list ab-rise" style={{ ["--b" as string]: 2 }}>
@@ -90,7 +94,7 @@ export function FindingList({
           onClick={() => acceptable.length > 0 && busy === null && onAccept(acceptable)}
         >
           {busy === "accept" ? <CircleNotch size={16} weight="light" className="ab-spin" /> : <Check size={16} weight="light" />}
-          Accept {acceptable.length}
+          {acceptable.length > 0 ? `Accept ${acceptable.length}` : "Accept"}
         </button>
         <button
           type="button"
@@ -99,7 +103,7 @@ export function FindingList({
           onClick={() => picked.length > 0 && busy === null && onKeep(picked.map((f) => f.id))}
         >
           {busy === "keep" ? <CircleNotch size={16} weight="light" className="ab-spin" /> : <LockSimple size={16} weight="light" />}
-          Keep {picked.length}
+          {picked.length > 0 ? `Keep ${picked.length}` : "Keep"}
         </button>
         <button
           type="button"

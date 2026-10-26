@@ -95,10 +95,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function DbSyncSetup() {
   const qc = useQueryClient();
+  const { pathname } = useLocation();
   useNavigationState();
+  // The queue and page screens change outside their own mutations: undo
+  // buttons on chat cards, the agent in another tab, and MCP clients.
+  const isReviewScreen = pathname === "/findings" || pathname.startsWith("/pages/");
   useDbSync({
     queryClient: qc,
     ignoreSource: TAB_ID,
+    realtime: isReviewScreen
+      ? { reason: "chat card undo, other tabs and MCP clients change findings while the queue is open" }
+      : undefined,
   });
   return null;
 }

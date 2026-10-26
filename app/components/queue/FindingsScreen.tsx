@@ -10,7 +10,9 @@ import { AgentCard } from "./AgentCard";
 import { CoreSample } from "./CoreSample";
 import { canAccept, FindingList } from "./FindingList";
 import { FocusCard, type BusyAction, type Finding } from "./FocusCard";
+import { PublishCard } from "./PublishCard";
 import { FilterEmpty, QueueDone, QueueEmpty, QueueError, QueueSkeleton } from "./QueueStates";
+import { RulesPanel } from "./RulesPanel";
 import { decisionWord, errorMessage, plural, useSounds, type DecisionKey } from "./shared";
 import { TopBar } from "./TopBar";
 import "./queue.css";
@@ -108,6 +110,8 @@ export function FindingsScreen() {
     setBusy("accept");
     try {
       const result = await accept.mutateAsync({ ids });
+      // Apply mode always returns changeIds; undo mode is only used by chat cards.
+      if (!("changeIds" in result)) return;
       sounds.play("accept");
       focusAfter(ids);
       toast(`Applied ${plural(result.applied, "change")}. Nothing ships until you publish.`, {
@@ -358,6 +362,8 @@ export function FindingsScreen() {
             activePageId={activePage?.id ?? null}
             onSelectPage={(pageId) => changeScope({ pageId })}
           />
+          <PublishCard changes={stats.unpublishedChanges} pages={stats.unpublishedPages} />
+          <RulesPanel />
           <AgentCard
             selected={selectedFindings}
             undecided={stats.pending.undecided}
