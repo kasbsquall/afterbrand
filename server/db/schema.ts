@@ -55,6 +55,8 @@ export const findings = pgTable(
     endOffset: integer("end_offset").notNull(),
     sentence: text("sentence").notNull(),
     sentenceStart: integer("sentence_start").notNull(),
+    // JSON array of { start, end } relative to the sentence.
+    mentions: text("mentions").notNull().default("[]"),
     decision: text("decision", { enum: ["change", "keep", "unsure"] }),
     reason: text("reason"),
     proposal: text("proposal"),
@@ -67,12 +69,7 @@ export const findings = pgTable(
     updatedAt: text("updated_at").notNull(),
   },
   (t) => ({
-    mention: uniqueIndex("findings_mention_idx").on(
-      t.ownerEmail,
-      t.pageId,
-      t.ruleId,
-      t.startOffset,
-    ),
+    page: index("findings_page_idx").on(t.ownerEmail, t.pageId),
     queue: index("findings_queue_idx").on(t.ownerEmail, t.status, t.decision),
   }),
 );
@@ -92,6 +89,7 @@ export const changes = pgTable("changes", {
   appliedBy: text("applied_by", { enum: ["agent", "person"] }).notNull(),
   appliedAt: text("applied_at").notNull(),
   revertedAt: text("reverted_at"),
+  publishedAt: text("published_at"),
 });
 
 export const sweeps = pgTable("sweeps", {

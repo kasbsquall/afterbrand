@@ -88,6 +88,14 @@ export default runMigrations(
         finished_at TEXT
       )`,
     },
+    {
+      version: 5,
+      name: "afterbrand-findings-identity-by-sentence",
+      sql: `DROP INDEX IF EXISTS findings_mention_idx;
+      ALTER TABLE findings ADD COLUMN IF NOT EXISTS mentions TEXT NOT NULL DEFAULT '[]';
+      CREATE INDEX IF NOT EXISTS findings_page_idx ON findings (owner_email, page_id);
+      ALTER TABLE changes ADD COLUMN IF NOT EXISTS published_at TEXT`,
+    },
   ],
   { table: "afterbrand_migrations" },
 );
