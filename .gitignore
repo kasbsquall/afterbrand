@@ -44,3 +44,6 @@ data/*.lock
 
 # design exploration, not shipped
 .ui-direcciones/
+
+# eval working files with blog text, never committed
+eval/.local/

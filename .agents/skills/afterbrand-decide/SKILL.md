@@ -17,6 +17,7 @@ The sentence uses the retired name for the product as it exists today, so a read
 
 - "Fusion lets designers ship to production." -> "Builder Code lets designers ship to production."
 - A how-to or product description, even in an older post, if it describes how the product works now.
+- A sentence that mixes history and present ("Since we launched Fusion in 2024, it has become the way teams ship"): the present clause names the current product, so it changes.
 
 ## keep
 

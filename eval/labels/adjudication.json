@@ -1,0 +1,33 @@
+{
+ "rule": "A disagreement between labelers is provisionally unsure. A non-null \"kevin\" value replaces it.",
+ "items": [
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#2108#Fusion",
+   "a": "keep",
+   "b": "change",
+   "provisional": "unsure",
+   "kevin": null
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-ship-code-with-ai#4763#Fusion",
+   "a": "keep",
+   "b": "change",
+   "provisional": "unsure",
+   "kevin": null
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#9401#Publish",
+   "a": "keep",
+   "b": "unsure",
+   "provisional": "unsure",
+   "kevin": null
+  },
+  {
+   "key": "https://www.builder.io/blog/how-product-teams-built-with-builder#3141#Fusion",
+   "a": "unsure",
+   "b": "change",
+   "provisional": "unsure",
+   "kevin": null
+  }
+ ]
+}

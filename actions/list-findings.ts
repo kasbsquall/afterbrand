@@ -7,7 +7,7 @@ import { requireOwner } from "../server/lib/owner.js";
 
 export default defineAction({
   description:
-    'List findings (sentences that mention a retired name) with page title, URL, rule, decision, reason and proposed rewrite. Filter by status ("pending", "accepted", "rejected"), decision ("change", "keep", "unsure" or "undecided"), ruleId, pageId, or pageQuery (words in the page title or URL, for example "introducing" to find launch posts). Returns counts per decision for the current filter.',
+    'List findings (sentences that mention a retired name) with page title, URL, rule, decision, reason and proposed rewrite. Filter by status ("pending", "accepted", "rejected"), decision ("change", "keep", "unsure" or "undecided"), ruleId, pageId, pageQuery (words in the page title or URL, for example "introducing" to find launch posts), or ids (exact finding ids, for example a selection). Returns counts per decision for the current filter.',
   schema: z.object({
     status: z.enum(["pending", "accepted", "rejected"]).optional().describe('Finding status; omit for all'),
     decision: z
@@ -16,13 +16,14 @@ export default defineAction({
       .describe('Agent decision; "undecided" means not decided yet'),
     ruleId: z.string().optional(),
     pageId: z.string().optional(),
+    ids: z.array(z.string()).min(1).max(200).optional().describe("Exact finding ids"),
     pageQuery: z.string().trim().min(2).max(80).optional().describe("Case-insensitive text in the page title or URL"),
     limit: z.coerce.number().int().min(1).max(200).default(50),
     offset: z.coerce.number().int().min(0).default(0),
   }),
   http: { method: "GET" },
   readOnly: true,
-  run: async ({ status, decision, ruleId, pageId, pageQuery, limit, offset }, ctx) => {
+  run: async ({ status, decision, ruleId, pageId, pageQuery, ids, limit, offset }, ctx) => {
     const ownerEmail = requireOwner(ctx);
     const db = getDb();
     // Escape LIKE wildcards so the text matches literally.
@@ -43,6 +44,7 @@ export default defineAction({
       status ? eq(schema.findings.status, status) : undefined,
       ruleId ? eq(schema.findings.ruleId, ruleId) : undefined,
       pageId ? eq(schema.findings.pageId, pageId) : undefined,
+      ids ? inArray(schema.findings.id, ids) : undefined,
       matchingPages ? inArray(schema.findings.pageId, matchingPages.map((p) => p.id)) : undefined,
     );
     const where = and(

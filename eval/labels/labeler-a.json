@@ -1,0 +1,1206 @@
+{
+ "labeler": "a",
+ "guide": "eval/LABELING.md",
+ "labels": [
+  {
+   "key": "https://www.builder.io/blog/the-real-reason-coding-agents-get-more-done#5600#Publish",
+   "contentHash": "c8c16592f9a8c32b74dd6f09824f42d3326a89f89930cbb1a3ed3438518304e5",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/drag-drop-react#5755#Publish",
+   "contentHash": "b0edffe81b2108eaeb80da64c14bb852f2d3651b5564f7b941d16725670275f7",
+   "label": "keep",
+   "note": "Quoted button or UI label"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#0#Publish",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4101#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#10406#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#170#Fusion",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#4529#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#5032#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#8954#Fusion",
+   "contentHash": "39bb46b1284ad75dd13fb3da28f4242ad7cfaad1e77148f84aa7c6c332d3e0b4",
+   "label": "change",
+   "note": "Call to action for the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/fusion#5180#Fusion",
+   "contentHash": "046f011cd1515b068cb79a7199d47f7680b5917af8a7361b0ccef1be5d0a2f30",
+   "label": "keep",
+   "note": "Launch announcement, historical event"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-fastest-way-to-build-and-grow-on-headless-salesforce-commerce-cloud#7577#Publish",
+   "contentHash": "d6701d3fc102339e455bb95dd240e1201d81e3e794c2e4e5a0c51e39069d706f",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/using-builder-within-your-headless-environment#3335#Publish",
+   "contentHash": "ff33fb5f43c9d08f7d7334f25fe908769a20daf1a281bf4f9389a96e9abe9b58",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#5690#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#8326#Publish",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-fastest-way-to-build-and-grow-on-headless-salesforce-commerce-cloud#7398#Publish",
+   "contentHash": "d6701d3fc102339e455bb95dd240e1201d81e3e794c2e4e5a0c51e39069d706f",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-content-teams-ship-fast-with-builder#4109#Publish",
+   "contentHash": "080dbf761a0a4348445905e2f1e7053cc1e159acacc3f7218dea557bea0178fd",
+   "label": "keep",
+   "note": "Past tense recap of 2025 work on the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#3209#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#1864#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-ship-code-with-ai#979#Fusion",
+   "contentHash": "b3306c8460e2e0eddd68ccd22b8155aa7906b6bb3089f23d7ff75a08f19a6df6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/death-of-cms#8849#Publish",
+   "contentHash": "eecb02ed9ee4d7db6288a74d3f346986261e46270d5fc38da0ae6a148fd131fa",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#6320#Fusion",
+   "contentHash": "5e365a5006055f5338a56899b0155ba672807a518521f6f0e807ad96972d782b",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#6846#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#3354#Fusion",
+   "contentHash": "d4fdc64a613dc055ebedb952df92328e95b595efc2d70363f2e1f6cb99a7d22f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-website#4407#Publish",
+   "contentHash": "63ec8082b9d53401eb0444d96387fd928708b3900c949945eea3dfe359c7a8dc",
+   "label": "change",
+   "note": "Quoted name refers to the content product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3333#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#9411#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-vs-code-extensions-2026#5468#Fusion",
+   "contentHash": "bb5f24735b19ab8863e929787e1f1a2812e48a9be74a8b3779303bce48c8cdda",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#3194#Fusion",
+   "contentHash": "e8c041a28f38471b23b99e5061d7d48105ad2124ab800af373d4bd12da32b79b",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3831#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-tools-for-product-managers#4165#Fusion",
+   "contentHash": "fce0d00e6e2b2396158f7ed7bfc4c6055969134ca6cd0136cf74bfe05caf6d46",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#2108#Fusion",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "keep",
+   "note": "Author recounts a past run, historical anecdote"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#170#Publish",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#1733#Fusion",
+   "contentHash": "981745a60359bfbc86a48664c89ca987230b0f3fa96cde19f8d4df18a978dee6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/git-branching-for-designers#6243#Fusion",
+   "contentHash": "e1bbfc853d11fda0f1cd4477630849c98331ad8da10c934b60d4e2ece4c815f1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/fast-teams-stay-fast-at-scale#1356#Fusion",
+   "contentHash": "4a7f4e48e8469e88e0dbf214b887abc1f14beafcb0c101b9820b79df534ebd30",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#695#Fusion",
+   "contentHash": "082755ac4ebfe8c57811c6777befef4696c63f3b32d459e66c15817b31e064f2",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#5771#Fusion",
+   "contentHash": "37d2f8609eabef544612fce59ae26c939c0f8227d81de39be9676b2e0c07870f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-figma#9210#Fusion",
+   "contentHash": "4fc35e2487091dca25de5a69e6afb62da39acda836382844c7cb2af67a1a0e1a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#5873#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/stop-installing-skills#1491#Publish",
+   "contentHash": "7cd57e58d11e554b04f86ecd7739c180b44b147a054ea684a7614b26db362a9b",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/large-language-model-llm#10086#Fusion",
+   "contentHash": "43a4a9777c34fcfd6a4dcee4eb35cb5c94e2b0c2120dd15b9601abafd3a5fcd7",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1278#Fusion",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#5374#Fusion",
+   "contentHash": "729d380ac9a03df8e5f1ae92a2a8ef133c6587a0960ab99e0ce3e0d5f54172a1",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4598#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#7106#Fusion",
+   "contentHash": "e5079533d0828143624d46b0562a4b3b939904c32ceaac3a2dff162f21e7f281",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#10245#Fusion",
+   "contentHash": "e5079533d0828143624d46b0562a4b3b939904c32ceaac3a2dff162f21e7f281",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-react-calendar-component-ai#7480#Fusion",
+   "contentHash": "c8f25d851cbff0dfec74f784a841de50cbd7a469fa5b09cc2379aeb1debbe105",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/visual-ide#10131#Fusion",
+   "contentHash": "98b9abecd134dac80f12902004536fcb3757865ea3a1b661ad630cf0e3698a40",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-best-a-clone-can-do-is-tie#6596#Publish",
+   "contentHash": "c2c3835ed2297bde251a18c9f97f9915010c886570a5d3d93a3c0d0a5eba80fd",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#6503#Fusion",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-ai-tips-react-nextjs#17896#Fusion",
+   "contentHash": "4cf5eb572300de85ce2e9b755f10be16cdedeb19f2692e5ddef60af07867babc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-ship-code-with-ai#4763#Fusion",
+   "contentHash": "b3306c8460e2e0eddd68ccd22b8155aa7906b6bb3089f23d7ff75a08f19a6df6",
+   "label": "keep",
+   "note": "Past anecdote of a team using it before rename"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#6168#Fusion",
+   "contentHash": "e5079533d0828143624d46b0562a4b3b939904c32ceaac3a2dff162f21e7f281",
+   "label": "change",
+   "note": "Why the product was built; product still current"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#5621#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1779#Fusion",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1815#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/agent-experience#11690#Fusion",
+   "contentHash": "d3be39be453d7ff843857538c72c30b9bf74a3610c7739a6b24811a6b560696d",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#492#Fusion",
+   "contentHash": "082755ac4ebfe8c57811c6777befef4696c63f3b32d459e66c15817b31e064f2",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#8725#Publish",
+   "contentHash": "618a262cfaad8f582479d3c790cd7bcf02839aeceff159b24009cdde032a9dfc",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#3345#Fusion",
+   "contentHash": "0fc2b31cc9f2a611b6d46c50892fe1aac5df73e28e752cdedcf2315248b16737",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#1637#Fusion",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#0#Fusion",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-vs-windsurf-vs-github-copilot#6161#Fusion",
+   "contentHash": "b3b2dcf06f2f12af84d490d88e10fb841b165b42f517693814c9e34b97a505bf",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#2345#Fusion",
+   "contentHash": "729d380ac9a03df8e5f1ae92a2a8ef133c6587a0960ab99e0ce3e0d5f54172a1",
+   "label": "change",
+   "note": "Why the product was built; product still current"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#10376#Fusion",
+   "contentHash": "d4fdc64a613dc055ebedb952df92328e95b595efc2d70363f2e1f6cb99a7d22f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/fusion#305#Fusion",
+   "contentHash": "046f011cd1515b068cb79a7199d47f7680b5917af8a7361b0ccef1be5d0a2f30",
+   "label": "keep",
+   "note": "Launch announcement, historical event"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#8871#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#6680#Fusion",
+   "contentHash": "37d2f8609eabef544612fce59ae26c939c0f8227d81de39be9676b2e0c07870f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#13543#Fusion",
+   "contentHash": "7cfa3fe9a7d0353a71ac358c7d1bab43e9fbb5cfd0bde9603968f73fcd22a943",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#12964#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Call to action for the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5089#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#9777#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-mcp-servers-2026#6094#Fusion",
+   "contentHash": "93dc6e7e24ca3a6d21dbf682d44f035cdf676ca71789ad1a57462225a94a0b51",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#27518#Fusion",
+   "contentHash": "d247546c4f77f338a5304e69194fd1d3a07e0c6f8a4aa0d98831e473a5b56f6f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#3126#Fusion",
+   "contentHash": "ec4fcfd56a4c5821ec50943279d800b77b63f3dde28fc8d2452afee13f12ed6e",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#6398#Fusion",
+   "contentHash": "e47fc9edb92ca549d32a5a65ea09731b27acce8d3f4606ac104f91b3ca33bca6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#3647#Fusion",
+   "contentHash": "61e1e1de2b508a20a19bdbbf7813758a8b1669a6c24766bc84a8dd3972ae2442",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#7734#Fusion",
+   "contentHash": "0fc2b31cc9f2a611b6d46c50892fe1aac5df73e28e752cdedcf2315248b16737",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/evaluating-ai-tips#8664#Fusion",
+   "contentHash": "72cbf44852d8a36a2184a797f0c4bcc84d11d6fab325c8e95664f738becc1dc7",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-tools-for-product-managers#5519#Fusion",
+   "contentHash": "fce0d00e6e2b2396158f7ed7bfc4c6055969134ca6cd0136cf74bfe05caf6d46",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/turn-a-figma-landing-page-into-a-live-website#6079#Publish",
+   "contentHash": "5fecaef4d9c3ce0c9bfa5d825c2e9fdfe255bb52956fb867d80370e1098c6db1",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#4485#Fusion",
+   "contentHash": "58ff54f5ef3e0d4ee88ec77e241985bb46385c48c2ef230f09bb1b39e1acbbe4",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#13070#Fusion",
+   "contentHash": "ccac8c4c8e954e9ade764e777d39a14d9be71fffacbf2ff067314dbdd5c5db08",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#3092#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1460#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1779#Publish",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9636#Fusion",
+   "contentHash": "e8c041a28f38471b23b99e5061d7d48105ad2124ab800af373d4bd12da32b79b",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/the-real-reason-coding-agents-get-more-done#7643#Publish",
+   "contentHash": "c8c16592f9a8c32b74dd6f09824f42d3326a89f89930cbb1a3ed3438518304e5",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6584#Fusion",
+   "contentHash": "0fc2b31cc9f2a611b6d46c50892fe1aac5df73e28e752cdedcf2315248b16737",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-fullstory-alternatives#14295#Publish",
+   "contentHash": "8984ba8565f668ab92563d827c954c2c6949f37d864a4a0bbc259a1aa0587763",
+   "label": "keep",
+   "note": "Another company or common usage, not Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/visual-next-js#3886#Publish",
+   "contentHash": "c10d9e7e32ff1f9752ed454807a641c4445a15c8a84249ffbafaed2617fe9a73",
+   "label": "keep",
+   "note": "Quoted button or UI label"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#1915#Fusion",
+   "contentHash": "d6746962da951634fa412ea550fd65e65a75bb5e6d13679ca46d4d59b35c70ee",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#7922#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#4778#Fusion",
+   "contentHash": "61e1e1de2b508a20a19bdbbf7813758a8b1669a6c24766bc84a8dd3972ae2442",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#15087#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-mcp-server#12343#Fusion",
+   "contentHash": "ccac8c4c8e954e9ade764e777d39a14d9be71fffacbf2ff067314dbdd5c5db08",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#2210#Fusion",
+   "contentHash": "e47fc9edb92ca549d32a5a65ea09731b27acce8d3f4606ac104f91b3ca33bca6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#6456#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Fusion",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#4174#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-generator#7250#Fusion",
+   "contentHash": "37d2f8609eabef544612fce59ae26c939c0f8227d81de39be9676b2e0c07870f",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#3000#Fusion",
+   "contentHash": "d6746962da951634fa412ea550fd65e65a75bb5e6d13679ca46d4d59b35c70ee",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-ux-design#1038#Fusion",
+   "contentHash": "5663a9891de1638a3a58ea145cea66818ef3f32b913f87594dddf0c81ab1a09e",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-headless-cms-contenful-prismic-sanity-builder#10324#Publish",
+   "contentHash": "be2e65a954311c7251750b03ebd8dac0b5172bad77489cdd313f831a27e83b94",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5574#Fusion",
+   "contentHash": "981745a60359bfbc86a48664c89ca987230b0f3fa96cde19f8d4df18a978dee6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-design-system-component-mapping#2395#Publish",
+   "contentHash": "7faa01a35c4421f464cf0c3807ab2a8dab7efbe207b6457d3cec62b6f101ac2f",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#7047#Fusion",
+   "contentHash": "e8c041a28f38471b23b99e5061d7d48105ad2124ab800af373d4bd12da32b79b",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-alternatives#21378#Fusion",
+   "contentHash": "5a93c8717f9ebf26a35e377a8f38d1dcafe1be7977aa6fde0b77dd3a3672d6bb",
+   "label": "change",
+   "note": "Call to action for the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/daisyui-best-practices-ai#6514#Fusion",
+   "contentHash": "fa88beb376816da94448d538fd5a4581bdd0ec28339138c2fe04909dbab4e2d5",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#14656#Fusion",
+   "contentHash": "d247546c4f77f338a5304e69194fd1d3a07e0c6f8a4aa0d98831e473a5b56f6f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/windsurf-vs-cursor#9125#Fusion",
+   "contentHash": "84a098940b53e9598f87a22eb854858e520e720d0c523842677ddd30b137eaa8",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#9401#Publish",
+   "contentHash": "6f52449dc3534495d8c86c57726b7f201dff2c367a07896a91e89ec2ddfefa4a",
+   "label": "keep",
+   "note": "Analytics app feature label, not Builder Content"
+  },
+  {
+   "key": "https://www.builder.io/blog/death-of-cms#391#Publish",
+   "contentHash": "eecb02ed9ee4d7db6288a74d3f346986261e46270d5fc38da0ae6a148fd131fa",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/fast-personalization-nextjs-edge-middleware-builder#6237#Publish",
+   "contentHash": "e28f559c0aef8575bc3a7226e364e28307c57598761b18c0c85867b4198cb7ab",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/native-mobile-sdks#1767#Publish",
+   "contentHash": "afdf8ab59dd6f8f27436f94bf44369f0a16eddfd8eae4470f193e8455d26e00f",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#18336#Fusion",
+   "contentHash": "d247546c4f77f338a5304e69194fd1d3a07e0c6f8a4aa0d98831e473a5b56f6f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#8024#Fusion",
+   "contentHash": "39bb46b1284ad75dd13fb3da28f4242ad7cfaad1e77148f84aa7c6c332d3e0b4",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#5197#Fusion",
+   "contentHash": "39bb46b1284ad75dd13fb3da28f4242ad7cfaad1e77148f84aa7c6c332d3e0b4",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/agentic-ide#6897#Fusion",
+   "contentHash": "1e2f2703f234077d032ff6a17eb60de7fc61967b03e5faef676f5fcc4193d186",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#6699#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Call to action for the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#1450#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8902#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3260#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/lovable-alternatives#8153#Publish",
+   "contentHash": "b159d01aea6b49c43da63972bb06a42ad922aa78fb0de9eae3d12c3f1c0edcc4",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#2475#Fusion",
+   "contentHash": "5e365a5006055f5338a56899b0155ba672807a518521f6f0e807ad96972d782b",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#4551#Fusion",
+   "contentHash": "d4fdc64a613dc055ebedb952df92328e95b595efc2d70363f2e1f6cb99a7d22f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#2418#Publish",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3544#Publish",
+   "contentHash": "c08daeda9857d47fcaccc3ee1823d0cbeb854b7db6eca77679c2514abf1e2c83",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#10700#Publish",
+   "contentHash": "618a262cfaad8f582479d3c790cd7bcf02839aeceff159b24009cdde032a9dfc",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/netlify-mcp#1502#Fusion",
+   "contentHash": "082755ac4ebfe8c57811c6777befef4696c63f3b32d459e66c15817b31e064f2",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping#2291#Fusion",
+   "contentHash": "d4c4d86f57b6aaaf60958fde5e2f1ef066105f69f58e0f975f37f253c3f7fcc3",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#3472#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#5052#Fusion",
+   "contentHash": "e47fc9edb92ca549d32a5a65ea09731b27acce8d3f4606ac104f91b3ca33bca6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#13943#Fusion",
+   "contentHash": "a0e7e22495b834900fdf74858e6b093deb10138f8e98cc3f19d6ae51296408d7",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-visual-development-productivity#6341#Fusion",
+   "contentHash": "5e365a5006055f5338a56899b0155ba672807a518521f6f0e807ad96972d782b",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#10169#Publish",
+   "contentHash": "6f52449dc3534495d8c86c57726b7f201dff2c367a07896a91e89ec2ddfefa4a",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/stop-installing-skills#6109#Publish",
+   "contentHash": "7cd57e58d11e554b04f86ecd7739c180b44b147a054ea684a7614b26db362a9b",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#437#Fusion",
+   "contentHash": "40a4da48650e40051cd96ad80dc31f097cfe6ca506674492422eb4365f22c80d",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-plugins#7550#Publish",
+   "contentHash": "81ea89721c3db9346780eb5979eca4fa299863f70d892957c15ff08657858e0e",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#8213#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/parallax-scrolling-effect#12425#Fusion",
+   "contentHash": "beea56d7378962ce35db3e4ddfbe5e015940e49365c37e9f3dcb177a0075fca5",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-product-teams-built-with-builder#3141#Fusion",
+   "contentHash": "51dbf5a59fc33f17d133a3240a6bc621ec378986d1396b827816a2536d22da93",
+   "label": "unsure",
+   "note": "Year-in-review feature recap; dated record or current how-to"
+  },
+  {
+   "key": "https://www.builder.io/blog/designers-can-ship-without-engineering-handoffs#2207#Fusion",
+   "contentHash": "61e1e1de2b508a20a19bdbbf7813758a8b1669a6c24766bc84a8dd3972ae2442",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#15720#Fusion",
+   "contentHash": "7cfa3fe9a7d0353a71ac358c7d1bab43e9fbb5cfd0bde9603968f73fcd22a943",
+   "label": "change",
+   "note": "Call to action for the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-figma-mcp-server#5104#Fusion",
+   "contentHash": "1a1a052f864183e4484e02e9c56ea58f3b65931bf7781d6b6995f0072d7ba8fb",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/supabase-mcp#6162#Fusion",
+   "contentHash": "7a8d9d30b91888464127b90ecf4e5c6609b84dd131e42ca7a4e81d933f008fbd",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#6376#Fusion",
+   "contentHash": "981745a60359bfbc86a48664c89ca987230b0f3fa96cde19f8d4df18a978dee6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#1422#Fusion",
+   "contentHash": "981745a60359bfbc86a48664c89ca987230b0f3fa96cde19f8d4df18a978dee6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-code#862#Fusion",
+   "contentHash": "d73b46073e338243a62afc97ec1f9fcd74ac497b5403789d0793b590cb853971",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#5798#Fusion",
+   "contentHash": "d6746962da951634fa412ea550fd65e65a75bb5e6d13679ca46d4d59b35c70ee",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-code-fusion#926#Fusion",
+   "contentHash": "e47fc9edb92ca549d32a5a65ea09731b27acce8d3f4606ac104f91b3ca33bca6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-agent-vs-chatbot#6573#Publish",
+   "contentHash": "04f9f9b492c9489e7248b58807b2a5779dd552304e81102ff44c65022e437096",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-superpowers-plugin#12906#Fusion",
+   "contentHash": "ac3ea3fca670eca7b2db0ba6078a0ce46c741d7a3c4a201f5485d0c3752c1258",
+   "label": "change",
+   "note": "Ongoing work inside the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-ai-coding-tools-2025#14133#Fusion",
+   "contentHash": "83f299f112028b4789797ebc8eef12117b915adf7a572287d2de8fad5f6b3268",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#7445#Publish",
+   "contentHash": "39bb46b1284ad75dd13fb3da28f4242ad7cfaad1e77148f84aa7c6c332d3e0b4",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/mcp-client-for-design-handoffs#6812#Fusion",
+   "contentHash": "40a4da48650e40051cd96ad80dc31f097cfe6ca506674492422eb4365f22c80d",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4867#Fusion",
+   "contentHash": "d6746962da951634fa412ea550fd65e65a75bb5e6d13679ca46d4d59b35c70ee",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia#9563#Fusion",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-data#2855#Publish",
+   "contentHash": "52fed6cd9b75218a6798ab9ea9c3cdf67237a2e08dbf856dba950b914ab5b1c7",
+   "label": "keep",
+   "note": "Quoted button or UI label"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#4688#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/how-content-teams-ship-fast-with-builder#1816#Publish",
+   "contentHash": "080dbf761a0a4348445905e2f1e7053cc1e159acacc3f7218dea557bea0178fd",
+   "label": "keep",
+   "note": "Common noun publish, not the product"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#2095#Publish",
+   "contentHash": "c08daeda9857d47fcaccc3ee1823d0cbeb854b7db6eca77679c2514abf1e2c83",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#6447#Fusion",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#3717#Fusion",
+   "contentHash": "729d380ac9a03df8e5f1ae92a2a8ef133c6587a0960ab99e0ce3e0d5f54172a1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#8659#Fusion",
+   "contentHash": "ec4fcfd56a4c5821ec50943279d800b77b63f3dde28fc8d2452afee13f12ed6e",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-product-name-change#1278#Publish",
+   "contentHash": "d0a5fcbc94b7702f7b70a63338e3b2514f92e90f244483570231a098f625a63c",
+   "label": "keep",
+   "note": "Rename announcement must name the old product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-alternatives-2026#6871#Fusion",
+   "contentHash": "0fc2b31cc9f2a611b6d46c50892fe1aac5df73e28e752cdedcf2315248b16737",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/best-figma-to-code-plugin#9578#Fusion",
+   "contentHash": "e8c041a28f38471b23b99e5061d7d48105ad2124ab800af373d4bd12da32b79b",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#7639#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-agent-native-analytics#8038#Publish",
+   "contentHash": "6f52449dc3534495d8c86c57726b7f201dff2c367a07896a91e89ec2ddfefa4a",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/personalization-wins-from-conscia-and-builderio#6291#Publish",
+   "contentHash": "876d8d131ce63831834923b1b742382a536d3af329caa6ce87d7a68896841842",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#9652#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/test-driven-development-ai#8304#Fusion",
+   "contentHash": "279105cedbbe70cc210ba26d986e526933b6f98ae924158abeb71bcdc4852d3d",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/mejores-librerias-calendario-react-ai#6195#Fusion",
+   "contentHash": "ec4fcfd56a4c5821ec50943279d800b77b63f3dde28fc8d2452afee13f12ed6e",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/headless-commerce-summit-2021#6977#Publish",
+   "contentHash": "62e89e100c8b16b709224466ccda636601f227d5e71312c7a30478afc5496989",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-design#6555#Fusion",
+   "contentHash": "58ff54f5ef3e0d4ee88ec77e241985bb46385c48c2ef230f09bb1b39e1acbbe4",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/context-engineering#7303#Fusion",
+   "contentHash": "729d380ac9a03df8e5f1ae92a2a8ef133c6587a0960ab99e0ce3e0d5f54172a1",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#1572#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-nextjs-ai#5766#Fusion",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/linear-mcp-server#2813#Fusion",
+   "contentHash": "a0e7e22495b834900fdf74858e6b093deb10138f8e98cc3f19d6ae51296408d7",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/cursor-figma-mcp-server#6792#Fusion",
+   "contentHash": "39bb46b1284ad75dd13fb3da28f4242ad7cfaad1e77148f84aa7c6c332d3e0b4",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-ai-prototyping#9324#Fusion",
+   "contentHash": "e5079533d0828143624d46b0562a4b3b939904c32ceaac3a2dff162f21e7f281",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#13861#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2851#Publish",
+   "contentHash": "3525752d4f1c982cd22e1595ee0d47d689fcd455df2f64513150865a802f7190",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-tailwind-css-ai#17435#Fusion",
+   "contentHash": "f882b5a6bd223715ee08612c2e56bd0a0eb1018e628da85c7678d9ec5f526cc1",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/building-without-the-handoffs#2074#Publish",
+   "contentHash": "3525752d4f1c982cd22e1595ee0d47d689fcd455df2f64513150865a802f7190",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/create-full-stack-app-ai#8133#Fusion",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-react-ai#4513#Fusion",
+   "contentHash": "d6746962da951634fa412ea550fd65e65a75bb5e6d13679ca46d4d59b35c70ee",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/creating-blog#3957#Publish",
+   "contentHash": "c08daeda9857d47fcaccc3ee1823d0cbeb854b7db6eca77679c2514abf1e2c83",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#5730#Fusion",
+   "contentHash": "7cfa3fe9a7d0353a71ac358c7d1bab43e9fbb5cfd0bde9603968f73fcd22a943",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/prompting-tips#9802#Fusion",
+   "contentHash": "d4fdc64a613dc055ebedb952df92328e95b595efc2d70363f2e1f6cb99a7d22f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/figma-to-website#6815#Publish",
+   "contentHash": "63ec8082b9d53401eb0444d96387fd928708b3900c949945eea3dfe359c7a8dc",
+   "label": "keep",
+   "note": "Another company or common usage, not Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/a2a-protocol#9906#Publish",
+   "contentHash": "618a262cfaad8f582479d3c790cd7bcf02839aeceff159b24009cdde032a9dfc",
+   "label": "keep",
+   "note": "Google Vertex UI label, another company"
+  },
+  {
+   "key": "https://www.builder.io/blog/convert-figma-to-angular-ai#16135#Fusion",
+   "contentHash": "1adb0d7b3da99de1634f598f92418170b8bbd790cf74f012d0855f1c76b69dbc",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/builder-visual-editor-v3#4008#Publish",
+   "contentHash": "660c02b3c60930e4f05eb8998a85f97163c74766b1b143dec91944bbde15c87e",
+   "label": "unsure",
+   "note": "Heading in launch post; product or common workflow unclear"
+  },
+  {
+   "key": "https://www.builder.io/blog/introducing-fusion#5943#Fusion",
+   "contentHash": "981745a60359bfbc86a48664c89ca987230b0f3fa96cde19f8d4df18a978dee6",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/ab-testing-and-personalization-with-nextjs-edge-middleware#6347#Publish",
+   "contentHash": "bab283c775c4934d82c5a5ee859da2bcb594f58a1380a34a0c1f971d4386ef53",
+   "label": "keep",
+   "note": "Verb publish, not the Builder product"
+  },
+  {
+   "key": "https://www.builder.io/blog/ai-prototyping-guide#2111#Fusion",
+   "contentHash": "7cfa3fe9a7d0353a71ac358c7d1bab43e9fbb5cfd0bde9603968f73fcd22a943",
+   "label": "change",
+   "note": "Heading naming the current product"
+  },
+  {
+   "key": "https://www.builder.io/blog/claude-code-with-jira#17745#Fusion",
+   "contentHash": "d247546c4f77f338a5304e69194fd1d3a07e0c6f8a4aa0d98831e473a5b56f6f",
+   "label": "change",
+   "note": "Describes the product as it works now"
+  },
+  {
+   "key": "https://www.builder.io/blog/react-ai-stack#5798#Fusion",
+   "contentHash": "47d7cee07c2939032b30a4b56a03e2899ee86c7ddc07938459b54c4e2a19ba50",
+   "label": "change",
+   "note": "Heading naming the current product"
+  }
+ ]
+}
