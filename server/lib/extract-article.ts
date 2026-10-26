@@ -42,7 +42,11 @@ export function extractArticle(html: string): ExtractedArticle {
   const paragraphs: string[] = [];
   if (container) {
     for (const block of container.querySelectorAll(".builder-text")) {
-      const parts = block.querySelectorAll(TEXT_TAGS);
+      // A blockquote or li that wraps paragraphs would repeat their text with
+      // no space between them, so only innermost text blocks count.
+      const parts = block
+        .querySelectorAll(TEXT_TAGS)
+        .filter((p) => p.querySelector(TEXT_TAGS) === null);
       const texts = parts.length > 0 ? parts.map((p) => p.text) : [block.text];
       for (const text of texts) {
         const line = clean(text);

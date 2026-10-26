@@ -22,6 +22,11 @@ describe("extractArticle", () => {
     expect(article.paragraphs).toEqual(["Why", "Fusion is now Builder Code.", "Same pricing"]);
   });
 
+  it("reads nested blocks once, as their own paragraphs", () => {
+    const nested = `<div class="article-builder-content"><div class="builder-text"><blockquote><p><strong>Same repo?</strong></p><p>Builder Fusion opens a PR.</p></blockquote></div></div>`;
+    expect(extractArticle(nested).paragraphs).toEqual(["Same repo?", "Builder Fusion opens a PR."]);
+  });
+
   it("returns no paragraphs when the article container is missing", () => {
     expect(extractArticle("<html><body><p>x</p></body></html>").paragraphs).toEqual([]);
   });

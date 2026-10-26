@@ -80,12 +80,12 @@
   },
   {
    "url": "https://www.builder.io/blog/agent-first-apps",
-   "contentHash": "ce3fc70bb88e23427d41030f1bc809788e5e56c426883af7154900e0e495302e",
+   "contentHash": "e9b50512454e044e04d3ac1f3e533da81af78bd42d4dfad6a88bca01d862f816",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/agent-harness",
-   "contentHash": "924a2171aaf67dc6f50c617bac2b4f8dfc2af6224aa43b2bccaecc3e6b0a53c8",
+   "contentHash": "df57928b9183ade552026d157049b960af7f503a8a5a87d086e2a6e539fb910f",
    "hasText": true
   },
   {
@@ -100,7 +100,7 @@
   },
   {
    "url": "https://www.builder.io/blog/agent-native-clips-captures-browser-errors",
-   "contentHash": "f3fc3cb2b5053cd17c9df64f76471f8e9bb61bc5bbd4e0d855ff35dc217a3e4e",
+   "contentHash": "2ac69ba4b865ef723c1727e21c4bcfb7272ee64f99f0f06027c0d0b615e13e22",
    "hasText": true
   },
   {
@@ -205,7 +205,7 @@
   },
   {
    "url": "https://www.builder.io/blog/ai-evals",
-   "contentHash": "5749c8e3a6085801375361da3cef8ad4c5018adff76ffe789811bb09b0d423a5",
+   "contentHash": "b73ff5c84f7c9dd5cab5607d549b4c909b6aae989f9a5c80ba0b001e43b8e93f",
    "hasText": true
   },
   {
@@ -305,12 +305,12 @@
   },
   {
    "url": "https://www.builder.io/blog/alternativas-a-replit",
-   "contentHash": "a0d8512d9b265de5dcb023e3ccf5ddd7ad5a3089a24066d62cfd9b9afe3601d7",
+   "contentHash": "1972ccbd897c7e10d866a84f7b8f03bbc9deaae300aa74660357ccdcd6a9697e",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/animated-css-accordions",
-   "contentHash": "3fb13d26b751f9e986bd2b524716f37fe4b90eec309aef554d2230ad6b8203d1",
+   "contentHash": "4872a458268275f060979b4611be7e1107bd3a329e98adbd1fbc2c0bc5deba26",
    "hasText": true
   },
   {
@@ -370,12 +370,12 @@
   },
   {
    "url": "https://www.builder.io/blog/best-chrome-extensions-for-developers-2026",
-   "contentHash": "901fe1678f38c727b596e17d37a58723a8ea83720821b77cb7004a6fa6468462",
+   "contentHash": "968a0795bd7f0aa37f4fdcd8fe022db053ac26327c9a446a92815f136dc08be4",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/best-figma-plugins",
-   "contentHash": "ba6971a82d5c57eb7561578c7d3bf38d8080808f089ad9439f5b3535f01ff96b",
+   "contentHash": "81ea89721c3db9346780eb5979eca4fa299863f70d892957c15ff08657858e0e",
    "hasText": true
   },
   {
@@ -385,7 +385,7 @@
   },
   {
    "url": "https://www.builder.io/blog/best-figma-to-code-plugin",
-   "contentHash": "67e8c674e255d2c00620f0a7d32ba148c907fdf9cc2c230933abe039a5684d42",
+   "contentHash": "e8c041a28f38471b23b99e5061d7d48105ad2124ab800af373d4bd12da32b79b",
    "hasText": true
   },
   {
@@ -410,7 +410,7 @@
   },
   {
    "url": "https://www.builder.io/blog/best-llms-for-coding",
-   "contentHash": "258c3c219680ab7515f9bad8e0c9f1c009c707eb1a65a9896ce2c20b9a17081f",
+   "contentHash": "f79a2f02e92b561d493afd9e974d44264847cb5719696cf5ef2bae622a122e74",
    "hasText": true
   },
   {
@@ -460,7 +460,7 @@
   },
   {
    "url": "https://www.builder.io/blog/build-an-agentic-software-factory-starting-with-one-bug",
-   "contentHash": "a95551affa8de42641a23106b9b04968ed90113e09a75bb98261ae72bae01b82",
+   "contentHash": "1b1f825fbd4c450d5dcc723b49d29f860a25132a8339fcf1dab06ebd91eff95e",
    "hasText": true
   },
   {
@@ -545,7 +545,7 @@
   },
   {
    "url": "https://www.builder.io/blog/builder-named-gartner-cool-vendor",
-   "contentHash": "8c1ab6dc576ab49e0fe2322e54bea932c5b28a87d29308e32097ddb8f0dd7900",
+   "contentHash": "37f065374a1a80e9e7c0d838c6b9acc18574954e386d9159570cbde0fd00e01c",
    "hasText": true
   },
   {
@@ -645,12 +645,12 @@
   },
   {
    "url": "https://www.builder.io/blog/claude-code-routines",
-   "contentHash": "637061d51ceb640058d055d1205b281513954a93fec6ca6e94e466bc70bf4eca",
+   "contentHash": "078d84cb1198233a8c65ac6e276229c0c9979fc15727205291ffbbf31811b811",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/claude-code-settings",
-   "contentHash": "9f92ed1204c7ad47a782be693b36ab8537d77033861ce7733004b29354a332fd",
+   "contentHash": "e9f1175195649e0dd7b48240f353b34275e96f44fbe9a862ed33ddf88bb193b0",
    "hasText": true
   },
   {
@@ -665,12 +665,12 @@
   },
   {
    "url": "https://www.builder.io/blog/claude-code-superpowers-plugin",
-   "contentHash": "24943a4817ea763d8da3d9e99288a902f1ac22f823d14b53d02f629dab2597bb",
+   "contentHash": "ac3ea3fca670eca7b2db0ba6078a0ce46c741d7a3c4a201f5485d0c3752c1258",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/claude-code-tips-best-practices",
-   "contentHash": "be5863f68e1fd8fc6e71b4b04b75ccee7fa48c527c8faa6993930fd56c6a59c7",
+   "contentHash": "09346bd97a2ba432d1536f369ae49ecbd25a3768584ca03f822c1100232ebf9f",
    "hasText": true
   },
   {
@@ -685,12 +685,12 @@
   },
   {
    "url": "https://www.builder.io/blog/claude-code-visual-editor",
-   "contentHash": "72a4ea48044cf04e8ff3c25e5f6f1850131a2b062f9438d0cd243a4d1ffbe3c1",
+   "contentHash": "4168396c78b34cf27e245f297a2f58cc08d798a2dbfa429d3c18685a69f00456",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/claude-code-with-jira",
-   "contentHash": "9500c05f70d71d5c0d3dc7fdea81a3a05b6bafe4efb5b05b93492dc9a7351f3d",
+   "contentHash": "d247546c4f77f338a5304e69194fd1d3a07e0c6f8a4aa0d98831e473a5b56f6f",
    "hasText": true
   },
   {
@@ -725,12 +725,12 @@
   },
   {
    "url": "https://www.builder.io/blog/codex-vs-claude-code",
-   "contentHash": "1ba4014a7f84ee0817c4be55edd1c7536bf5e2e3b3d85d6ef25d9fc4aec24138",
+   "contentHash": "1ef8d35a19d721ef7d6b66ddaf7aa5df0ad1601031a1a17b052b21a80a65eb05",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/configuracion-ideal-cursor-ai-react-nextjs",
-   "contentHash": "6860b9ea9851d667d28b9d406fc102dac3aadd8ce439504825c039946b8b4a3a",
+   "contentHash": "87b9c7af6c099de1bae2dd19c88c83429445c1376b851f4eee01cfd48c7f2ba1",
    "hasText": true
   },
   {
@@ -790,17 +790,17 @@
   },
   {
    "url": "https://www.builder.io/blog/convertir-figma-a-nextjs-con-ia",
-   "contentHash": "fd80d377d19a9f865bfca04fc49acd224977a0a73ec9498a6b357ca489a961bd",
+   "contentHash": "48d7c4f12aefe09a3cf4b0caaf9beda33875bf2f0daf6b16d74e2e2f45f9879a",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/crea-aplicaciones-con-react-y-material-ui-usando-ia",
-   "contentHash": "b63ee81a037e6617503450efb6945b6de847afb66076db2ecd171b91d42fe32f",
+   "contentHash": "e7ca01b179b449079d739a645c3ce3aba48863da44c6314ca2aec018316543ea",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/create-full-stack-app-ai",
-   "contentHash": "50a7e32e21885c35be5566e95f5b37ce3fe772089c76d5c0dbef1fb823b889c5",
+   "contentHash": "283ec9a3e5c6bbf1d57c20eb64ca9980c90cc0ce69c1b990d8b423a4a83cd621",
    "hasText": true
   },
   {
@@ -860,7 +860,7 @@
   },
   {
    "url": "https://www.builder.io/blog/cursor-ai-tips-react-nextjs",
-   "contentHash": "0b0e4bbea5546d2087a99b5415a423613416c3bdd619c13a88461165be0f2eb1",
+   "contentHash": "4cf5eb572300de85ce2e9b755f10be16cdedeb19f2692e5ddef60af07867babc",
    "hasText": true
   },
   {
@@ -880,12 +880,12 @@
   },
   {
    "url": "https://www.builder.io/blog/cursor-for-designers-existing-repo-workflow",
-   "contentHash": "b0aa78a67592c3b8cc222d53a305a959ca306cfd0d241868f94079547c55efb0",
+   "contentHash": "c067181c06f9ffe13aba515e04de55301f00cadddd8fa496e878c102fc1a183d",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/cursor-for-designers-tutorial-series",
-   "contentHash": "2fae4a20026640659bfbd28c0a52101613af069cdad2e6531d4d7bbc258c384d",
+   "contentHash": "316b5ff567b41a123ed27981034717b43bad84f03b2d124415e8ef5e69448e04",
    "hasText": true
   },
   {
@@ -940,7 +940,7 @@
   },
   {
    "url": "https://www.builder.io/blog/de-slop-ai-generated-codebase",
-   "contentHash": "57efddbf1cc6ae2027d7600daae9d931cffc00f7bfdae3517ff2a494071d397f",
+   "contentHash": "8e9804e76d8b4472562f4280ab98c929f9c95ad91607be0a5d428eac41e6aac3",
    "hasText": true
   },
   {
@@ -1075,12 +1075,12 @@
   },
   {
    "url": "https://www.builder.io/blog/devin-vs-claude-code",
-   "contentHash": "1b5b3962f31bbf43d008e807b74262cb5b059beea3c84db664b3ee2c3186cbc1",
+   "contentHash": "9546e0747372cb4c1c9b7dd050eb1c0a91efb548f3073bade26bab66ec8146d3",
    "hasText": true
   },
   {
    "url": "https://www.builder.io/blog/devin-vs-cursor",
-   "contentHash": "2610f71384372e3c8502a0e85914860b0a4eb395d6d393b4d8ff4fa1805b0aec",
+   "contentHash": "110a38b5bb9c31be2515a5724a3beb294215506a1b13d0c5fd189ce9f90c5aef",
    "hasText": true
   },
   {
@@ -1120,7 +1120,7 @@
   },
   {
    "url": "https://www.builder.io/blog/edicion-visual-claude-code",
-   "contentHash": "b239d162eb45affa2e002b0be503043cc49ea87cb1089b63c3689eecc6d28089",
+   "contentHash": "e3de2521d08a5caf81b6fa483003116b9029131f2ef4a666fb5e3eb64b426ece",
    "hasText": true
   },
   {
@@ -1275,7 +1275,7 @@
   },
   {
    "url": "https://www.builder.io/blog/figma-to-cursor-for-designers",
-   "contentHash": "057ca25b63d33753823718825a71e1537cca93d588ef9764c5b080ec3a96e5af",
+   "contentHash": "a44aa4eacc80216b3840055cd63fa2eda100f680b168b82302f3ddf55f6868b6",
    "hasText": true
   },
   {
@@ -1285,7 +1285,7 @@
   },
   {
    "url": "https://www.builder.io/blog/figma-to-nextjs-ai",
-   "contentHash": "eed8f64b9a47bd5e2a136403d9c802787f7dd8de547deb1876fb9bc2f339dada",
+   "contentHash": "7cff859dc713f2153f2331aa05bf4a8bc86c566b2a4082ae48a46c0c636d885c",
    "hasText": true
   },
   {
@@ -1520,7 +1520,7 @@
   },
   {
    "url": "https://www.builder.io/blog/how-to-create-on-brand-linkedin-carousels-for-free",
-   "contentHash": "7b9c9be0b90fba8cb815f0678b574233b04662d01f35119e5d8528ed7c2f1346",
+   "contentHash": "71f6e521f5dadd6b644570ee41c9bee483a33cc55a0589ba4bfdd5d3d857933f",
    "hasText": true
   },
   {
@@ -1620,7 +1620,7 @@
   },
   {
    "url": "https://www.builder.io/blog/introducing-agent-native-analytics",
-   "contentHash": "95dcbdca8ff5fbb96856dbb8ad5e02b8a5900c523ac08e997fe5db0e214c24ba",
+   "contentHash": "6f52449dc3534495d8c86c57726b7f201dff2c367a07896a91e89ec2ddfefa4a",
    "hasText": true
   },
   {
@@ -1705,7 +1705,7 @@
   },
   {
    "url": "https://www.builder.io/blog/marco-agente",
-   "contentHash": "70c1483f287bd9d93532e96f7744b4c7495c8254f606616ec648ad093a109494",
+   "contentHash": "283b98339aa8c07e590df07e5769b3bbc4eab08beebe968bd442ed94c02a6003",
    "hasText": true
   },
   {
@@ -1860,7 +1860,7 @@
   },
   {
    "url": "https://www.builder.io/blog/notion-alternatives",
-   "contentHash": "0d5582676add09e04d67a78186e52f78b62b6e3cba6cfd30f3a131712a765fed",
+   "contentHash": "30b59754fd0f490bf1cf2e7d48b12377ededc2399eae2c4823e8b1a67317be42",
    "hasText": true
   },
   {
@@ -1900,7 +1900,7 @@
   },
   {
    "url": "https://www.builder.io/blog/patron-asesor-claude",
-   "contentHash": "744abf883ec467e5d6c7da062bb7d93498ebf51e88a3f293d586ac7a9d1a12fd",
+   "contentHash": "6c284d0431cec340e9fd08bfc4fbf5e427486690d43b0a86079f0ab094dd577e",
    "hasText": true
   },
   {
@@ -1920,7 +1920,7 @@
   },
   {
    "url": "https://www.builder.io/blog/plugin-superpowers-claude-code-flujo-trabajo-estructurado",
-   "contentHash": "5bbbcfd0f4c7ff7d633de72df6361840407b760882856eea9904063eda77f961",
+   "contentHash": "8e2069c437a9b635dcb3a590dd3146c85c4c7737eb40f853f429f9a42df69f67",
    "hasText": true
   },
   {
@@ -2040,7 +2040,7 @@
   },
   {
    "url": "https://www.builder.io/blog/react-material-ui-ai",
-   "contentHash": "b851156e5b9215f4c73f578c5f2a15a59bd3c7f610bd904c036a870b41e47630",
+   "contentHash": "62ad0f805dcfd7d37d5b79128e0c2d61b76a6224029275c92f5c988f1c7d547a",
    "hasText": true
   },
   {
@@ -2060,7 +2060,7 @@
   },
   {
    "url": "https://www.builder.io/blog/replit-alternatives",
-   "contentHash": "122fa909527d28635f8655066861a522189b5ae6c5ca4ca6da627a5608d9b579",
+   "contentHash": "0449c1c5f7afdd0d996d7d675568a9edd64304096abc424c6db8eb4afd55f523",
    "hasText": true
   },
   {
@@ -2335,7 +2335,7 @@
   },
   {
    "url": "https://www.builder.io/blog/the-claude-advisor-pattern",
-   "contentHash": "2973befe57c09f7b6bbe28c35d4be850d2b7336d9eb1e81bb8f4cd8ae24e6b30",
+   "contentHash": "aefe2361bf686eb43f1ec8fa38b1cd876ab08730a8fc1331c2e146fd85e63624",
    "hasText": true
   },
   {
@@ -2420,7 +2420,7 @@
   },
   {
    "url": "https://www.builder.io/blog/turn-a-figma-landing-page-into-a-live-website",
-   "contentHash": "40c352b99bfc828382a04fdb5e56130f66dd4dfe1da476c654f6dcbbd8736818",
+   "contentHash": "5fecaef4d9c3ce0c9bfa5d825c2e9fdfe255bb52956fb867d80370e1098c6db1",
    "hasText": true
   },
   {
@@ -2495,7 +2495,7 @@
   },
   {
    "url": "https://www.builder.io/blog/v0-alternatives",
-   "contentHash": "502c008658970fbf857b18bd90d0cac1fd07cb92d2362e5776a111e91623430c",
+   "contentHash": "a1948fbf480a3a4f1d9573e990a1597e5d1c2333160351be93be73230d6dacc4",
    "hasText": true
   },
   {
@@ -2560,7 +2560,7 @@
   },
   {
    "url": "https://www.builder.io/blog/visual-next-js",
-   "contentHash": "a982beb2cc9b7b1721e4bd8c148e6690c25593ac7a4fa536b7f9882957dd60e1",
+   "contentHash": "c10d9e7e32ff1f9752ed454807a641c4445a15c8a84249ffbafaed2617fe9a73",
    "hasText": true
   },
   {
@@ -2640,7 +2640,7 @@
   },
   {
    "url": "https://www.builder.io/blog/what-is-jev",
-   "contentHash": "a0f7bbf324c073772644c304b2ef6433102450da789d29c371e8c71beede8169",
+   "contentHash": "09a5c26ea581fa8be5a851f535a6c72c926bab1ce1e2430fc06dccf16e3d6a37",
    "hasText": true
   },
   {
@@ -2680,7 +2680,7 @@
   },
   {
    "url": "https://www.builder.io/blog/windsurf-alternatives",
-   "contentHash": "449287edc9ee30aa4311763f2343b44360cd9ae6f573caed04c3d5d5b60150f3",
+   "contentHash": "5a93c8717f9ebf26a35e377a8f38d1dcafe1be7977aa6fde0b77dd3a3672d6bb",
    "hasText": true
   },
   {
@@ -2710,7 +2710,7 @@
   },
   {
    "url": "https://www.builder.io/blog/zed-ai-2026",
-   "contentHash": "5e7c799aaf860df40b22d4d2aed824b59bd9b1431d1a47e38bc79f9fcb5bdce4",
+   "contentHash": "6f22536a5300c1a5b3fae4f2762d0949e787b528a39aaa18d50a14ebf6cbe7e1",
    "hasText": true
   }
  ]

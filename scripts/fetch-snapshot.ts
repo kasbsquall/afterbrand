@@ -1,5 +1,7 @@
 // Fetches Builder.io blog posts into a local, dated snapshot.
 // Usage: pnpm exec tsx scripts/fetch-snapshot.ts [--limit N]
+//        pnpm exec tsx scripts/fetch-snapshot.ts --snapshot builder-blog-2026-10-25
+//        (re-extracts an existing snapshot from its raw cache, same URLs, no network)
 // The snapshot stays in data/ (git-ignored): the blog text is Builder's, so the
 // public repo only carries this script, the URL list and content hashes.
 import { createHash } from "node:crypto";
@@ -25,19 +27,38 @@ async function fetchText(url: string): Promise<string> {
   return res.text();
 }
 
-async function main(): Promise<void> {
-  const limitArg = process.argv.indexOf("--limit");
-  const limit = limitArg > 0 ? Number(process.argv[limitArg + 1]) : Infinity;
-  const date = new Date().toISOString().slice(0, 10);
-  const dir = join("data", "snapshots", `builder-blog-${date}`);
-  const rawDir = join(dir, "raw");
-  await mkdir(rawDir, { recursive: true });
-
+async function sitemapUrls(limit: number): Promise<string[]> {
   const sitemap = await fetchText(SITEMAP);
-  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
+  return [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((m) => m[1].trim())
     .filter(isPostUrl)
     .slice(0, limit);
+}
+
+// The URLs an existing snapshot already covers, so a rebuild keeps the same set.
+async function snapshotUrls(dir: string): Promise<string[]> {
+  const pages = (await readFile(join(dir, "pages.jsonl"), "utf8"))
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => (JSON.parse(line) as { url: string }).url);
+  const failed = JSON.parse(await readFile(join(dir, "failures.json"), "utf8")) as { url: string }[];
+  return [...pages, ...failed.map((f) => f.url)];
+}
+
+async function main(): Promise<void> {
+  const limitArg = process.argv.indexOf("--limit");
+  const limit = limitArg > 0 ? Number(process.argv[limitArg + 1]) : Infinity;
+  const snapshotArg = process.argv.indexOf("--snapshot");
+  const snapshot = snapshotArg > 0 ? process.argv[snapshotArg + 1] : undefined;
+  if (snapshot !== undefined && !/^builder-blog-\d{4}-\d{2}-\d{2}$/.test(snapshot)) {
+    throw new Error("--snapshot takes a folder name like builder-blog-2026-10-25");
+  }
+  const date = snapshot ? snapshot.slice("builder-blog-".length) : new Date().toISOString().slice(0, 10);
+  const dir = join("data", "snapshots", snapshot ?? `builder-blog-${date}`);
+  const rawDir = join(dir, "raw");
+  await mkdir(rawDir, { recursive: true });
+
+  const urls = snapshot ? await snapshotUrls(dir) : await sitemapUrls(limit);
   console.info(`[snapshot] ${urls.length} post URLs`);
 
   const fetched: { url: string; article: ExtractedArticle }[] = [];
