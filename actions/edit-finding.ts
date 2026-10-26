@@ -15,6 +15,8 @@ export default defineAction({
     id: z.string().describe("Finding id"),
     proposal: z.string().min(1).describe("Full rewritten sentence"),
   }),
+  // A rewrite turns any finding, a keep included, into a change, so the agent asks first.
+  needsApproval: (_args, ctx) => isAgentCaller(ctx?.caller),
   run: async ({ id, proposal }, ctx) => {
     const ownerEmail = requireOwner(ctx);
     const [row] = await loadFindings(ownerEmail, [id]);

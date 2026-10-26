@@ -27,7 +27,7 @@ We measured it on 140 mentions from 70 posts (the frozen test split), labeled by
 | Regex on every post | 8 of 35 | 1 of 102 | 0 of 140 |
 | Afterbrand, 3 runs | 0 of 35 in each run | 0 of 102 in each run | 5, 6 and 7 of 140 |
 
-Find-and-replace would change 35 of 35 mentions that should stay. Afterbrand changed 0 of 35 in each of three runs, and sent 5 to 7 of 140 to a person.
+The strongest regex got 9 of 140 wrong (8 wrong edits, 1 miss). Afterbrand got 0 wrong in each of three runs, and sent 5 to 7 of 140 to a person. Find-and-replace changed all 35 mentions that should stay.
 
 The known failure: it sends headings and bare labels ("Fusion vs.", "Prompt to build: Fusion") to a person when the labels say they should change. Of the 5 to 7 it sent per run, 2 were mentions the labelers also found ambiguous.
 
@@ -52,10 +52,10 @@ Every operation is one `defineAction`. The screen, the agent, Claude Code over M
 |---|---|---|---|---|
 | `list-rules`, `upsert-rule` | Rules panel | Turns a plain-language instruction into an exception | `list-rules` | The agent may append an exception on its own; creating, renaming, redating, disabling a rule or rewriting its exceptions needs approval. Refuses to save over a rule that changed while you edited it |
 | `find-candidates` | | After a rule changes | | Deterministic: finds sentences, decides nothing |
-| `record-decisions` | | Decides in batches of 50 | | Rejects a rewrite that fails the verifier |
+| `record-decisions` | | Decides in batches of 50 | | Rejects a rewrite that fails the verifier; the agent can never overwrite a decision a person made |
 | `list-findings`, `get-library-overview`, `get-page`, `list-pages` | Queue, page view | Reads the queue | Yes | Read only |
 | `accept-findings` | Accept, bulk accept | Only after approval (`needsApproval`) | | Keep and Needs you cannot be applied; read-only pages reject every write |
-| `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes | | Every applied change can be undone until publish |
+| `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes; its own rewrite through `edit-finding` needs approval | | Every applied change can be undone until publish |
 | `publish-changes` | Publish card | Only after approval (`needsApproval`) | | Publishes accepted changes only, never on a read-only page, as Markdown per page plus a manifest |
 | `set-page-read-only` | Page view | Locks freely; unlocking needs approval | | Accept, undo and publish all refuse a read-only page, whoever calls |
 | `view-screen` | Writes the selection to app state | Reads what you selected | | |
@@ -99,6 +99,8 @@ The fetch reads today's sitemap, so your library can differ from the Oct 25, 202
 - The sample comes from the sentences the mention finder found, so mentions it misses (a name split across a line break, for example) are invisible to every system in the eval.
 - The 4 mentions the labelers disagreed on are still waiting for a person to adjudicate them; they count as unsure.
 - The approval card for a batch accept does not show a before and after diff of each finding.
+- The eval scores decisions, not the wording of rewrites. Rewrites are only checked by the code verifier; the link and length checks were added after the eval run, and all 139 rewrites the agent left in the eval database still pass them.
+- An exception the agent appends is applied without approval; it is highlighted as new in the rules panel. Calls from the local CLI count as a person and skip approvals.
 - Afterbrand only knows the names in its rules and the pages in its library. Publishing writes a patch; it does not write to a CMS yet.
 - Undo restores the first identical sentence on a page if the same sentence appears twice, and a multi-change undo is validated up front but not wrapped in a transaction.
 - One agent decides in batches. Splitting a sweep across agent teams is not built.

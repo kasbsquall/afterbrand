@@ -10,11 +10,11 @@ export interface RewriteCheck {
 // Spans a rewrite must leave untouched: URLs, inline code, quoted strings.
 const PROTECTED = /https?:\/\/\S+|`[^`]+`|"[^"]*"|“[^”]*”/g;
 // URLs, HTML tags and Markdown links.
-const LINK_OR_MARKUP = /https?:\/\/|www\.|<\/?[a-z][^>]*>|\]\(/gi;
+const LINK_OR_MARKUP = /https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|io|net|org|dev|ai|co|app)\b|<\/?[a-z][^>]*>|\]\(/gi;
 // How far beyond the mentions an edit may reach (articles, verb agreement).
 const SLACK_CHARS = 40;
 
-function changedRegion(before: string, after: string): { start: number; endBefore: number } {
+function changedRegion(before: string, after: string): { start: number; endBefore: number; endAfter: number } {
   let prefix = 0;
   while (prefix < before.length && prefix < after.length && before[prefix] === after[prefix]) prefix++;
   let suffix = 0;
@@ -24,7 +24,7 @@ function changedRegion(before: string, after: string): { start: number; endBefor
     before[before.length - 1 - suffix] === after[after.length - 1 - suffix]
   )
     suffix++;
-  return { start: prefix, endBefore: before.length - suffix };
+  return { start: prefix, endBefore: before.length - suffix, endAfter: after.length - suffix };
 }
 
 // Code, not the agent, has the last word on whether a rewrite is safe to apply.
@@ -57,6 +57,10 @@ export function verifyRewrite(input: {
     if (region.start < first - SLACK_CHARS || region.endBefore > last + SLACK_CHARS) {
       problems.push("The rewrite edits text far from the old name.");
     }
+    // Room for the longer name plus small grammar fixes, not new claims.
+    const grown = region.endAfter - region.start - (region.endBefore - region.start);
+    const allowed = mentionOffsets.length * Math.max(0, newName.length - oldName.length) + SLACK_CHARS / 2;
+    if (grown > allowed) problems.push("The rewrite adds text beyond the new name.");
   }
   return { ok: problems.length === 0, problems };
 }

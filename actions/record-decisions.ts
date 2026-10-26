@@ -5,7 +5,7 @@ import { z } from "zod";
 import { getDb, schema } from "../server/db/index.js";
 import { loadFindings, mentionOffsets } from "../server/lib/findings-read.js";
 import { nowIso, requireOwner } from "../server/lib/owner.js";
-import { isAgentCaller } from "../server/lib/policy.js";
+import { agentMayRedecide, isAgentCaller } from "../server/lib/policy.js";
 import { verifyRewrite } from "../server/lib/rewrite.js";
 
 const MAX_BATCH = 50;
@@ -44,6 +44,10 @@ export default defineAction({
       }
       if (row.finding.status !== "pending") {
         rejected.push({ id: d.id, problem: `Already ${row.finding.status}.` });
+        continue;
+      }
+      if (!agentMayRedecide(row.finding.decidedBy, ctx?.caller)) {
+        rejected.push({ id: d.id, problem: "A person decided this one. Ask them before changing it." });
         continue;
       }
       let proposal: string | null = null;

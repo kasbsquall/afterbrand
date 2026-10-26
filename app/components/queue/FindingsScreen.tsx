@@ -212,8 +212,9 @@ export function FindingsScreen() {
 
   const top = (
     <TopBar
-      decided={overview.data ? overview.data.findings.all - overview.data.findings.undecided : undefined}
-      all={overview.data?.findings.all}
+      // Same denominator as the big number: what is still waiting for a person.
+      decided={overview.data ? overview.data.statuses.pending - overview.data.pending.undecided : undefined}
+      all={overview.data?.statuses.pending}
       muted={sounds.muted}
       onToggleMute={sounds.toggle}
     />

@@ -4,6 +4,7 @@ import { findSentenceCandidates } from "./mentions.js";
 import {
   assertCanApply,
   assertCanPublish,
+  agentMayRedecide,
   assertPagesWritable,
   isAgentCaller,
   ruleEditNeedsApproval,
@@ -84,6 +85,17 @@ describe("verifyRewrite", () => {
     expect(withTag.problems).toContain("The rewrite adds a link or markup.");
     const withMd = verifyRewrite({ ...base, proposal: "[Builder Code](x) lets designers ship to production." });
     expect(withMd.problems).toContain("The rewrite adds a link or markup.");
+    const bare = verifyRewrite({ ...base, proposal: "Builder Code, see evil.io, lets designers ship to production." });
+    expect(bare.problems).toContain("The rewrite adds a link or markup.");
+  });
+
+  it("rejects a rewrite that inserts more text than the new name needs", () => {
+    const check = verifyRewrite({
+      ...base,
+      proposal: "Builder Code, the only tool you will ever need and now free forever, lets designers ship to production.",
+    });
+    expect(check.problems).toContain("The rewrite adds text beyond the new name.");
+    expect(verifyRewrite({ ...base, proposal: "Builder Code now lets designers ship to production." }).ok).toBe(true);
   });
 });
 
@@ -151,6 +163,13 @@ describe("policy", () => {
     expect(ruleEditNeedsApproval(current, { newName: "Builder Code", exceptions: "Keep history." }, "tool")).toBe(false);
     expect(ruleEditNeedsApproval(null, { oldName: "Publish", newName: "Builder Content" }, "tool")).toBe(true);
     expect(ruleEditNeedsApproval(current, { enabled: false }, "frontend")).toBe(false);
+  });
+
+  it("never lets the agent overwrite a person's decision", () => {
+    expect(agentMayRedecide("person", "tool")).toBe(false);
+    expect(agentMayRedecide("agent", "tool")).toBe(true);
+    expect(agentMayRedecide(null, "tool")).toBe(true);
+    expect(agentMayRedecide("person", "frontend")).toBe(true);
   });
 
   it("treats tool, MCP, A2A and automation callers as agents", () => {

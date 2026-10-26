@@ -41,6 +41,11 @@ export function isAgentCaller(caller: string | undefined): boolean {
   return caller === "tool" || caller === "mcp" || caller === "a2a" || caller === "automation";
 }
 
+// A decision a person made is theirs: the agent may not overwrite it.
+export function agentMayRedecide(decidedBy: string | null, caller: string | undefined): boolean {
+  return !(isAgentCaller(caller) && decidedBy === "person");
+}
+
 // Locking a page is always safe; an agent unlocking one asks a person first.
 export function unlockNeedsApproval(args: { readOnly: boolean }, caller: string | undefined): boolean {
   return isAgentCaller(caller) && !args.readOnly;
