@@ -86,6 +86,11 @@ export const changes = pgTable("changes", {
     .references(() => pages.id),
   before: text("before").notNull(),
   after: text("after").notNull(),
+  // Where `after` starts in the page body while the change is live. Applying or
+  // undoing an earlier change on the same page shifts it, so undo restores this
+  // exact sentence even when the same text appears twice. Null on changes
+  // applied before positions were recorded.
+  bodyStart: integer("body_start"),
   appliedBy: text("applied_by", { enum: ["agent", "person"] }).notNull(),
   appliedAt: text("applied_at").notNull(),
   revertedAt: text("reverted_at"),

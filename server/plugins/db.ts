@@ -126,6 +126,11 @@ export default runMigrations(
       );
       CREATE INDEX IF NOT EXISTS publications_owner_idx ON publications (owner_email, published_at)`,
     },
+    {
+      version: 8,
+      name: "afterbrand-change-positions",
+      sql: `ALTER TABLE changes ADD COLUMN IF NOT EXISTS body_start INTEGER`,
+    },
   ],
   { table: "afterbrand_migrations" },
 );

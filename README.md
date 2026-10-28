@@ -56,7 +56,7 @@ Every operation is one `defineAction`. The screen, the agent, Claude Code over M
 | `list-findings`, `get-library-overview`, `get-page`, `list-pages` | Queue, page view | Reads the queue | Yes | Read only |
 | `stage-changes` | Batch panel above the queue | Stages up to 50 changes for review | | Changes nothing. The batch code is the start of a SHA-256 over every sentence and rewrite in the batch |
 | `accept-findings` | Accept, bulk accept, Accept batch | Only a staged batch, by its code, after approval (`needsApproval`); a list of ids from the agent is refused | | Refuses a batch whose sentences or rewrites changed after staging, as a whole; Keep and Needs you cannot be applied; read-only pages reject every write |
-| `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes; its own rewrite through `edit-finding` needs approval | | Every applied change can be undone until publish |
+| `reject-findings`, `edit-finding`, `revert-change` | Keep, Edit, Undo | Yes; its own rewrite through `edit-finding` needs approval | | Every applied change can be undone until publish, at the position where it was made, even when the same sentence appears twice on the page. Applying and undoing each run in one database transaction: if one sentence fails, nothing changes |
 | `publish-changes`, `get-publication` | Publish card, Download | Only after approval (`needsApproval`), by the set code the publish card shows | | Publishes accepted changes only, never on a read-only page; refuses the call if any change was accepted or undone since the code was read. Saves each page with its changes in the database, downloadable as one Markdown file |
 | `set-page-read-only` | Page view | Locks freely; unlocking needs approval | | Accept, undo and publish all refuse a read-only page, whoever calls |
 | `view-screen` | Writes the selection to app state | Reads what you selected | | |
@@ -103,7 +103,6 @@ The fetch reads today's sitemap, so your library can differ from the Oct 25, 202
 - The eval scores decisions, not the wording of rewrites. Rewrites are only checked by the code verifier; the link and length checks were added after the eval run, and all 139 rewrites the agent left in the eval database still pass them.
 - Calls from the local CLI count as a person and skip approvals.
 - Afterbrand only knows the names in its rules and the pages in its library. Publishing saves the updated pages for download; it does not write to a CMS yet.
-- Undo restores the first identical sentence on a page if the same sentence appears twice, and a multi-change undo is validated up front but not wrapped in a transaction.
 - One agent decides in batches. Splitting a sweep across agent teams is not built.
 
 ## Built during the event

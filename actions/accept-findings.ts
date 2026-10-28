@@ -8,6 +8,7 @@ import { loadFindings, type FindingWithContext } from "../server/lib/findings-re
 import { loadEnabledRules, syncPageFindings } from "../server/lib/findings-sync.js";
 import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
 import { assertAgentAppliesBatch, isAgentCaller } from "../server/lib/policy.js";
+import { shiftLiveChanges } from "../server/lib/positions.js";
 import { replaceSentence } from "../server/lib/rewrite.js";
 import { revertChanges } from "../server/lib/undo.js";
 
@@ -41,66 +42,73 @@ export default defineAction({
     if (undoChangeIds) return revertChanges(ownerEmail, undoChangeIds);
     const callerIsAgent = isAgentCaller(ctx?.caller);
     assertAgentAppliesBatch(ctx?.caller, batch !== undefined);
-    let staged: BatchRow | null = null;
-    let rows: FindingWithContext[];
-    if (batch) {
-      // Validates every finding first, so a batch never half-applies on a rule break.
-      ({ batch: staged, rows } = await loadBatchForApply(ownerEmail, batch));
-    } else {
-      if (!ids) fail("Pass ids to apply, or undoChangeIds to undo.");
-      rows = await loadFindings(ownerEmail, ids);
-      if (rows.length !== ids.length) fail("Some findings were not found. Refresh the queue and try again.");
-      assertAllApplicable(rows);
-    }
 
-    const db = getDb();
-    const changeIds: string[] = [];
-    const touchedPages = new Set<string>();
-    // Apply later sentences first so earlier offsets on the same page stay valid.
-    const ordered = [...rows].sort(
-      (a, b) => a.page.id.localeCompare(b.page.id) || b.finding.sentenceStart - a.finding.sentenceStart,
-    );
-    for (const { finding } of ordered) {
-      const [page] = await db
-        .select()
-        .from(schema.pages)
-        .where(and(eq(schema.pages.ownerEmail, ownerEmail), eq(schema.pages.id, finding.pageId)));
-      const proposal = finding.proposal as string;
-      const body = replaceSentence(page.body, finding.sentenceStart, finding.sentence, proposal);
-      const now = nowIso();
-      const changeId = stableId("ch", ownerEmail, finding.id, now);
-      await db.update(schema.pages).set({ body }).where(eq(schema.pages.id, page.id));
-      await db.insert(schema.changes).values({
-        id: changeId,
-        ownerEmail,
-        findingId: finding.id,
-        pageId: page.id,
-        before: finding.sentence,
-        after: proposal,
-        appliedBy: callerIsAgent ? "agent" : "person",
-        appliedAt: now,
-      });
-      await db
-        .update(schema.findings)
-        .set({ status: "accepted", updatedAt: now })
-        .where(eq(schema.findings.id, finding.id));
-      changeIds.push(changeId);
-      touchedPages.add(page.id);
-    }
+    // One transaction from the checks to the resync: if any sentence cannot be
+    // applied, no page changes.
+    const { staged, rows, changeIds, touchedPages } = await getDb().transaction(async (tx) => {
+      let staged: BatchRow | null = null;
+      let rows: FindingWithContext[];
+      if (batch) {
+        ({ batch: staged, rows } = await loadBatchForApply(ownerEmail, batch));
+      } else {
+        if (!ids) fail("Pass ids to apply, or undoChangeIds to undo.");
+        rows = await loadFindings(ownerEmail, ids);
+        if (rows.length !== ids.length) fail("Some findings were not found. Refresh the queue and try again.");
+        assertAllApplicable(rows);
+      }
 
-    if (staged) {
-      await db
-        .update(schema.batches)
-        .set({ status: "applied", closedAt: nowIso() })
-        .where(and(eq(schema.batches.ownerEmail, ownerEmail), eq(schema.batches.id, staged.id)));
-    }
+      const changeIds: string[] = [];
+      const touchedPages = new Set<string>();
+      // Later sentences first, so each finding's offset is still valid when it is applied.
+      const ordered = [...rows].sort(
+        (a, b) => a.page.id.localeCompare(b.page.id) || b.finding.sentenceStart - a.finding.sentenceStart,
+      );
+      for (const { finding } of ordered) {
+        const [page] = await tx
+          .select()
+          .from(schema.pages)
+          .where(and(eq(schema.pages.ownerEmail, ownerEmail), eq(schema.pages.id, finding.pageId)));
+        const proposal = finding.proposal as string;
+        const at = finding.sentenceStart;
+        const body = replaceSentence(page.body, at, finding.sentence, proposal);
+        const now = nowIso();
+        const changeId = stableId("ch", ownerEmail, finding.id, now);
+        await tx.update(schema.pages).set({ body }).where(eq(schema.pages.id, page.id));
+        await shiftLiveChanges(ownerEmail, page.id, at, proposal.length - finding.sentence.length);
+        await tx.insert(schema.changes).values({
+          id: changeId,
+          ownerEmail,
+          findingId: finding.id,
+          pageId: page.id,
+          before: finding.sentence,
+          after: proposal,
+          bodyStart: at,
+          appliedBy: callerIsAgent ? "agent" : "person",
+          appliedAt: now,
+        });
+        await tx
+          .update(schema.findings)
+          .set({ status: "accepted", updatedAt: now })
+          .where(eq(schema.findings.id, finding.id));
+        changeIds.push(changeId);
+        touchedPages.add(page.id);
+      }
 
-    // Offsets moved on the touched pages; resync keeps every other decision.
-    const rules = await loadEnabledRules(ownerEmail);
-    for (const pageId of touchedPages) {
-      const [page] = await db.select().from(schema.pages).where(eq(schema.pages.id, pageId));
-      await syncPageFindings(ownerEmail, page, rules);
-    }
+      if (staged) {
+        await tx
+          .update(schema.batches)
+          .set({ status: "applied", closedAt: nowIso() })
+          .where(and(eq(schema.batches.ownerEmail, ownerEmail), eq(schema.batches.id, staged.id)));
+      }
+
+      // Offsets moved on the touched pages; resync keeps every other decision.
+      const rules = await loadEnabledRules(ownerEmail);
+      for (const pageId of touchedPages) {
+        const [page] = await tx.select().from(schema.pages).where(eq(schema.pages.id, pageId));
+        await syncPageFindings(ownerEmail, page, rules);
+      }
+      return { staged, rows, changeIds, touchedPages };
+    });
 
     const first = rows[0];
     const summary = `${rows.length} changes on ${touchedPages.size} page${touchedPages.size === 1 ? "" : "s"}`;
