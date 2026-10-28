@@ -128,5 +128,6 @@ The commit history has two stretches.
 | `c82b680` | Undo restores the exact sentence it changed, even when the same sentence repeats on a page; applying and undoing are atomic |
 | `709a866` | Builder space connector: import a model's entries, save accepted changes back as unpublished edits, webhook on every publish |
 | `47a1b48` | A second agent, spawned through agent teams, reviews every batch before a person is asked to approve it |
+| `86fb24e` | Builder connector tested on a live space; reads entries one at a time when a space refuses longer lists |
 
 Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0).
