@@ -36,7 +36,7 @@ function exceptionLines(text: string): string[] {
 
 function askToRedecide(rule: Rule) {
   sendToAgentChat({
-    message: `The exceptions for ${rule.oldName} changed. Read the rule again with list-rules, then re-decide the pending findings it affects with record-decisions.`,
+    message: `I changed the exceptions for ${rule.oldName}. Read the rule again and re-decide the findings to review that it affects.`,
     contextLabel: `Rule ${rule.oldName} to ${rule.newName}`,
     submit: true,
     openSidebar: true,

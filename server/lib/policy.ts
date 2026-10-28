@@ -60,9 +60,11 @@ export interface RuleFields {
   enabled: boolean;
 }
 
-// The agent may append exceptions on its own (the person asked in plain words).
-// Creating a rule, renaming, moving the date, disabling it or rewriting the
-// exceptions it already has goes to a person.
+// Rules steer every decision, and the pages the agent reads could ask it to
+// add one, so any rule change from an agent goes to a person first, appended
+// exceptions included. A call that changes nothing needs no approval.
+const RULE_FIELDS = ["oldName", "newName", "effectiveDate", "sourceUrl", "enabled", "exceptions"] as const;
+
 export function ruleEditNeedsApproval(
   current: RuleFields | null,
   patch: Partial<RuleFields>,
@@ -70,9 +72,5 @@ export function ruleEditNeedsApproval(
 ): boolean {
   if (!isAgentCaller(caller)) return false;
   if (!current) return true;
-  const changes = (key: keyof RuleFields) => patch[key] !== undefined && patch[key] !== current[key];
-  if (changes("oldName") || changes("newName") || changes("effectiveDate") || changes("sourceUrl") || changes("enabled")) {
-    return true;
-  }
-  return patch.exceptions !== undefined && !patch.exceptions.startsWith(current.exceptions);
+  return RULE_FIELDS.some((key) => patch[key] !== undefined && patch[key] !== current[key]);
 }

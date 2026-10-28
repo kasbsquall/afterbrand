@@ -179,7 +179,7 @@ export function PageDetail({ pageId }: { pageId: string }) {
               </a>
             ) : null}
             <span className="ab-pos">
-              {plural(pending.length, "pending finding")} of {findingsList.length}
+              {pending.length} to review of {plural(findingsList.length, "finding")}
             </span>
           </div>
           <h1>{page.title}</h1>

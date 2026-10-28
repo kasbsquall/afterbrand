@@ -25,6 +25,8 @@ const GAP = 1;
 const LAYER = 5;
 const TOP = 6;
 const MAX_LAYERS = 60;
+// Room on both sides of the strip so the active page's ring is never cut.
+const RING_PAD = 1.5;
 
 // Two shades per decision so adjacent layers read as separate findings.
 const SHADES = {
@@ -147,23 +149,25 @@ export function CoreSample({ pages, pagesInLibrary, findings, leftToReview, acti
       <h2 className="ab-sr" id="ab-core-h">
         Library core sample
       </h2>
+      {/* The number that matters is the one only a person can clear: what the
+          agent could not decide alone. The rest is ready for bulk review. */}
       <div className="ab-core-top">
-        <div className="ab-big">{leftToReview}</div>
+        <div className="ab-big">{findings.unsure}</div>
         <div className="ab-big-lbl">
-          <b>left for you to review</b>of {plural(findings.all, "finding")}
+          <b>
+            <span className="ab-dot ab-d-unsure" />
+            need you{findings.undecided > 0 ? " so far" : ""}
+          </b>
+          of {leftToReview} to review
         </div>
-        <div className="ab-legend" aria-label="The agent's decisions on the findings left to review">
+        <div className="ab-legend" aria-label="The agent's decisions on the findings to review">
           <span>
             <span className="ab-dot ab-d-change" />
-            Change<b>{findings.change}</b>
+            Change, ready to accept<b>{findings.change}</b>
           </span>
           <span>
             <span className="ab-dot ab-d-keep" />
             Keep<b>{findings.keep}</b>
-          </span>
-          <span>
-            <span className="ab-dot ab-d-unsure" />
-            Needs you<b>{findings.unsure}</b>
           </span>
           <span>
             <span className="ab-dot ab-d-undecided" />
@@ -182,7 +186,7 @@ export function CoreSample({ pages, pagesInLibrary, findings, leftToReview, acti
       </div>
       <svg
         className="ab-strip"
-        viewBox={`0 0 ${width} ${height}`}
+        viewBox={`${-RING_PAD} 0 ${width + RING_PAD * 2} ${height}`}
         role="group"
         aria-label="One column per page with findings, one layer per finding, coloured by the agent's decision. Arrow keys move between pages, Enter shows a page's findings"
         onKeyDown={moveColumnFocus}

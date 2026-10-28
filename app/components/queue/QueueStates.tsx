@@ -94,9 +94,9 @@ export function FilterEmpty({ label, onShowAll }: { label: string; onShowAll: ()
   return (
     <div className="ab-panel ab-state">
       <FunnelSimple size={28} weight="light" className="ab-state-icon" />
-      <h2>No pending findings marked {label}.</h2>
+      <h2>Nothing to review marked {label}.</h2>
       <button type="button" className="ab-btn" onClick={onShowAll}>
-        Show all pending findings
+        Show everything to review
       </button>
     </div>
   );

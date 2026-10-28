@@ -62,7 +62,7 @@ export function TopBar({ decided, all, muted, onToggleMute, crumb }: Props) {
               <i style={{ transform: `scaleX(${ratio})` }} />
             </div>
             <span>
-              <strong>{decided}</strong> of {all} <span className="ab-long">waiting findings have a decision from the agent</span>
+              <strong>{decided}</strong> of {all} <span className="ab-long">to review decided by the agent</span>
             </span>
           </div>
         ) : null}

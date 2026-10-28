@@ -259,7 +259,7 @@ export function FindingsScreen() {
   const shown = filter === "all" ? list.data.total : counts[filter];
   const activePage = stats.pages.find((p) => p.id === (pageFilter ?? focused?.pageId)) ?? null;
   const position = focused
-    ? `${findings.indexOf(focused) + 1} of ${shown} ${pageFilter ? "on this page" : "pending"}`
+    ? `${findings.indexOf(focused) + 1} of ${shown} ${pageFilter ? "on this page" : "to review"}`
     : "";
 
   let main;
@@ -341,7 +341,7 @@ export function FindingsScreen() {
                   onClick={() => changeScope({ filter: tab })}
                 >
                   {tab === "all" ? null : <span className={`ab-dot ab-d-${tab}`} />}
-                  {tab === "all" ? "All pending" : decisionWord(tab)} <span className="ab-c">{tabCount(tab)}</span>
+                  {tab === "all" ? "To review" : decisionWord(tab)} <span className="ab-c">{tabCount(tab)}</span>
                 </button>
               ))}
             </div>

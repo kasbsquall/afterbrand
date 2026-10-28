@@ -170,7 +170,8 @@ export function FocusCard({
           <span className="ab-lbl">Proposed</span>
           <EditBox finding={finding} isSaving={busy === "edit"} onCancel={onCancelEdit} onSave={onSaveEdit} />
         </div>
-      ) : (
+      ) : finding.decision === null ? null : (
+        // Nothing is proposed for a sentence the agent has not read yet.
         <div className="ab-proposal">
           <span className="ab-lbl">Proposed</span>
           {finding.proposal ? (
@@ -178,7 +179,11 @@ export function FocusCard({
               <ProposalText text={finding.proposal} newName={finding.newName} />
             </p>
           ) : (
-            <p className="ab-noproposal">No rewrite. The sentence stays as it is.</p>
+            <p className="ab-noproposal">
+              {finding.decision === "keep"
+                ? "No rewrite. The sentence stays as it is."
+                : "No rewrite yet. Write one with Edit, or keep it."}
+            </p>
           )}
         </div>
       )}

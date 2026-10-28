@@ -48,7 +48,7 @@ export function AgentCard({ selected, undecided, decided, pending }: Props) {
         <h2 id="ab-agent-h">Agent</h2>
         <span className="ab-status ab-live">
           <Sparkle size={14} weight="light" />
-          Decided {decided} of {pending} pending
+          Decided {decided} of {pending} to review
         </span>
       </div>
       <div className="ab-abody">
@@ -79,11 +79,11 @@ export function AgentCard({ selected, undecided, decided, pending }: Props) {
               type="button"
               className="ab-chip"
               onClick={() =>
-                ask("Decide the next 50 undecided findings with record-decisions, following the afterbrand-decide skill.")
+                ask(undecided > 50 ? "Decide the next 50 undecided findings." : `Decide the ${plural(undecided, "undecided finding")}.`)
               }
             >
               <Play size={14} weight="light" />
-              Decide the next 50 of {undecided} undecided
+              {undecided > 50 ? `Decide the next 50 of ${undecided} undecided` : `Decide the ${plural(undecided, "undecided finding")}`}
             </button>
           ) : null}
         </div>

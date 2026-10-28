@@ -154,9 +154,10 @@ describe("policy", () => {
     expect(unlockNeedsApproval({ readOnly: false }, "frontend")).toBe(false);
   });
 
-  it("lets the agent append an exception, and asks a person for any other rule edit", () => {
+  it("asks a person before any rule change from the agent, appended exceptions included", () => {
     const current = { oldName: "Fusion", newName: "Builder Code", effectiveDate: "2026-09-10", exceptions: "Keep history.", sourceUrl: null, enabled: true };
-    expect(ruleEditNeedsApproval(current, { exceptions: "Keep history.\nKeep launch posts." }, "tool")).toBe(false);
+    expect(ruleEditNeedsApproval(current, { exceptions: "Keep history.\nKeep launch posts." }, "tool")).toBe(true);
+    expect(ruleEditNeedsApproval(current, { exceptions: "Keep history." }, "tool")).toBe(false);
     expect(ruleEditNeedsApproval(current, { exceptions: "Keep launch posts." }, "tool")).toBe(true);
     expect(ruleEditNeedsApproval(current, { enabled: false }, "tool")).toBe(true);
     expect(ruleEditNeedsApproval(current, { newName: "Builder" }, "tool")).toBe(true);
