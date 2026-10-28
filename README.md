@@ -13,6 +13,7 @@ Built for the Builder.io Agent-Native Hackathon (Oct 2026) on Agent-Native 0.220
 1. **Rules.** You write the retired name, its replacement, the date it took effect and the exceptions in plain language ("keep it in dated changelogs"). The agent edits the same rules through the same action.
 2. **Decisions.** Code finds every sentence that mentions a retired name. The agent reads each one in context and decides Change, Keep or Needs you, with a one-line reason and a rewrite. Code checks every rewrite before it can be accepted: the new name is there, nothing outside the mention moved, no URL, code span or quote was touched, and no link or markup was added.
 3. **Review.** You accept, keep or edit each finding, alone or in bulk. Select a few and tell the agent "these are launch posts, never change launch posts": it adds the exception to the rule, finds every other launch post, and re-decides them while you watch. Nothing is published until a person approves it.
+4. **Publish.** Approved changes to pages from your Builder space go back into Builder as unpublished edits, so the live page changes only when someone publishes it there; the rest download as one file. A webhook brings every new publish in Builder back to be checked.
 
 ## Why not find-and-replace
 
@@ -111,4 +112,18 @@ The fetch reads today's sitemap, so your library can differ from the Oct 25, 202
 
 ## Built during the event
 
-Started from the Agent-Native `chat` template (`npx @agent-native/core create --template chat`) with the framework packages pinned at 0.220.0. Everything else was written from Oct 25, 2026 on: the schema, the snapshot importer, the mention finder and rewrite verifier, the actions and their rules, the agent skill, the queue and page screens, the rule automation, the MCP catalog and the eval. Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0). The commit history shows the order.
+The commit history has two stretches.
+
+**Oct 25 and 26, 2026: the first version, declared here as existing work.** It was built inside the submission window as Builder published it at the time; the start date later moved to Oct 27. Commits `40cfc56` to `0c31a01`: from the Agent-Native `chat` template (`npx @agent-native/core create --template chat`, packages pinned at 0.220.0) to the schema, the snapshot importer, the mention finder and rewrite verifier, the actions and their rules, the agent skill, the queue and page screens, the rule automation, the MCP catalog, the eval and the deploy lockdown. The decision skill the eval measured has not changed since.
+
+**From Oct 27, 2026: new development.**
+
+| Commit | What changed |
+|---|---|
+| `1eb5a40` | The queue leads with what needs a person. Every rule change from the agent needs approval, adding an exception included |
+| `b490e85` | The agent stages a batch; the queue shows every sentence before and after, and the person approves that exact batch by its code |
+| `03f4c30` | Publishing is bound to a code for exactly the accepted changes on screen, stored in the database and downloaded from the app |
+| `c82b680` | Undo restores the exact sentence it changed, even when the same sentence repeats on a page; applying and undoing are atomic |
+| `709a866` | Builder space connector: import a model's entries, save accepted changes back as unpublished edits, webhook on every publish |
+
+Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0).
