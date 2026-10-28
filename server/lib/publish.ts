@@ -11,6 +11,8 @@ export interface PublishedPage {
   url: string;
   title: string;
   body: string;
+  // Saved in Builder as unpublished edits.
+  savedInBuilder?: boolean;
   changes: { before: string; after: string; appliedBy: "agent" | "person" }[];
 }
 
@@ -58,7 +60,9 @@ export function publicationMarkdown(publication: Pick<PublicationRow, "published
     `${count(publication.changes, "change")} on ${count(publication.pages, "page")}. Each page lists its changes, then its full updated text.`,
   ];
   for (const page of pages) {
-    out.push("", "---", "", `## ${page.title}`, "", page.url, "", "### Changes", "");
+    out.push("", "---", "", `## ${page.title}`, "", page.url);
+    if (page.savedInBuilder) out.push("", "Saved in Builder as unpublished edits. It goes live when someone publishes it in Builder.");
+    out.push("", "### Changes", "");
     page.changes.forEach((change, i) => {
       out.push(`${i + 1}. Before: ${change.before}`, `   After: ${change.after}`, `   Applied by: ${change.appliedBy}`);
     });

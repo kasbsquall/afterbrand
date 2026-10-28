@@ -16,6 +16,8 @@ export interface LastPublication {
 type Props = {
   changes: number;
   pages: number;
+  // Pages that publishing saves in Builder as unpublished edits.
+  builderPages: number;
   // The code of exactly these accepted changes; publish-changes refuses any other.
   set: string | null;
   last: LastPublication | null;
@@ -38,7 +40,7 @@ async function download(id: string) {
 // Publishing locks the accepted changes and saves them as a download. A click
 // here is the person approving; when the agent asks to publish, the chat shows
 // the same approval before the action runs (needsApproval on publish-changes).
-export function PublishCard({ changes, pages, set, last }: Props) {
+export function PublishCard({ changes, pages, builderPages, set, last }: Props) {
   const [isConfirming, setIsConfirming] = useState(false);
   const publish = useActionMutation("publish-changes");
 
@@ -54,7 +56,8 @@ export function PublishCard({ changes, pages, set, last }: Props) {
     try {
       const result = await publish.mutateAsync({ set });
       setIsConfirming(false);
-      toast(`Published ${plural(result.published, "change")} across ${plural(result.pages, "page")}.`, {
+      const inBuilder = result.savedInBuilder > 0 ? ` ${plural(result.savedInBuilder, "page")} saved in Builder as unpublished edits.` : "";
+      toast(`Published ${plural(result.published, "change")} across ${plural(result.pages, "page")}.${inBuilder}`, {
         action: { label: "Download", onClick: () => void download(result.publication) },
       });
     } catch (error) {
@@ -73,6 +76,9 @@ export function PublishCard({ changes, pages, set, last }: Props) {
             <span>
               Publishing set <b>{set}</b> saves {plural(pages, "page")} with {plural(changes, "change")} as a download
               and locks them. Undo stops working for them.
+              {builderPages > 0
+                ? ` ${builderPages === pages ? "Every page" : plural(builderPages, "page")} also goes to Builder as unpublished edits, live only when someone publishes there.`
+                : null}
             </span>
           </p>
           <div className="ab-edit-row">

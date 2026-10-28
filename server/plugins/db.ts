@@ -131,6 +131,30 @@ export default runMigrations(
       name: "afterbrand-change-positions",
       sql: `ALTER TABLE changes ADD COLUMN IF NOT EXISTS body_start INTEGER`,
     },
+    {
+      version: 9,
+      name: "afterbrand-builder-source",
+      sql: `CREATE TABLE IF NOT EXISTS builder_entries (
+        page_id TEXT PRIMARY KEY REFERENCES pages(id),
+        owner_email TEXT NOT NULL,
+        model TEXT NOT NULL,
+        entry_id TEXT NOT NULL,
+        baseline TEXT NOT NULL,
+        builder_updated_at TEXT,
+        imported_at TEXT NOT NULL,
+        saved_at TEXT
+      );
+      CREATE UNIQUE INDEX IF NOT EXISTS builder_entries_owner_entry_idx ON builder_entries (owner_email, model, entry_id);
+      CREATE TABLE IF NOT EXISTS builder_hooks (
+        id TEXT PRIMARY KEY,
+        owner_email TEXT NOT NULL,
+        model TEXT NOT NULL,
+        token_hash TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        last_called_at TEXT
+      );
+      CREATE UNIQUE INDEX IF NOT EXISTS builder_hooks_token_idx ON builder_hooks (token_hash)`,
+    },
   ],
   { table: "afterbrand_migrations" },
 );

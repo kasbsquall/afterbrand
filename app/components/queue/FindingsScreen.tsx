@@ -8,6 +8,7 @@ import { TAB_ID } from "@/lib/tab-id";
 
 import { AgentCard } from "./AgentCard";
 import { BatchReview } from "./BatchReview";
+import { BuilderSourceCard } from "./BuilderSourceCard";
 import { CoreSample } from "./CoreSample";
 import { canAccept, FindingList } from "./FindingList";
 import { FocusCard, type BusyAction, type Finding } from "./FocusCard";
@@ -369,10 +370,12 @@ export function FindingsScreen() {
           <PublishCard
             changes={stats.unpublishedChanges}
             pages={stats.unpublishedPages}
+            builderPages={stats.unpublishedBuilderPages}
             set={stats.publishSet}
             last={stats.lastPublication}
           />
           <RulesPanel />
+          <BuilderSourceCard />
           <AgentCard
             selected={selectedFindings}
             undecided={stats.pending.undecided}

@@ -1,5 +1,5 @@
 import { defineAction } from "@agent-native/core/action";
-import { and, asc, count, eq } from "drizzle-orm";
+import { and, asc, count, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
@@ -12,7 +12,7 @@ const emptyCounts = (): DecisionCounts => ({ change: 0, keep: 0, unsure: 0, unde
 
 export default defineAction({
   description:
-    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published, the pages they touch and the publishSet code that publish-changes needs, the latest publication, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
+    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published, the pages they touch (and how many of them came from Builder) and the publishSet code that publish-changes needs, the latest publication, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
   schema: z.object({}),
   http: { method: "GET" },
   readOnly: true,
@@ -78,6 +78,14 @@ export default defineAction({
 
     const unpublished = await loadUnpublished(ownerEmail);
     const last = await findPublication(ownerEmail);
+    const unpublishedPageIds = [...new Set(unpublished.map((row) => row.change.pageId))];
+    const fromBuilder =
+      unpublishedPageIds.length === 0
+        ? []
+        : await db
+            .select({ pageId: schema.builderEntries.pageId })
+            .from(schema.builderEntries)
+            .where(and(eq(schema.builderEntries.ownerEmail, ownerEmail), inArray(schema.builderEntries.pageId, unpublishedPageIds)));
 
     const all = totals.change + totals.keep + totals.unsure + totals.undecided;
     return {
@@ -87,7 +95,9 @@ export default defineAction({
       statuses,
       pending,
       unpublishedChanges: unpublished.length,
-      unpublishedPages: new Set(unpublished.map((row) => row.change.pageId)).size,
+      unpublishedPages: unpublishedPageIds.length,
+      // Of those, pages that publishing saves in Builder as unpublished edits.
+      unpublishedBuilderPages: fromBuilder.length,
       // What a person sees on the publish card; publish-changes refuses any other set.
       publishSet: unpublished.length > 0 ? publishSetCode(unpublished.map((row) => row.change)) : null,
       lastPublication: last

@@ -149,3 +149,42 @@ export const sweeps = pgTable("sweeps", {
   startedAt: text("started_at").notNull(),
   finishedAt: text("finished_at"),
 });
+
+// A page that came from a Builder entry. `baseline` is the entry's text as
+// Builder publishes it; publishing in Afterbrand saves the page's current text
+// over it in Builder as unpublished edits, so nothing goes live from here.
+export const builderEntries = pgTable(
+  "builder_entries",
+  {
+    pageId: text("page_id")
+      .primaryKey()
+      .references(() => pages.id),
+    ownerEmail: text("owner_email").notNull(),
+    model: text("model").notNull(),
+    entryId: text("entry_id").notNull(),
+    baseline: text("baseline").notNull(),
+    builderUpdatedAt: text("builder_updated_at"),
+    importedAt: text("imported_at").notNull(),
+    savedAt: text("saved_at"),
+  },
+  (t) => ({
+    ownerEntry: uniqueIndex("builder_entries_owner_entry_idx").on(t.ownerEmail, t.model, t.entryId),
+  }),
+);
+
+// A webhook link for one Builder model. Builder calls it when an entry is
+// published; only the hash of the link's token is stored.
+export const builderHooks = pgTable(
+  "builder_hooks",
+  {
+    id: text("id").primaryKey(),
+    ownerEmail: text("owner_email").notNull(),
+    model: text("model").notNull(),
+    tokenHash: text("token_hash").notNull(),
+    createdAt: text("created_at").notNull(),
+    lastCalledAt: text("last_called_at"),
+  },
+  (t) => ({
+    token: uniqueIndex("builder_hooks_token_idx").on(t.tokenHash),
+  }),
+);
