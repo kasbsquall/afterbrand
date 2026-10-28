@@ -67,13 +67,16 @@ export async function builderKeys(): Promise<{ publicKey: string | null; private
   return { publicKey: pub.value?.trim() || null, privateKey: priv.value?.trim() || null };
 }
 
-async function call(url: URL, what: string, init: RequestInit = {}): Promise<unknown> {
+const REFUSED = Symbol("refused");
+
+async function call(url: URL, what: string, init: RequestInit = {}, refusedIsAnswer = false): Promise<unknown> {
   let response: Response;
   try {
     response = await fetch(url, { ...init, signal: AbortSignal.timeout(TIMEOUT_MS) });
   } catch {
     fail(`Afterbrand could not reach Builder while ${what}. Nothing changed; try again.`);
   }
+  if (refusedIsAnswer && response.status === 401) return REFUSED;
   if (response.status === 401 || response.status === 403) {
     fail(`Builder refused the key while ${what}. Check the Builder space keys in Settings.`);
   }
@@ -88,14 +91,24 @@ async function call(url: URL, what: string, init: RequestInit = {}): Promise<unk
 
 const results = z.object({ results: z.array(builderEntry) });
 
-// Published entries of a model, newest first, at most `max`.
+// Published entries of a model, newest first, at most `max`. Some spaces refuse
+// a public-key list of more than one entry (401, code e892, seen on a free
+// space in October 2026) yet serve the same entries one per request, so a
+// refused page is asked for again one entry at a time.
 export async function listEntries(publicKey: string, model: string, max: number): Promise<BuilderEntry[]> {
   const out: BuilderEntry[] = [];
-  for (let offset = 0; offset < max; offset += PAGE_SIZE) {
-    const limit = Math.min(PAGE_SIZE, max - offset);
+  let size = PAGE_SIZE;
+  for (let offset = 0; offset < max; offset += size) {
+    const limit = Math.min(size, max - offset);
     const url = new URL(`/api/v3/content/${model}`, CDN_ORIGIN);
     url.search = new URLSearchParams({ apiKey: publicKey, limit: String(limit), offset: String(offset), cachebust: "true" }).toString();
-    const page = results.safeParse(await call(url, "reading entries"));
+    const answer = await call(url, "reading entries", {}, limit > 1);
+    if (answer === REFUSED) {
+      size = 1;
+      offset -= size;
+      continue;
+    }
+    const page = results.safeParse(answer);
     if (!page.success) fail("Builder's list of entries did not have the expected shape.");
     out.push(...page.data.results);
     if (page.data.results.length < limit) break;
