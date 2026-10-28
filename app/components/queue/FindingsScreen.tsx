@@ -366,7 +366,12 @@ export function FindingsScreen() {
             activePageId={activePage?.id ?? null}
             onSelectPage={(pageId) => changeScope({ pageId })}
           />
-          <PublishCard changes={stats.unpublishedChanges} pages={stats.unpublishedPages} />
+          <PublishCard
+            changes={stats.unpublishedChanges}
+            pages={stats.unpublishedPages}
+            set={stats.publishSet}
+            last={stats.lastPublication}
+          />
           <RulesPanel />
           <AgentCard
             selected={selectedFindings}

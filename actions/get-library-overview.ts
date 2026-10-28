@@ -1,9 +1,10 @@
 import { defineAction } from "@agent-native/core/action";
-import { and, asc, count, countDistinct, eq, isNull } from "drizzle-orm";
+import { and, asc, count, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
 import { requireOwner } from "../server/lib/owner.js";
+import { findPublication, loadUnpublished, publishSetCode } from "../server/lib/publish.js";
 
 type DecisionCounts = { change: number; keep: number; unsure: number; undecided: number };
 
@@ -11,7 +12,7 @@ const emptyCounts = (): DecisionCounts => ({ change: 0, keep: 0, unsure: 0, unde
 
 export default defineAction({
   description:
-    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published and the pages they touch, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
+    "Summarize the whole rename job: pages in the library, pages with findings, findings per decision (change, keep, unsure, undecided) and per status, the decision split of pending findings, accepted changes not yet published, the pages they touch and the publishSet code that publish-changes needs, the latest publication, and the same decision counts for every page with findings, in queue order. Use it to answer how much is left.",
   schema: z.object({}),
   http: { method: "GET" },
   readOnly: true,
@@ -75,16 +76,8 @@ export default defineAction({
       pages.set(row.pageId, page);
     }
 
-    const [{ unpublished, unpublishedPages }] = await db
-      .select({ unpublished: count(), unpublishedPages: countDistinct(schema.changes.pageId) })
-      .from(schema.changes)
-      .where(
-        and(
-          eq(schema.changes.ownerEmail, ownerEmail),
-          isNull(schema.changes.revertedAt),
-          isNull(schema.changes.publishedAt),
-        ),
-      );
+    const unpublished = await loadUnpublished(ownerEmail);
+    const last = await findPublication(ownerEmail);
 
     const all = totals.change + totals.keep + totals.unsure + totals.undecided;
     return {
@@ -93,8 +86,13 @@ export default defineAction({
       findings: { all, ...totals },
       statuses,
       pending,
-      unpublishedChanges: unpublished,
-      unpublishedPages,
+      unpublishedChanges: unpublished.length,
+      unpublishedPages: new Set(unpublished.map((row) => row.change.pageId)).size,
+      // What a person sees on the publish card; publish-changes refuses any other set.
+      publishSet: unpublished.length > 0 ? publishSetCode(unpublished.map((row) => row.change)) : null,
+      lastPublication: last
+        ? { id: last.id, code: last.code, changes: last.changes, pages: last.pages, publishedAt: last.publishedAt }
+        : null,
       pages: [...pages.values()],
     };
   },

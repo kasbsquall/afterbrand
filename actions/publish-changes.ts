@@ -1,35 +1,32 @@
 import { defineAction, fail } from "@agent-native/core/action";
-import { and, eq, inArray, isNull } from "drizzle-orm";
-import { mkdir, writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { and, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
-import { nowIso, requireOwner } from "../server/lib/owner.js";
+import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
 import { assertCanPublish, assertPagesWritable } from "../server/lib/policy.js";
-
-const EXPORT_ROOT = resolve("data", "exports");
+import { loadUnpublished, publishSetCode, type PublishedPage } from "../server/lib/publish.js";
 
 export default defineAction({
   description:
-    "Publish every accepted change that is not published yet: writes one updated Markdown file per page plus a diff manifest to the export folder, then locks those changes. A person approves every call. Use only when the person asks to publish or ship.",
-  schema: z.object({}),
+    "Publish every accepted change that is not published yet, by the set code get-library-overview returns as publishSet: saves the updated pages and their changes as a publication the person downloads from the app, then locks those changes. If any change was accepted or undone since the code was read, nothing is published. A person approves every call. Use only when the person asks to publish or ship.",
+  schema: z.object({
+    set: z
+      .string()
+      .regex(/^[0-9a-f]{12}$/)
+      .describe("publishSet from get-library-overview: the accepted changes the person sees"),
+  }),
   needsApproval: true,
-  run: async (_args, ctx) => {
+  run: async ({ set }, ctx) => {
     const ownerEmail = requireOwner(ctx);
     const db = getDb();
-    const pending = await db
-      .select({ change: schema.changes, findingStatus: schema.findings.status })
-      .from(schema.changes)
-      .innerJoin(schema.findings, eq(schema.changes.findingId, schema.findings.id))
-      .where(
-        and(
-          eq(schema.changes.ownerEmail, ownerEmail),
-          isNull(schema.changes.revertedAt),
-          isNull(schema.changes.publishedAt),
-        ),
-      );
+    const pending = await loadUnpublished(ownerEmail);
     assertCanPublish(pending.map((p) => p.findingStatus));
+    if (publishSetCode(pending.map((p) => p.change)) !== set) {
+      fail(
+        `The accepted changes changed since that set was read: ${pending.length} ${pending.length === 1 ? "is" : "are"} waiting now. Nothing was published. Read the set again and show the person what it holds.`,
+      );
+    }
 
     const pageIds = [...new Set(pending.map((p) => p.change.pageId))];
     const pages = await db
@@ -40,32 +37,42 @@ export default defineAction({
     assertPagesWritable(pages);
 
     const now = nowIso();
-    const dir = join(EXPORT_ROOT, now.replace(/[:.]/g, "-"));
-    await mkdir(dir, { recursive: true });
-    const manifest = pages.map((page) => {
-      const slug = page.url.split("/").filter(Boolean).pop() ?? page.id;
-      return {
-        url: page.url,
-        file: `${slug}.md`,
-        changes: pending
-          .filter((p) => p.change.pageId === page.id)
-          .map((p) => ({ before: p.change.before, after: p.change.after, appliedBy: p.change.appliedBy })),
-      };
+    const content: PublishedPage[] = pages.map((page) => ({
+      url: page.url,
+      title: page.title,
+      body: page.body,
+      changes: pending
+        .filter((p) => p.change.pageId === page.id)
+        .map((p) => ({ before: p.change.before, after: p.change.after, appliedBy: p.change.appliedBy })),
+    }));
+    const id = stableId("pub", ownerEmail, set, now);
+    await db.insert(schema.publications).values({
+      id,
+      ownerEmail,
+      code: set,
+      changes: pending.length,
+      pages: pages.length,
+      content: JSON.stringify(content),
+      publishedAt: now,
     });
-    for (const [i, page] of pages.entries()) {
-      await writeFile(join(dir, manifest[i].file), `# ${page.title}\n\n${page.body.split("\n").join("\n\n")}\n`);
-    }
-    await writeFile(join(dir, "changes.json"), JSON.stringify({ publishedAt: now, pages: manifest }, null, 2));
     await db
       .update(schema.changes)
       .set({ publishedAt: now })
-      .where(inArray(schema.changes.id, pending.map((p) => p.change.id)));
+      .where(
+        and(
+          eq(schema.changes.ownerEmail, ownerEmail),
+          inArray(
+            schema.changes.id,
+            pending.map((p) => p.change.id),
+          ),
+        ),
+      );
 
     return {
-      message: `Published ${pending.length} change${pending.length === 1 ? "" : "s"} across ${pages.length} page${pages.length === 1 ? "" : "s"}.`,
+      message: `Published set ${set}: ${pending.length} change${pending.length === 1 ? "" : "s"} across ${pages.length} page${pages.length === 1 ? "" : "s"}. The person can download it from the publish card.`,
       published: pending.length,
       pages: pages.length,
-      exportFolder: dir,
+      publication: id,
     };
   },
 });

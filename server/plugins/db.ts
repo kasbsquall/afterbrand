@@ -112,6 +112,20 @@ export default runMigrations(
       );
       CREATE INDEX IF NOT EXISTS batches_owner_code_idx ON batches (owner_email, code)`,
     },
+    {
+      version: 7,
+      name: "afterbrand-publications",
+      sql: `CREATE TABLE IF NOT EXISTS publications (
+        id TEXT PRIMARY KEY,
+        owner_email TEXT NOT NULL,
+        code TEXT NOT NULL,
+        changes INTEGER NOT NULL,
+        pages INTEGER NOT NULL,
+        content TEXT NOT NULL,
+        published_at TEXT NOT NULL
+      );
+      CREATE INDEX IF NOT EXISTS publications_owner_idx ON publications (owner_email, published_at)`,
+    },
   ],
   { table: "afterbrand_migrations" },
 );

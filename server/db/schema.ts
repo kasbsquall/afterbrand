@@ -114,6 +114,26 @@ export const batches = pgTable(
   }),
 );
 
+// One publish: the accepted changes it locked and the updated pages, kept in
+// the database so a deploy without a persistent disk still has them to
+// download. `content` is JSON: [{ url, title, body, changes: [{ before, after,
+// appliedBy }] }].
+export const publications = pgTable(
+  "publications",
+  {
+    id: text("id").primaryKey(),
+    ownerEmail: text("owner_email").notNull(),
+    code: text("code").notNull(),
+    changes: integer("changes").notNull(),
+    pages: integer("pages").notNull(),
+    content: text("content").notNull(),
+    publishedAt: text("published_at").notNull(),
+  },
+  (t) => ({
+    ownerPublished: index("publications_owner_idx").on(t.ownerEmail, t.publishedAt),
+  }),
+);
+
 export const sweeps = pgTable("sweeps", {
   id: text("id").primaryKey(),
   ownerEmail: text("owner_email").notNull(),

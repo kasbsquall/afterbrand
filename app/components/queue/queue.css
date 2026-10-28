@@ -226,6 +226,9 @@
 .ab-publish p { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--ab-ink-soft); }
 .ab-publish p svg { flex: none; margin-top: 2px; color: var(--ab-keep); }
 .ab-publish-btn { width: 100%; justify-content: center; white-space: normal; height: auto; min-height: 40px; padding: 8px 14px; }
+.ab-publish p b { color: var(--ab-ink); font-weight: 600; }
+.ab-publish-last { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--ab-ink-soft); }
+.ab-publish-btn + .ab-publish-last, .ab-edit-row + .ab-publish-last { padding-top: 10px; border-top: 1px solid var(--ab-line); }
 
 /* states */
 .ab-state { padding: 28px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }

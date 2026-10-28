@@ -1,34 +1,62 @@
-import { CircleNotch, PaperPlaneTilt, ShieldCheck } from "@phosphor-icons/react";
-import { useActionMutation } from "@agent-native/core/client/hooks";
+import { CircleNotch, DownloadSimple, PaperPlaneTilt, ShieldCheck } from "@phosphor-icons/react";
+import { callAction, useActionMutation } from "@agent-native/core/client/hooks";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-import { errorMessage, plural } from "./shared";
+import { errorMessage, formatDate, plural } from "./shared";
+
+export interface LastPublication {
+  id: string;
+  code: string;
+  changes: number;
+  pages: number;
+  publishedAt: string;
+}
 
 type Props = {
   changes: number;
   pages: number;
+  // The code of exactly these accepted changes; publish-changes refuses any other.
+  set: string | null;
+  last: LastPublication | null;
 };
 
-// Publishing locks the accepted changes and exports them. A click here is the
-// person approving; when the agent asks to publish, the chat shows the same
-// approval before the action runs (needsApproval on publish-changes).
-export function PublishCard({ changes, pages }: Props) {
+async function download(id: string) {
+  try {
+    const file = await callAction("get-publication", { id }, { method: "GET", uiOnly: true });
+    const url = URL.createObjectURL(new Blob([file.markdown], { type: "text/markdown;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = file.fileName;
+    link.click();
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    toast.error(errorMessage(error, "The download failed. Try again."));
+  }
+}
+
+// Publishing locks the accepted changes and saves them as a download. A click
+// here is the person approving; when the agent asks to publish, the chat shows
+// the same approval before the action runs (needsApproval on publish-changes).
+export function PublishCard({ changes, pages, set, last }: Props) {
   const [isConfirming, setIsConfirming] = useState(false);
   const publish = useActionMutation("publish-changes");
 
   // A confirm prompt never survives a change in what it would publish.
   useEffect(() => {
     setIsConfirming(false);
-  }, [changes, pages]);
+  }, [set]);
 
-  if (changes === 0) return null;
+  if (changes === 0 && !last) return null;
 
   const run = async () => {
+    if (!set) return;
     try {
-      const result = await publish.mutateAsync({});
+      const result = await publish.mutateAsync({ set });
       setIsConfirming(false);
-      toast(`${result.message} The export holds one Markdown file per page and a diff manifest.`);
+      toast(`Published ${plural(result.published, "change")} across ${plural(result.pages, "page")}.`, {
+        action: { label: "Download", onClick: () => void download(result.publication) },
+      });
     } catch (error) {
       toast.error(errorMessage(error, "Nothing was published."));
     }
@@ -38,12 +66,14 @@ export function PublishCard({ changes, pages }: Props) {
 
   return (
     <section className="ab-panel ab-publish ab-rise" style={{ ["--b" as string]: 2 }} aria-label="Publish">
-      {isConfirming ? (
+      {changes === 0 ? null : isConfirming ? (
         <>
           <p>
             <ShieldCheck size={16} weight="light" />
-            Publishing writes {plural(pages, "page")} to the export folder and locks {plural(changes, "change")}. Undo
-            stops working for them.
+            <span>
+              Publishing set <b>{set}</b> saves {plural(pages, "page")} with {plural(changes, "change")} as a download
+              and locks them. Undo stops working for them.
+            </span>
           </p>
           <div className="ab-edit-row">
             <button
@@ -66,6 +96,18 @@ export function PublishCard({ changes, pages }: Props) {
           {label}
         </button>
       )}
+      {last ? (
+        <div className="ab-publish-last">
+          <span>
+            Last published {formatDate(last.publishedAt)}: {plural(last.changes, "change")} on{" "}
+            {plural(last.pages, "page")}
+          </span>
+          <button type="button" className="ab-chip" onClick={() => void download(last.id)}>
+            <DownloadSimple size={14} weight="light" />
+            Download
+          </button>
+        </div>
+      ) : null}
     </section>
   );
 }
