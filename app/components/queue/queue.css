@@ -133,7 +133,8 @@
 .ab-cb:indeterminate::after { content: ""; width: 8px; height: 2px; background: var(--ab-ink); border-radius: 1px; }
 
 /* side column */
-.ab-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; position: sticky; top: 16px; }
+/* Taller than a laptop screen, so it scrolls on its own; 88px = the 56px top bar and 16px above and below. */
+.ab-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; position: sticky; top: 16px; max-height: calc(100vh - 88px); overflow-y: auto; overscroll-behavior: contain; padding: 0 6px 28px; margin: 0 -6px; }
 .ab-core { padding: 20px 20px 16px; }
 .ab-core-top { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: end; }
 .ab-big { font-size: 76px; line-height: .84; font-weight: 600; letter-spacing: -.03em; }
@@ -279,7 +280,7 @@
 }
 @media (max-width: 1023px) {
   .ab-app { grid-template-columns: 1fr; }
-  .ab-side { position: static; }
+  .ab-side { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
   .ab-progress .ab-bar { display: none; }
 }
 @media (max-width: 640px) {
@@ -311,11 +312,13 @@
 
 .ab-builder input { flex: 1; min-width: 0; height: 32px; padding: 0 10px; border-radius: var(--radius-control); background: var(--ab-well); border: 1px solid var(--ab-line-strong); font-size: 13px; color: var(--ab-ink); }
 .ab-builder input:focus { outline: none; border-color: var(--ab-focus); }
-.ab-builder-note { font-size: 13px; color: var(--ab-ink-soft); }
+.ab-builder-note { display: block; font-size: 13px; color: var(--ab-ink-soft); }
 .ab-builder-note a { color: var(--ab-ink); text-decoration: underline; text-underline-offset: 2px; }
 .ab-builder-models { display: flex; flex-direction: column; gap: 10px; }
 .ab-builder-models li { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--ab-ink-soft); }
-.ab-builder-models b { color: var(--ab-ink); font-weight: 600; }
+.ab-builder b { color: var(--ab-ink); font-weight: 600; }
+.ab-builder .ab-blocked a { color: var(--ab-ink); text-decoration: underline; text-underline-offset: 2px; }
+.ab-builder a { white-space: nowrap; }
 .ab-builder-models small { display: flex; align-items: center; gap: 5px; margin-top: 3px; font-size: 12px; color: var(--ab-ink-faint); }
 .ab-builder-link { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: var(--radius-well); background: var(--ab-well); }
 .ab-builder-link p { font-size: 12.5px; color: var(--ab-ink-soft); }

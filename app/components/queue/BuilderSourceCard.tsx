@@ -1,6 +1,7 @@
 import { CheckCircle, CircleNotch, CloudArrowDown, Copy, Plugs, WebhooksLogo } from "@phosphor-icons/react";
 import { useActionMutation, useActionQuery } from "@agent-native/core/client/hooks";
 import { useState } from "react";
+import { Link } from "react-router";
 import { toast } from "sonner";
 
 import { errorMessage, formatDate, plural } from "./shared";
@@ -8,11 +9,15 @@ import { errorMessage, formatDate, plural } from "./shared";
 interface Source {
   connected: boolean;
   canSave: boolean;
+  keyNames: { public: string; private: string };
   models: { model: string; pages: number; lastImportAt: string | null }[];
   hooks: { model: string; createdAt: string; lastCalledAt: string | null }[];
 }
 
 const MODEL = /^[A-Za-z0-9][\w-]{0,63}$/;
+const KEYS_PAGE = "/settings/api-keys";
+// The model Builder's own blog uses; the empty box shows it and Import uses it.
+const DEFAULT_MODEL = "blog-article";
 
 // Where the library's Builder pages come from, and the webhook link that keeps
 // them current: Builder calls it on every publish.
@@ -27,7 +32,7 @@ export function BuilderSourceCard() {
   const [model, setModel] = useState("");
   const [link, setLink] = useState<{ model: string; url: string } | null>(null);
 
-  const chosen = model.trim() || data?.models[0]?.model || "";
+  const chosen = model.trim() || data?.models[0]?.model || DEFAULT_MODEL;
   const isValid = MODEL.test(chosen);
 
   const runImport = async (name: string) => {
@@ -78,8 +83,9 @@ export function BuilderSourceCard() {
         <p className="ab-abody ab-blocked">{errorMessage(error, "The Builder connection could not be read.")}</p>
       ) : !data?.connected ? (
         <p className="ab-abody ab-builder-note">
-          Add your Builder space's public and private API keys in <a href="/settings">Settings</a>. Afterbrand then imports
-          its entries and saves accepted changes there as unpublished edits. It never publishes in Builder.
+          In <Link to={KEYS_PAGE}>Settings, API keys</Link>, add your Builder space's public key as{" "}
+          <b>{data?.keyNames.public}</b> and its private key as <b>{data?.keyNames.private}</b>. Afterbrand then imports
+          the space's entries and saves accepted changes there as unpublished edits. It never publishes in Builder.
         </p>
       ) : (
         <div className="ab-abody">
@@ -131,7 +137,7 @@ export function BuilderSourceCard() {
           <div className="ab-edit-row">
             <input
               value={model}
-              placeholder={data.models[0]?.model ?? "blog-article"}
+              placeholder={data.models[0]?.model ?? DEFAULT_MODEL}
               aria-label="Builder model name"
               onChange={(e) => setModel(e.target.value)}
             />
@@ -146,7 +152,10 @@ export function BuilderSourceCard() {
             </button>
           </div>
           {!data.canSave ? (
-            <p className="ab-blocked">Add the private API key too, so publishing can save edits in Builder.</p>
+            <p className="ab-blocked">
+              Add the private key as <b>{data.keyNames.private}</b> in <Link to={KEYS_PAGE}>Settings, API keys</Link> too,
+              so publishing can save edits in Builder.
+            </p>
           ) : null}
         </div>
       )}

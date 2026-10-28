@@ -3,12 +3,12 @@ import { and, count, eq, max } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
-import { builderKeys } from "../server/lib/builder-api.js";
+import { BUILDER_PRIVATE_KEY, BUILDER_PUBLIC_KEY, builderKeys } from "../server/lib/builder-api.js";
 import { requireOwner } from "../server/lib/owner.js";
 
 export default defineAction({
   description:
-    "Whether a Builder space is connected (its public key to read, its private key to save edits), the Builder models already imported with their page counts, and the webhook links set up per model.",
+    "Whether a Builder space is connected (its public key to read, its private key to save edits), the names those keys are saved under in Settings, API keys, the Builder models already imported with their page counts, and the webhook links set up per model.",
   schema: z.object({}),
   http: { method: "GET" },
   readOnly: true,
@@ -25,6 +25,12 @@ export default defineAction({
       .select({ model: schema.builderHooks.model, createdAt: schema.builderHooks.createdAt, lastCalledAt: schema.builderHooks.lastCalledAt })
       .from(schema.builderHooks)
       .where(and(eq(schema.builderHooks.ownerEmail, ownerEmail)));
-    return { connected: Boolean(publicKey), canSave: Boolean(privateKey), models, hooks };
+    return {
+      connected: Boolean(publicKey),
+      canSave: Boolean(privateKey),
+      keyNames: { public: BUILDER_PUBLIC_KEY, private: BUILDER_PRIVATE_KEY },
+      models,
+      hooks,
+    };
   },
 });
