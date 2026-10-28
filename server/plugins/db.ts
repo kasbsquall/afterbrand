@@ -96,6 +96,22 @@ export default runMigrations(
       CREATE INDEX IF NOT EXISTS findings_page_idx ON findings (owner_email, page_id);
       ALTER TABLE changes ADD COLUMN IF NOT EXISTS published_at TEXT`,
     },
+    {
+      version: 6,
+      name: "afterbrand-staged-batches",
+      sql: `CREATE TABLE IF NOT EXISTS batches (
+        id TEXT PRIMARY KEY,
+        owner_email TEXT NOT NULL,
+        code TEXT NOT NULL,
+        digest TEXT NOT NULL,
+        items TEXT NOT NULL,
+        staged_by TEXT NOT NULL CHECK (staged_by IN ('agent', 'person')),
+        status TEXT NOT NULL CHECK (status IN ('staged', 'applied', 'discarded')),
+        created_at TEXT NOT NULL,
+        closed_at TEXT
+      );
+      CREATE INDEX IF NOT EXISTS batches_owner_code_idx ON batches (owner_email, code)`,
+    },
   ],
   { table: "afterbrand_migrations" },
 );

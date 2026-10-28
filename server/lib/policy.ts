@@ -41,6 +41,14 @@ export function isAgentCaller(caller: string | undefined): boolean {
   return caller === "tool" || caller === "mcp" || caller === "a2a" || caller === "automation";
 }
 
+// An agent applies only a staged batch: the one a person sees before and after
+// and approves by its code. A bare list of ids is a person's click in the app.
+export function assertAgentAppliesBatch(caller: string | undefined, hasBatch: boolean): void {
+  if (isAgentCaller(caller) && !hasBatch) {
+    fail("Stage these findings with stage-changes first, then pass its batch code, so the person approves the batch they see.");
+  }
+}
+
 // A decision a person made is theirs: the agent may not overwrite it.
 export function agentMayRedecide(decidedBy: string | null, caller: string | undefined): boolean {
   return !(isAgentCaller(caller) && decidedBy === "person");

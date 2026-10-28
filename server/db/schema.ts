@@ -92,6 +92,28 @@ export const changes = pgTable("changes", {
   publishedAt: text("published_at"),
 });
 
+// Changes the agent staged for a person to review as one unit. `code` is the
+// start of `digest`, the hash of every staged sentence and rewrite; applying
+// recomputes it, so an approval never runs on a set that differs from the one
+// on screen. `items` is the JSON snapshot the screen shows.
+export const batches = pgTable(
+  "batches",
+  {
+    id: text("id").primaryKey(),
+    ownerEmail: text("owner_email").notNull(),
+    code: text("code").notNull(),
+    digest: text("digest").notNull(),
+    items: text("items").notNull(),
+    stagedBy: text("staged_by", { enum: ["agent", "person"] }).notNull(),
+    status: text("status", { enum: ["staged", "applied", "discarded"] }).notNull(),
+    createdAt: text("created_at").notNull(),
+    closedAt: text("closed_at"),
+  },
+  (t) => ({
+    ownerCode: index("batches_owner_code_idx").on(t.ownerEmail, t.code),
+  }),
+);
+
 export const sweeps = pgTable("sweeps", {
   id: text("id").primaryKey(),
   ownerEmail: text("owner_email").notNull(),

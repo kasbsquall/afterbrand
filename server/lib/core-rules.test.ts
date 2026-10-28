@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { findSentenceCandidates } from "./mentions.js";
 import {
+  assertAgentAppliesBatch,
   assertCanApply,
   assertCanPublish,
   agentMayRedecide,
@@ -164,6 +165,13 @@ describe("policy", () => {
     expect(ruleEditNeedsApproval(current, { newName: "Builder Code", exceptions: "Keep history." }, "tool")).toBe(false);
     expect(ruleEditNeedsApproval(null, { oldName: "Publish", newName: "Builder Content" }, "tool")).toBe(true);
     expect(ruleEditNeedsApproval(current, { enabled: false }, "frontend")).toBe(false);
+  });
+
+  it("lets an agent apply only a staged batch, and a person apply by ids", () => {
+    expect(() => assertAgentAppliesBatch("tool", false)).toThrow(/stage-changes/);
+    expect(() => assertAgentAppliesBatch("automation", false)).toThrow(/stage-changes/);
+    expect(() => assertAgentAppliesBatch("tool", true)).not.toThrow();
+    expect(() => assertAgentAppliesBatch("frontend", false)).not.toThrow();
   });
 
   it("never lets the agent overwrite a person's decision", () => {

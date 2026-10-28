@@ -3,18 +3,24 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { getDb, schema } from "../server/db/index.js";
+import { assertAllApplicable, loadBatchForApply, type BatchRow } from "../server/lib/batch.js";
+import { loadFindings, type FindingWithContext } from "../server/lib/findings-read.js";
 import { loadEnabledRules, syncPageFindings } from "../server/lib/findings-sync.js";
-import { loadFindings } from "../server/lib/findings-read.js";
 import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
-import { assertCanApply, isAgentCaller } from "../server/lib/policy.js";
+import { assertAgentAppliesBatch, isAgentCaller } from "../server/lib/policy.js";
 import { replaceSentence } from "../server/lib/rewrite.js";
 import { revertChanges } from "../server/lib/undo.js";
 
 export default defineAction({
   description:
-    "Apply the proposed rewrite of up to 50 findings decided as change. Each applied change can be undone with revert-change until it is published. Keep and unsure findings are refused; a person overrides them by editing the rewrite. When the agent calls this, a person approves the call first. Pass undoChangeIds instead of ids to undo changes this action applied (the chat card's Undo).",
+    "Apply a batch of rewrites. Agents pass batch, the code stage-changes returned: a person approves that exact batch, and if any sentence or rewrite in it changed since it was staged, nothing is applied. People in the app pass ids. Each applied change can be undone with revert-change until it is published. Keep and unsure findings are refused; a person overrides them by editing the rewrite. Pass undoChangeIds to undo changes this action applied (the chat card's Undo).",
   schema: z.object({
-    ids: z.array(z.string()).min(1).max(50).optional().describe("Finding ids to apply"),
+    ids: z.array(z.string()).min(1).max(50).optional().describe("Finding ids to apply (people in the app only)"),
+    batch: z
+      .string()
+      .regex(/^[0-9a-f]{12}$/)
+      .optional()
+      .describe("Batch code from stage-changes: applies exactly the staged batch"),
     undoChangeIds: z
       .array(z.string())
       .min(1)
@@ -22,27 +28,29 @@ export default defineAction({
       .optional()
       .describe("Undo mode: change ids returned by an earlier call"),
   }),
-  // The agent may prepare and apply changes, but never without a person
-  // approving the specific call. Buttons in the UI are that person.
-  // Undo mode only restores sentences, so it runs without a prompt.
-  needsApproval: (args) => !args.undoChangeIds,
-  run: async ({ ids, undoChangeIds }, ctx) => {
+  // The agent applies only a batch a person can see before and after, and the
+  // person approves that batch by its code. Buttons in the UI are that person.
+  // A bare list of ids from an agent is refused in run, so it needs no prompt;
+  // undo mode only restores sentences.
+  needsApproval: (args) => args.batch !== undefined,
+  run: async ({ ids, batch, undoChangeIds }, ctx) => {
     const ownerEmail = requireOwner(ctx);
-    if (ids && undoChangeIds) fail("Pass ids to apply or undoChangeIds to undo, not both.");
+    if ([ids, batch, undoChangeIds].filter((mode) => mode !== undefined).length !== 1) {
+      fail("Pass exactly one of ids, batch or undoChangeIds.");
+    }
     if (undoChangeIds) return revertChanges(ownerEmail, undoChangeIds);
-    if (!ids) fail("Pass ids to apply, or undoChangeIds to undo.");
     const callerIsAgent = isAgentCaller(ctx?.caller);
-    const rows = await loadFindings(ownerEmail, ids);
-    if (rows.length !== ids.length) fail("Some findings were not found. Refresh the queue and try again.");
-
-    // Validate everything first so a batch never half-applies on a rule break.
-    for (const { finding, page } of rows) {
-      assertCanApply({
-        decision: finding.decision,
-        status: finding.status,
-        proposal: finding.proposal,
-        pageReadOnly: page.readOnly,
-      });
+    assertAgentAppliesBatch(ctx?.caller, batch !== undefined);
+    let staged: BatchRow | null = null;
+    let rows: FindingWithContext[];
+    if (batch) {
+      // Validates every finding first, so a batch never half-applies on a rule break.
+      ({ batch: staged, rows } = await loadBatchForApply(ownerEmail, batch));
+    } else {
+      if (!ids) fail("Pass ids to apply, or undoChangeIds to undo.");
+      rows = await loadFindings(ownerEmail, ids);
+      if (rows.length !== ids.length) fail("Some findings were not found. Refresh the queue and try again.");
+      assertAllApplicable(rows);
     }
 
     const db = getDb();
@@ -80,6 +88,13 @@ export default defineAction({
       touchedPages.add(page.id);
     }
 
+    if (staged) {
+      await db
+        .update(schema.batches)
+        .set({ status: "applied", closedAt: nowIso() })
+        .where(and(eq(schema.batches.ownerEmail, ownerEmail), eq(schema.batches.id, staged.id)));
+    }
+
     // Offsets moved on the touched pages; resync keeps every other decision.
     const rules = await loadEnabledRules(ownerEmail);
     for (const pageId of touchedPages) {
@@ -88,16 +103,20 @@ export default defineAction({
     }
 
     const first = rows[0];
+    const summary = `${rows.length} changes on ${touchedPages.size} page${touchedPages.size === 1 ? "" : "s"}`;
     return {
       applied: changeIds.length,
       changeIds,
+      ...(staged ? { batch: staged.code } : {}),
       change: {
         verb: "updated" as const,
         kind: "page",
         title:
           rows.length === 1
-            ? `Changed "${first.rule.oldName}" on ${first.page.title}`
-            : `Applied ${rows.length} changes on ${touchedPages.size} page${touchedPages.size === 1 ? "" : "s"}`,
+            ? `Changed "${first.rule.oldName}" on ${first.page.title}${staged ? ` (batch ${staged.code})` : ""}`
+            : staged
+              ? `Applied batch ${staged.code}: ${summary}`
+              : `Applied ${summary}`,
         detail: rows.length === 1 ? (first.finding.proposal ?? undefined) : undefined,
         // The chat card undoes through this same action (undo mode).
         undo: { action: "accept-findings", args: { undoChangeIds: changeIds } },

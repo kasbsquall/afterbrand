@@ -69,7 +69,7 @@
 .ab-meta .ab-pos { margin-left: auto; color: var(--ab-ink-faint); }
 .ab-sentence { margin-top: 26px; font-size: 28px; line-height: 1.32; letter-spacing: -.016em; font-weight: 500; max-width: 40ch; text-wrap: pretty; }
 .ab mark { background: oklch(78% .13 75 / .16); color: var(--ab-change); border-radius: var(--radius-key); padding: 0 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.ab-sentence mark.ab-strike, .ab-doc mark.ab-old { text-decoration: line-through; text-decoration-color: oklch(78% .13 75 / .55); text-decoration-thickness: 1.5px; }
+.ab-sentence mark.ab-strike, .ab-batch mark.ab-strike, .ab-doc mark.ab-old { text-decoration: line-through; text-decoration-color: oklch(78% .13 75 / .55); text-decoration-thickness: 1.5px; }
 .ab-proposal { margin-top: 16px; display: grid; grid-template-columns: 68px 1fr; gap: 12px; align-items: baseline; }
 .ab-lbl { font-size: 12px; color: var(--ab-ink-faint); font-weight: 500; }
 .ab-proposal p { font-size: 19px; line-height: 1.4; color: var(--ab-ink-soft); max-width: 46ch; text-wrap: pretty; }
@@ -196,6 +196,31 @@
 .ab-exc-none { font-size: 13px; color: var(--ab-ink-faint); }
 .ab-exc-input { min-height: 140px; font-size: 13.5px !important; }
 
+/* staged batch */
+.ab-batch { display: flex; flex-direction: column; }
+.ab-batch-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 18px 20px 14px; border-bottom: 1px solid var(--ab-line); }
+.ab-batch-head > svg { color: var(--ab-change); margin-top: 1px; }
+.ab-batch-head h2 { font-size: 16px; font-weight: 600; letter-spacing: -.012em; }
+.ab-batch-head p { margin-top: 4px; font-size: 13px; color: var(--ab-ink-soft); max-width: 60ch; }
+.ab-batch-head p b { color: var(--ab-ink); font-weight: 600; }
+.ab-batch-code { height: 26px; padding: 0 9px; display: inline-flex; align-items: center; border-radius: var(--radius-control); background: var(--ab-well); border: 1px solid var(--ab-line-strong); font-size: 13px; font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
+.ab-batch-list { max-height: 420px; overflow: auto; padding: 4px 20px 8px; }
+.ab-batch-list:focus-visible { outline-offset: -2px; }
+.ab-batch-group + .ab-batch-group { border-top: 1px solid var(--ab-line); }
+.ab-batch-group h3 { display: flex; align-items: center; gap: 6px; padding: 12px 0 4px; font-size: 12.5px; font-weight: 500; color: var(--ab-ink-soft); min-width: 0; }
+.ab-batch-group h3 svg { color: var(--ab-ink-faint); flex: none; }
+.ab-batch-group h3 span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ab-batch-group h3 small { margin-left: auto; padding-left: 12px; color: var(--ab-ink-faint); font-size: 12px; white-space: nowrap; }
+.ab-batch-group ol { list-style: none; margin: 0; padding: 0; }
+.ab-batch-group li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 4px 12px; align-items: baseline; padding: 10px 0; font-size: 14px; line-height: 1.45; }
+.ab-batch-group li + li { border-top: 1px dashed var(--ab-line); }
+.ab-batch-group li p { text-wrap: pretty; }
+.ab-batch-before { color: var(--ab-ink-soft); }
+.ab-batch-flag { grid-column: 2; display: flex; gap: 6px; align-items: center; font-size: 12.5px; color: var(--ab-needs-text); }
+.ab-batch-problem { display: flex; gap: 8px; align-items: flex-start; margin: 0 20px; padding: 10px 12px; border-radius: var(--radius-control); background: oklch(72% .15 25 / .12); color: var(--ab-needs-text); font-size: 13px; }
+.ab-batch-problem svg { flex: none; margin-top: 2px; }
+.ab-batch-foot { display: flex; gap: 8px; padding: 14px 20px 18px; flex-wrap: wrap; }
+
 /* publish */
 .ab-publish { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
 .ab-publish p { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--ab-ink-soft); }
@@ -272,6 +297,10 @@
   .ab-legend { grid-column: 1 / -1; }
   .ab-big { font-size: 64px; }
   .ab-doc { padding: 20px 16px; }
+  .ab-batch-head { grid-template-columns: auto minmax(0, 1fr); padding: 16px; }
+  .ab-batch-code { grid-column: 2; justify-self: start; }
+  .ab-batch-list { padding-inline: 16px; }
+  .ab-batch-foot { padding-inline: 16px; }
 }
 
 .ab-unplaced { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--ab-line); }

@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { TAB_ID } from "@/lib/tab-id";
 
 import { AgentCard } from "./AgentCard";
+import { BatchReview } from "./BatchReview";
 import { CoreSample } from "./CoreSample";
 import { canAccept, FindingList } from "./FindingList";
 import { FocusCard, type BusyAction, type Finding } from "./FocusCard";
@@ -106,10 +107,11 @@ export function FindingsScreen() {
       .catch((error: unknown) => toast.error(errorMessage(error, "Undo failed. The change is still applied.")));
   };
 
-  const runAccept = async (ids: string[]) => {
+  // A staged batch is applied by its code, so it runs only as it was shown.
+  const runAccept = async (ids: string[], batch?: string) => {
     setBusy("accept");
     try {
-      const result = await accept.mutateAsync({ ids });
+      const result = await accept.mutateAsync(batch ? { batch } : { ids });
       // Apply mode always returns changeIds; undo mode is only used by chat cards.
       if (!("changeIds" in result)) return;
       sounds.play("accept");
@@ -352,6 +354,7 @@ export function FindingsScreen() {
               </button>
             ) : null}
           </div>
+          <BatchReview busy={busy} onAccept={(code, ids) => void runAccept(ids, code)} />
           {main}
         </section>
         <aside className="ab-side" aria-label="Library and agent">
