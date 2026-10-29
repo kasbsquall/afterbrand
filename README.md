@@ -43,7 +43,7 @@ What this shows and what it does not:
 - Stability: the same decision in all 3 runs for 136 of 140 mentions. Every rewrite the agent proposed passed the code verifier (100 of 100, 99 of 99, 98 of 98).
 - Cost: Claude Sonnet 5.5, 160 to 178 seconds per run of 140 mentions, 503,000 to 650,000 input tokens per run (85% to 87% read from the prompt cache) and about 20,500 output tokens.
 - On the dev split (60 mentions, used to check the runner before freezing the test set) one run made 0 wrong edits of 17 and 0 misses of 41.
-- Everything here comes from `eval/results/report-test.md` and `report-dev.md` (commit 3ae2f8c). How it was built and how to reproduce it: [eval/README.md](eval/README.md).
+- Everything here comes from `eval/results/report-test.md` and `report-dev.md` (commit a179d96). How it was built and how to reproduce it: [eval/README.md](eval/README.md).
 
 ## How it uses Agent-Native
 
@@ -118,21 +118,21 @@ To start a deployed copy with the library already decided, migrate the target da
 
 The commit history has two stretches.
 
-**Oct 25 and 26, 2026: the first version, declared here as existing work.** It was built inside the submission window as Builder published it at the time; the start date later moved to Oct 27. Commits `40cfc56` to `0c31a01`: from the Agent-Native `chat` template (`npx @agent-native/core create --template chat`, packages pinned at 0.220.0) to the schema, the snapshot importer, the mention finder and rewrite verifier, the actions and their rules, the agent skill, the queue and page screens, the rule automation, the MCP catalog, the eval and the deploy lockdown. The decision skill the eval measured has not changed since.
+**Oct 25 and 26, 2026: the first version, declared here as existing work.** It was built inside the submission window as Builder published it at the time; the start date later moved to Oct 27. Commits `40cfc56` to `740d63a`: from the Agent-Native `chat` template (`npx @agent-native/core create --template chat`, packages pinned at 0.220.0) to the schema, the snapshot importer, the mention finder and rewrite verifier, the actions and their rules, the agent skill, the queue and page screens, the rule automation, the MCP catalog, the eval and the deploy lockdown. The decision skill the eval measured has not changed since.
 
 **From Oct 27, 2026: new development.**
 
 | Commit | What changed |
 |---|---|
-| `1eb5a40` | The queue leads with what needs a person. Every rule change from the agent needs approval, adding an exception included |
-| `b490e85` | The agent stages a batch; the queue shows every sentence before and after, and the person approves that exact batch by its code |
-| `03f4c30` | Publishing is bound to a code for exactly the accepted changes on screen, stored in the database and downloaded from the app |
-| `c82b680` | Undo restores the exact sentence it changed, even when the same sentence repeats on a page; applying and undoing are atomic |
-| `709a866` | Builder space connector: import a model's entries, save accepted changes back as unpublished edits, webhook on every publish |
-| `47a1b48` | A second agent, spawned through agent teams, reviews every batch before a person is asked to approve it |
-| `86fb24e` | Builder connector tested on a live space; reads entries one at a time when a space refuses longer lists |
-| `4594877` | Script that copies the decided library into a deployed database, so the deploy starts ready |
-| `0318a8d` | The agent's reply shows once when it sends follow-up suggestions in the same turn (framework fix from 0.222.0, applied as a pnpm patch) |
-| `c3162ce` | A chat sent before the model picker loads runs on Sonnet 5.5 instead of failing on the deploy's model lock |
+| `6344337` | The queue leads with what needs a person. Every rule change from the agent needs approval, adding an exception included |
+| `b6b456d` | The agent stages a batch; the queue shows every sentence before and after, and the person approves that exact batch by its code |
+| `5b6280a` | Publishing is bound to a code for exactly the accepted changes on screen, stored in the database and downloaded from the app |
+| `620afe5` | Undo restores the exact sentence it changed, even when the same sentence repeats on a page; applying and undoing are atomic |
+| `6ff4be4` | Builder space connector: import a model's entries, save accepted changes back as unpublished edits, webhook on every publish |
+| `c0d5a71` | A second agent, spawned through agent teams, reviews every batch before a person is asked to approve it |
+| `96ad70c` | Builder connector tested on a live space; reads entries one at a time when a space refuses longer lists |
+| `5bf059b` | Script that copies the decided library into a deployed database, so the deploy starts ready |
+| `855de4a` | The agent's reply shows once when it sends follow-up suggestions in the same turn (framework fix from 0.222.0, applied as a pnpm patch) |
+| `2827663` | A chat sent before the model picker loads runs on Sonnet 5.5 instead of failing on the deploy's model lock |
 
 Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0).
