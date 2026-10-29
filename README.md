@@ -2,7 +2,7 @@
 
 Afterbrand finds every page that still uses your old product name, decides in context which mentions should change, and drafts the fix. Your team approves every change before it ships.
 
-Demo video (Clips): CLIPS_LINK. Plays without login.
+Demo video (Clips): [clips.agent-native.com/share/n4apniZHTk0B](https://clips.agent-native.com/share/n4apniZHTk0B). Plays without login.
 
 Built for the Builder.io Agent-Native Hackathon (Oct 2026) on Agent-Native 0.220.0. The demo library is Builder.io's own public blog, after the Sept 10, 2026 rename: Fusion became Builder Code and Publish became Builder Content ([announcement](https://www.builder.io/blog/builder-product-name-change)).
 
