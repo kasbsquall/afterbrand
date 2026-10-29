@@ -134,5 +134,6 @@ The commit history has two stretches.
 | `5bf059b` | Script that copies the decided library into a deployed database, so the deploy starts ready |
 | `855de4a` | The agent's reply shows once when it sends follow-up suggestions in the same turn (framework fix from 0.222.0, applied as a pnpm patch) |
 | `2827663` | A chat sent before the model picker loads runs on Sonnet 5.5 instead of failing on the deploy's model lock |
+| `696b59a` | Webhook and rule-change events reach the automation queue on a serverless deploy, so a publish in Builder is decided without anyone asking |
 
 Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0).
