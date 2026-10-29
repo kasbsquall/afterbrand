@@ -126,7 +126,7 @@ export function BatchReview({ busy, onAccept }: Props) {
           ) : (
             <Check size={16} weight="light" />
           )}
-          Accept these {items.length}
+          Accept {plural(items.length, "change")}
         </button>
         <button
           type="button"
