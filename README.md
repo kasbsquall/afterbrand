@@ -4,6 +4,8 @@ Afterbrand finds every page that still uses your old product name, decides in co
 
 Demo video (Clips): [clips.agent-native.com/share/n4apniZHTk0B](https://clips.agent-native.com/share/n4apniZHTk0B). Plays without login.
 
+Live demo: [afterbrand-demo.netlify.app](https://afterbrand-demo.netlify.app). Opens without signing in; every visitor shares one demo workspace.
+
 Built for the Builder.io Agent-Native Hackathon (Oct 2026) on Agent-Native 0.220.0. The demo library is Builder.io's own public blog, after the Sept 10, 2026 rename: Fusion became Builder Code and Publish became Builder Content ([announcement](https://www.builder.io/blog/builder-product-name-change)).
 
 ## What it does
