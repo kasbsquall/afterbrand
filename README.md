@@ -132,5 +132,7 @@ The commit history has two stretches.
 | `47a1b48` | A second agent, spawned through agent teams, reviews every batch before a person is asked to approve it |
 | `86fb24e` | Builder connector tested on a live space; reads entries one at a time when a space refuses longer lists |
 | `4594877` | Script that copies the decided library into a deployed database, so the deploy starts ready |
+| `0318a8d` | The agent's reply shows once when it sends follow-up suggestions in the same turn (framework fix from 0.222.0, applied as a pnpm patch) |
+| `c3162ce` | A chat sent before the model picker loads runs on Sonnet 5.5 instead of failing on the deploy's model lock |
 
 Fonts: Hanken Grotesk (OFL). Icons: Phosphor (MIT). Sounds: Kenney (CC0).
