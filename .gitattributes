@@ -1,0 +1,2 @@
+# pnpm checks the hash of a patch file, so line endings must not change on checkout.
+*.patch -text
