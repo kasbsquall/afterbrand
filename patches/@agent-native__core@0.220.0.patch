@@ -1,0 +1,17 @@
+diff --git a/dist/agent/production-agent.js b/dist/agent/production-agent.js
+index f30b80d2b341f0f0a68dec52dc96b3b48fc5897c..de0158ef12dcd6eb91bc0e35a150c182d02aec81 100644
+--- a/dist/agent/production-agent.js
++++ b/dist/agent/production-agent.js
+@@ -5897,7 +5897,11 @@ export async function runAgentLoop(opts) {
+             }
+             const hasEmptyFinalResponse = collectTextParts(assistantContentForHistory).trim().length === 0 &&
+                 streamedAssistantText.trim().length === 0;
+-            if (followUpResults.length > 0 && terminalStopReason === "tool_use") {
++            // Backport of 0.222.0: a reply sent beside its follow-ups is the final
++            // answer, so only a follow-up call with no reply asks again.
++            if (followUpResults.length > 0 &&
++                hasEmptyFinalResponse &&
++                terminalStopReason === "tool_use") {
+                 if (streamedAssistantText)
+                     send({ type: "clear" });
+                 continue;
