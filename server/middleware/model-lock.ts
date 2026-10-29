@@ -1,10 +1,17 @@
-import { createError, defineEventHandler, getRequestURL } from "h3";
+import { defineEventHandler, getRequestURL } from "h3";
 
 // The client can name any model in a chat request and the framework honours
 // it. A public deploy pays for every run, so only the model the eval measured
-// and the cheaper Haiku are accepted; anything else is refused before it runs.
+// and the cheaper Haiku run. Anything else runs as Sonnet 5.5 rather than being
+// refused: a fresh browser sends the framework default (gpt-6-luna) until the
+// model picker loads, and a visitor who types fast would get an error.
 const ALLOWED_MODELS = new Set(["claude-sonnet-5-5", "claude-haiku-5-5"]);
-const ALLOWED_ENGINES = new Set(["anthropic"]);
+const LOCKED_MODEL = "claude-sonnet-5-5";
+const LOCKED_ENGINE = "anthropic";
+
+function isSet(value: unknown): boolean {
+  return value !== undefined && value !== "";
+}
 
 export default defineEventHandler(async (event) => {
   if (event.method !== "POST") return;
@@ -13,13 +20,16 @@ export default defineEventHandler(async (event) => {
   const body = (await event.req
     .clone()
     .json()
-    .catch(() => undefined)) as { model?: unknown; engine?: unknown } | undefined;
+    .catch(() => undefined)) as Record<string, unknown> | undefined;
   if (!body || typeof body !== "object") return;
   const { model, engine } = body;
-  if (model !== undefined && model !== "" && !ALLOWED_MODELS.has(String(model))) {
-    throw createError({ statusCode: 400, statusMessage: "This deployment only runs Claude Sonnet 5.5 or Claude Haiku 5.5." });
-  }
-  if (engine !== undefined && engine !== "" && !ALLOWED_ENGINES.has(String(engine))) {
-    throw createError({ statusCode: 400, statusMessage: "This deployment only runs the Anthropic engine." });
-  }
+  const modelAllowed = !isSet(model) || ALLOWED_MODELS.has(String(model));
+  const engineAllowed = !isSet(engine) || engine === LOCKED_ENGINE;
+  if (modelAllowed && engineAllowed) return;
+  const locked = { ...body, model: modelAllowed ? model : LOCKED_MODEL, engine: LOCKED_ENGINE };
+  const headers = new Headers(event.req.headers);
+  headers.delete("content-length");
+  // h3 types `req` as read-only, but swapping it is how the framework itself
+  // hands a handler a different request (see its generated server entry).
+  (event as { req: Request }).req = new Request(event.req.url, { method: event.req.method, headers, body: JSON.stringify(locked) });
 });
