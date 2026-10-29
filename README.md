@@ -97,6 +97,8 @@ Open http://localhost:8080. In local development the framework signs you in as `
 
 The fetch reads today's sitemap, so your library can differ from the Oct 25, 2026 snapshot the eval used (the eval checks this with page hashes).
 
+To start a deployed copy with the library already decided, migrate the target database (`corepack pnpm migrate:production` with its `DATABASE_URL`), stop the dev server, and copy Afterbrand's tables into it with `scripts/copy-demo-data.ts` (usage at the top of the file). Accounts, chats, keys and Builder webhooks are not copied.
+
 ## Limits
 
 - The agent can be wrong. That is why every change waits in the queue for a person, and why the eval reports its errors instead of a single score.
