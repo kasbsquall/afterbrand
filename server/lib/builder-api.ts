@@ -3,6 +3,8 @@ import { registerRequiredSecret } from "@agent-native/core/secrets";
 import { resolveSecretDetailed } from "@agent-native/core/server";
 import { z } from "zod";
 
+import { textBlocks } from "./builder-text.js";
+
 // A Builder space connects with its own two keys, saved by the person in
 // Settings. They are app keys, not the framework's Builder.io connection, so
 // they never change which model runs the agent.
@@ -122,6 +124,14 @@ export async function getEntry(publicKey: string, model: string, id: string): Pr
   const page = results.safeParse(await call(url, "reading an entry"));
   if (!page.success) fail("Builder's entry did not have the expected shape.");
   return page.data.results[0] ?? null;
+}
+
+// The entry a webhook announced, with its blocks. A live space sent the
+// published entry without them (October 2026), so an entry with no Text block
+// is read back from the content API, the shape a manual import reads.
+export async function publishedEntry(publicKey: string, model: string, sent: BuilderEntry): Promise<BuilderEntry> {
+  if (textBlocks(sent.data ?? {}).length > 0) return sent;
+  return (await getEntry(publicKey, model, sent.id)) ?? sent;
 }
 
 // Saves new data on an entry as unpublished edits (`autoSaveOnly`): the live
