@@ -1,5 +1,5 @@
 import { defineAction, fail } from "@agent-native/core/action";
-import { emit } from "@agent-native/core/event-bus";
+import { emitAsync } from "@agent-native/core/event-bus";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -8,10 +8,12 @@ import { nowIso, requireOwner, stableId } from "../server/lib/owner.js";
 import { RULE_CHANGED_EVENT, type RuleChangedPayload } from "../server/lib/events.js";
 import { isAgentCaller, ruleEditNeedsApproval } from "../server/lib/policy.js";
 
-// Tell automations a rule changed; a failed emit never fails the save.
-function announce(ownerEmail: string, payload: RuleChangedPayload) {
+// Tell automations a rule changed; a failed emit never fails the save. Awaited:
+// a serverless function is frozen once it answers, and the event must be queued
+// before that.
+async function announce(ownerEmail: string, payload: RuleChangedPayload) {
   try {
-    emit(RULE_CHANGED_EVENT, payload, { owner: ownerEmail });
+    await emitAsync(RULE_CHANGED_EVENT, payload, { owner: ownerEmail });
   } catch (error) {
     console.warn(`[upsert-rule] ${RULE_CHANGED_EVENT} emit failed:`, error instanceof Error ? error.message : error);
   }
@@ -62,7 +64,7 @@ export default defineAction({
         .update(schema.rules)
         .set({ ...patch, updatedAt: now })
         .where(eq(schema.rules.id, id));
-      announce(ownerEmail, {
+      await announce(ownerEmail, {
         ruleId: id,
         oldName: patch.oldName ?? current.oldName,
         newName: patch.newName ?? current.newName,
@@ -90,7 +92,7 @@ export default defineAction({
       createdAt: now,
       updatedAt: now,
     });
-    announce(ownerEmail, {
+    await announce(ownerEmail, {
       ruleId: id,
       oldName: args.oldName,
       newName: args.newName,

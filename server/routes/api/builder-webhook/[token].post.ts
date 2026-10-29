@@ -1,4 +1,4 @@
-import { emit } from "@agent-native/core/event-bus";
+import { emitAsync } from "@agent-native/core/event-bus";
 import { createError, defineEventHandler, getRouterParam } from "h3";
 import { z } from "zod";
 
@@ -37,9 +37,10 @@ export default defineEventHandler(async (event) => {
   const summary = await importEntries(hook.ownerEmail, hook.model, [newValue]);
   const pageId = summary.pageIds[0];
   if (pageId && summary.created + summary.updated > 0) {
-    // A failed emit never fails the import.
+    // A failed emit never fails the import. Awaited: a serverless function is
+    // frozen once it answers, and the event must be queued before that.
     try {
-      emit(
+      await emitAsync(
         PAGE_PUBLISHED_EVENT,
         { pageId, title: entryTitle(newValue), model: hook.model, newFindings: summary.newFindings },
         { owner: hook.ownerEmail },
